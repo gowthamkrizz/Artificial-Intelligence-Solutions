@@ -63,7 +63,7 @@
    SECTION 1 — AI SOLUTIONS OVERVIEW
 ────────────────────────────────────────── */
 .srv-overview-section {
-  padding: 8rem 0;
+  padding: 5rem 0;
   position: relative;
   background: linear-gradient(180deg, #050810 0%, rgba(10, 15, 30, 0.6) 50%, #050810 100%);
   overflow: hidden;
@@ -292,7 +292,7 @@
    SECTION 2 — AI DEVELOPMENT SERVICES
 ────────────────────────────────────────── */
 .srv-dev-section {
-  padding: 8rem 0;
+  padding: 5rem 0;
   background: var(--dark-bg);
   position: relative;
   overflow: hidden;
@@ -590,7 +590,7 @@
    SECTION 3 — AUTONOMOUS AI AGENTS
 ────────────────────────────────────────── */
 .srv-agents-section {
-  padding: 8rem 0;
+  padding: 5rem 0;
   background: radial-gradient(circle at 50% 10%, rgba(168, 85, 247, 0.07), transparent 65%), #060913;
   position: relative;
   overflow: hidden;
@@ -1135,7 +1135,7 @@
    SECTION 4 — ENTERPRISE AI INTEGRATION
 ────────────────────────────────────────── */
 .srv-integration-section {
-  padding: 8rem 0;
+  padding: 5rem 0;
   background: radial-gradient(circle at 50% 50%, rgba(0, 242, 254, 0.05), transparent 70%), linear-gradient(to bottom, #050810, #08111e, #050810);
   position: relative;
   overflow: hidden;
@@ -1697,7 +1697,7 @@
    SECTION 5 — CYBERNETIC AI AUTOMATION
 ────────────────────────────────────────── */
 .srv-auto-section {
-  padding: 8rem 0;
+  padding: 5rem 0;
   background: var(--dark-bg);
   position: relative;
   overflow: hidden;
@@ -2172,7 +2172,7 @@
    SECTION 6 — AI DATA & ANALYTICS (QUANTUM TELEMETRY)
 ────────────────────────────────────────── */
 .srv-analytics-section {
-  padding: 8rem 0;
+  padding: 5rem 0;
   background: #040711;
   position: relative;
   overflow: hidden;
@@ -2643,7 +2643,7 @@
    SECTION 7 — INDUSTRY AI SOLUTIONS
 ────────────────────────────────────────── */
 .srv-industry-section {
-  padding: 8rem 0;
+  padding: 5rem 0;
   background: var(--dark-bg);
   position: relative;
   overflow: hidden;
@@ -2909,7 +2909,7 @@
    SECTION 8 — AI TRANSFORMATION CTA (NEURAL SUPER-CORE)
 ────────────────────────────────────────── */
 .srv-cta-section {
-  padding: 8rem 0;
+  padding: 5rem 0;
   background: #040711;
   position: relative;
   overflow: hidden;

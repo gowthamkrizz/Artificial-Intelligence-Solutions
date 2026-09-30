@@ -140,10 +140,17 @@ body.dash-body {
 }
 
 .dash-logo-img {
-  height: 32px;
+  height: 44px;
+  max-height: 48px;
   width: auto;
   object-fit: contain;
-  filter: drop-shadow(0 0 8px rgba(0, 242, 254, 0.3));
+  filter: drop-shadow(0 0 10px rgba(0, 242, 254, 0.45));
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.brand-logo-wrap:hover .dash-logo-img {
+  transform: scale(1.04);
+  filter: drop-shadow(0 0 16px rgba(0, 242, 254, 0.75));
 }
 
 .brand-badge {

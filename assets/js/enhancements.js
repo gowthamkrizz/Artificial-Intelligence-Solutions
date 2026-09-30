@@ -414,8 +414,153 @@
     });
   }
 
+  /* ── 9.2 STACKLY AI NEURAL CORE PRELOADER ─────────────────────────────── */
+  function initNeuralPreloader() {
+    let preloader = document.getElementById('neuralPreloader');
+    
+    // Auto-create if not present in markup
+    if (!preloader && document.body) {
+      preloader = document.createElement('div');
+      preloader.id = 'neuralPreloader';
+      preloader.className = 'neural-preloader';
+      preloader.innerHTML = `
+        <div class="preloader-backdrop">
+          <div class="preloader-cyber-grid"></div>
+          <div class="preloader-ambient-glow cyan"></div>
+          <div class="preloader-ambient-glow purple"></div>
+          <div class="preloader-laser-scanline"></div>
+        </div>
+        <div class="preloader-hud-frame">
+          <div class="preloader-top-bar">
+            <div class="preloader-sys-tag">
+              <span class="preloader-live-beacon"></span>
+              <span class="sys-code">BOOT_SYS // NEURAL_CORE_4.5</span>
+            </div>
+            <div class="preloader-telemetry-item">
+              <span>LATENCY: <strong>0.8ms</strong></span>
+              <span class="tele-sep">|</span>
+              <span>SLA: <strong>99.999%</strong></span>
+            </div>
+          </div>
+          <div class="preloader-core-assembly">
+            <div class="preloader-gyro-ring ring-outer"></div>
+            <div class="preloader-gyro-ring ring-mid"></div>
+            <div class="preloader-gyro-ring ring-inner"></div>
+            <div class="preloader-core-node">
+              <i class="fa-solid fa-brain preloader-brain-icon"></i>
+            </div>
+          </div>
+          <div class="preloader-brand-deck">
+            <div class="preloader-brand-title">
+              <span class="brand-name">STACKLY</span>
+              <span class="brand-badge">AI 4.5</span>
+            </div>
+            <div class="preloader-status-stream" id="preloaderStatusText">
+              Initializing sovereign cognitive cluster...
+            </div>
+          </div>
+          <div class="preloader-progress-assembly">
+            <div class="preloader-progress-track">
+              <div class="preloader-progress-bar" id="preloaderProgressBar"></div>
+            </div>
+            <div class="preloader-progress-readout">
+              <span class="progress-label">LATTICE COMPILED</span>
+              <span class="progress-pct" id="preloaderPercent">0%</span>
+            </div>
+          </div>
+          <div class="preloader-specs-row">
+            <span><i class="fa-solid fa-microchip"></i> H100 TENSOR CLUSTER</span>
+            <span><i class="fa-solid fa-shield-halved"></i> AIR-GAPPED HARDWARE</span>
+            <span><i class="fa-solid fa-network-wired"></i> 1,420 VECTORS INDEXED</span>
+          </div>
+        </div>
+      `;
+      document.body.insertAdjacentElement('afterbegin', preloader);
+    }
+
+    if (!preloader) return;
+
+    const progressBar = document.getElementById('preloaderProgressBar');
+    const percentText = document.getElementById('preloaderPercent');
+    const statusText = document.getElementById('preloaderStatusText');
+
+    const bootMessages = [
+      'Initializing sovereign cognitive cluster...',
+      'Allocating H100 tensor weights & FP8 precision...',
+      'Calibrating multi-agent swarm mesh...',
+      'Synchronizing 1,420 neural vector indices...',
+      'Quantum Lattice Active. Launching Stackly...'
+    ];
+
+    let currentPercent = 0;
+    let isWindowLoaded = false;
+    let dismissed = false;
+
+    // Cinematic cyber boot progression (~1.5s total duration)
+    const bootInterval = setInterval(() => {
+      if (dismissed) return;
+
+      // Smooth, responsive incrementing
+      if (currentPercent < 35) {
+        currentPercent += Math.floor(Math.random() * 3) + 2; // 2-4%
+      } else if (currentPercent < 70) {
+        currentPercent += Math.floor(Math.random() * 4) + 2; // 2-5%
+      } else if (currentPercent < 92) {
+        currentPercent += Math.floor(Math.random() * 3) + 2; // 2-4%
+      } else if (currentPercent < 100) {
+        currentPercent += 2;
+      }
+
+      if (currentPercent >= 100) {
+        currentPercent = 100;
+        clearInterval(bootInterval);
+        dismissPreloader();
+      }
+
+      if (progressBar) progressBar.style.width = currentPercent + '%';
+      if (percentText) percentText.textContent = Math.min(currentPercent, 100) + '%';
+
+      const msgIndex = Math.min(Math.floor((currentPercent / 100) * bootMessages.length), bootMessages.length - 1);
+      if (statusText && bootMessages[msgIndex]) {
+        statusText.textContent = bootMessages[msgIndex];
+      }
+    }, 28);
+
+    function dismissPreloader() {
+      if (dismissed) return;
+      dismissed = true;
+      clearInterval(bootInterval);
+
+      if (progressBar) progressBar.style.width = '100%';
+      if (percentText) percentText.textContent = '100%';
+      if (statusText) statusText.textContent = 'Quantum Lattice Ready. System Initialized.';
+
+      setTimeout(() => {
+        preloader.classList.add('loaded');
+        setTimeout(() => {
+          preloader.style.display = 'none';
+        }, 600);
+      }, 250);
+    }
+
+    if (document.readyState === 'complete') {
+      isWindowLoaded = true;
+    } else {
+      window.addEventListener('load', () => {
+        isWindowLoaded = true;
+      });
+    }
+
+    // Fallback maximum safety timer: 2.2s
+    setTimeout(() => {
+      isWindowLoaded = true;
+      dismissPreloader();
+    }, 2200);
+  }
+
   /* ── 10. Init ─────────────────────────────────────────────────────────── */
   function init() {
+    initNeuralPreloader();
     setupRevealElements();
     setupCounters();
     spawnHeroParticles();

@@ -32,12 +32,12 @@
   const officeNodes = {
     sf: {
       city: 'MMR Complex, Chinna Thirupathi, Near Chinna Muniyappan Kovil, Salem - 636 003',
-      coords: '11.6854° N, 78.1685° E',
+      coords: '11.6885° N, 78.1764° E',
       address: 'MMR Complex, Chinna Thirupathi, Near Chinna Muniyappan Kovil, Salem - 636 003',
       latency: '< 1.2ms Ping',
       racks: '128 Tensor Racks // 100% SLA',
       tz: 'Asia/Kolkata',
-      embedUrl: 'https://maps.google.com/maps?q=MMR%20Complex,%20Chinna%20Thirupathi,%20Near%20Chinna%20Muniyappan%20Kovil,%20Salem%20-%20636%20003&t=&z=16&ie=UTF8&iwloc=&output=embed'
+      embedUrl: 'https://maps.google.com/maps?q=MMR+Complex,+Chinna+Thirupathi,+Near+Chinna+Muniyappan+Kovil,+Salem+-+636+003&t=&z=16&ie=UTF8&iwloc=&output=embed'
     },
     london: {
       city: 'London, UK',

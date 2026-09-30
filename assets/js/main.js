@@ -30,6 +30,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const isOpen = mobileMenu.classList.toggle('open');
       mobileToggle.classList.toggle('active', isOpen);
       mobileToggle.setAttribute('aria-expanded', isOpen);
+      document.body.classList.toggle('menu-open', isOpen);
+      document.documentElement.classList.toggle('menu-open', isOpen);
 
       if (isOpen && typeof gsap !== 'undefined') {
         gsap.fromTo(mobileMenu.querySelectorAll('.neuro-mobile-nav-item, .btn-mobile-auth'), 
@@ -45,6 +47,8 @@ document.addEventListener('DOMContentLoaded', () => {
         mobileMenu.classList.remove('open');
         mobileToggle.classList.remove('active');
         mobileToggle.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('menu-open');
+        document.documentElement.classList.remove('menu-open');
       }
     });
 
@@ -55,6 +59,8 @@ document.addEventListener('DOMContentLoaded', () => {
         mobileMenu.classList.remove('open');
         mobileToggle.classList.remove('active');
         mobileToggle.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('menu-open');
+        document.documentElement.classList.remove('menu-open');
       });
     });
   }
@@ -104,20 +110,24 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(typeLoop, 2500);
   }
 
-  // 3. Mobile Menu Toggle
+  // 3. Mobile Menu Toggle (Fallback handler)
   const menuToggle = document.querySelector('.menu-toggle');
   const navMenu = document.querySelector('.nav-menu');
 
   if (menuToggle && navMenu) {
     menuToggle.addEventListener('click', () => {
       menuToggle.classList.toggle('active');
-      navMenu.classList.toggle('open');
+      const isOpen = navMenu.classList.toggle('open');
+      document.body.classList.toggle('menu-open', isOpen);
+      document.documentElement.classList.toggle('menu-open', isOpen);
     });
 
     document.addEventListener('click', (e) => {
       if (!navMenu.contains(e.target) && !menuToggle.contains(e.target) && navMenu.classList.contains('open')) {
         menuToggle.classList.remove('active');
         navMenu.classList.remove('open');
+        document.body.classList.remove('menu-open');
+        document.documentElement.classList.remove('menu-open');
       }
     });
 
@@ -125,6 +135,8 @@ document.addEventListener('DOMContentLoaded', () => {
       link.addEventListener('click', () => {
         menuToggle.classList.remove('active');
         navMenu.classList.remove('open');
+        document.body.classList.remove('menu-open');
+        document.documentElement.classList.remove('menu-open');
       });
     });
   }
