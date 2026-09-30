@@ -1,0 +1,540 @@
+/* ==========================================================================
+   STACKLY - AI Animations & Micro-Interactions
+   ========================================================================== */
+
+@keyframes pulse-dot {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.4);
+    opacity: 0.6;
+  }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes float-reverse {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(10px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(0, 242, 254, 0.25);
+  }
+  50% {
+    box-shadow: 0 0 45px rgba(0, 242, 254, 0.6), 0 0 60px rgba(121, 40, 202, 0.4);
+  }
+}
+
+@keyframes spin-slow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes slide-in-toast {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Shimmering Animated Gradient Text */
+@keyframes text-shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Badge Pulse Glow Animation */
+@keyframes check-pill-pulse {
+  0%, 100% {
+    border-color: rgba(0, 242, 254, 0.25);
+    box-shadow: 0 0 10px rgba(0, 242, 254, 0.05);
+  }
+  50% {
+    border-color: rgba(0, 242, 254, 0.6);
+    box-shadow: 0 0 20px rgba(0, 242, 254, 0.2), inset 0 0 15px rgba(0, 242, 254, 0.08);
+  }
+}
+
+@keyframes check-icon-pop {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+}
+
+/* Floating animation utilities */
+.animate-float {
+  animation: float-slow 5s ease-in-out infinite;
+}
+
+.animate-float-reverse {
+  animation: float-reverse 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s infinite;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 25s linear infinite;
+}
+
+/* Animated Shimmer Classes */
+.shimmer-text-cyan {
+  background: linear-gradient(90deg, #00f2fe 0%, #38bdf8 35%, #ffffff 50%, #38bdf8 65%, #00f2fe 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: text-shimmer 4s ease infinite;
+  display: inline-block;
+}
+
+.shimmer-text-purple {
+  background: linear-gradient(90deg, #a855f7 0%, #c084fc 35%, #ffffff 50%, #c084fc 65%, #a855f7 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: text-shimmer 4s ease infinite;
+  display: inline-block;
+}
+
+/* Dynamic Typing Cursor */
+.typing-cursor {
+  display: inline-block;
+  color: var(--primary);
+  font-weight: 300;
+  margin-left: 2px;
+  animation: blink 0.8s infinite;
+}
+
+/* Feature Check Pill Animated Styling */
+.animated-feature-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.65rem 1.25rem;
+  background: rgba(13, 18, 29, 0.6);
+  border: 1px solid rgba(0, 242, 254, 0.25);
+  border-radius: var(--border-radius-full);
+  backdrop-filter: blur(12px);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: check-pill-pulse 4s infinite ease-in-out;
+  cursor: default;
+  width: fit-content;
+}
+
+.animated-feature-pill:hover {
+  background: rgba(13, 18, 29, 0.9);
+  border-color: var(--primary);
+  transform: translateX(6px) scale(1.02);
+  box-shadow: 0 0 25px rgba(0, 242, 254, 0.35);
+}
+
+.animated-feature-pill .check-icon-box {
+  width: 26px;
+  height: 26px;
+  background: linear-gradient(135deg, #00f2fe 0%, #3b82f6 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #07090e;
+  font-size: 0.8rem;
+  font-weight: 900;
+  box-shadow: 0 0 12px rgba(0, 242, 254, 0.5);
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+.animated-feature-pill:hover .check-icon-box {
+  transform: scale(1.2) rotate(10deg);
+  box-shadow: 0 0 18px rgba(0, 242, 254, 0.8);
+}
+
+.animated-feature-pill .feature-text {
+  font-family: var(--font-main);
+  font-size: 0.94rem;
+  font-weight: 600;
+  color: #f1f5f9;
+  letter-spacing: 0.01em;
+  transition: color 0.3s ease;
+}
+
+.animated-feature-pill:hover .feature-text {
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(0, 242, 254, 0.4);
+}
+
+.animated-feature-pill .feature-text .highlight-text {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+/* Background Animated Orbs */
+.orb-glow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(90px);
+  z-index: 0;
+}
+
+.orb-primary {
+  background: radial-gradient(circle, rgba(0, 242, 254, 0.15) 0%, transparent 70%);
+}
+
+.orb-secondary {
+  background: radial-gradient(circle, rgba(121, 40, 202, 0.18) 0%, transparent 70%);
+}
+
+.orb-pink {
+  background: radial-gradient(circle, rgba(255, 0, 122, 0.12) 0%, transparent 70%);
+}
+
+/* Canvas particle background */
+#particles-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.6;
+}
+
+/* Scroll reveal utility classes */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(25px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-on-scroll.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==========================================================================
+   INTERACTIVE CYBERNETIC ANIMATION ENGINE & 3D SPOTLIGHT SYSTEM
+   ========================================================================== */
+
+/* 1. Dynamic Cursor Spotlight Glow on Cards */
+.cyber-spotlight,
+.bento-card,
+.modern-phil-card,
+.matrix-card,
+.sol-card,
+.srv-card,
+.srv-step-card,
+.eco-pillar-card,
+.telemetry-deck,
+.action-pod {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease;
+  will-change: transform;
+}
+
+.cyber-spotlight::after,
+.bento-card::after,
+.modern-phil-card::after,
+.matrix-card::after,
+.sol-card::after,
+.srv-card::after,
+.srv-step-card::after,
+.eco-pillar-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  background: radial-gradient(450px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(0, 242, 254, 0.12), transparent 45%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  z-index: 2;
+}
+
+.cyber-spotlight:hover::after,
+.bento-card:hover::after,
+.modern-phil-card:hover::after,
+.matrix-card:hover::after,
+.sol-card:hover::after,
+.srv-card:hover::after,
+.srv-step-card:hover::after,
+.eco-pillar-card:hover::after {
+  opacity: 1;
+}
+
+/* 2. Audio-Visual Cyber Equalizer Bars */
+.cyber-equalizer {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 16px;
+  padding: 0 4px;
+}
+
+.cyber-equalizer .eq-bar {
+  width: 3px;
+  background: linear-gradient(to top, var(--cyan, #00f2fe), var(--purple, #a855f7));
+  border-radius: 2px;
+  animation: eqOscillate 1.2s ease-in-out infinite alternate;
+}
+
+.cyber-equalizer .eq-bar:nth-child(1) { height: 40%; animation-delay: 0.1s; }
+.cyber-equalizer .eq-bar:nth-child(2) { height: 85%; animation-delay: 0.35s; }
+.cyber-equalizer .eq-bar:nth-child(3) { height: 60%; animation-delay: 0.18s; }
+.cyber-equalizer .eq-bar:nth-child(4) { height: 100%; animation-delay: 0.5s; }
+.cyber-equalizer .eq-bar:nth-child(5) { height: 45%; animation-delay: 0.25s; }
+
+@keyframes eqOscillate {
+  0% { transform: scaleY(0.25); opacity: 0.5; }
+  50% { transform: scaleY(0.9); opacity: 0.9; }
+  100% { transform: scaleY(0.4); opacity: 0.7; }
+}
+
+/* 3. Holographic Iridescent Shimmer */
+.holo-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.holo-shimmer::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    60deg,
+    transparent 20%,
+    rgba(0, 242, 254, 0.08) 35%,
+    rgba(168, 85, 247, 0.12) 48%,
+    rgba(255, 0, 122, 0.08) 55%,
+    transparent 70%
+  );
+  transform: rotate(30deg) translateY(-100%);
+  transition: transform 0.8s ease-in-out;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.holo-shimmer:hover::before {
+  transform: rotate(30deg) translateY(100%);
+}
+
+/* 4. Laser Conic Border Rotation */
+.laser-border-glow {
+  position: relative;
+}
+
+.laser-border-glow::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: conic-gradient(from var(--laser-angle, 0deg), transparent 0deg, var(--cyan, #00f2fe) 60deg, var(--purple, #a855f7) 120deg, transparent 180deg);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: laserRotate 4s linear infinite;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+@property --laser-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes laserRotate {
+  to { --laser-angle: 360deg; }
+}
+
+/* 5. Live Telemetry Breathing Beacon */
+.telemetry-beacon {
+  display: inline-flex;
+  position: relative;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--cyan, #00f2fe);
+  box-shadow: 0 0 10px var(--cyan, #00f2fe);
+}
+
+.telemetry-beacon::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 1px solid var(--cyan, #00f2fe);
+  animation: beaconPulse 2s ease-out infinite;
+}
+
+@keyframes beaconPulse {
+  0% { transform: scale(0.6); opacity: 1; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+
+/* 6. Scanline Sweep Effect */
+.scanline-sweep {
+  position: relative;
+  overflow: hidden;
+}
+
+.scanline-sweep::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(0, 242, 254, 0.7), transparent);
+  box-shadow: 0 0 15px rgba(0, 242, 254, 0.8);
+  opacity: 0;
+  animation: scanlineDown 4s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 4;
+}
+
+@keyframes scanlineDown {
+  0% { top: 0; opacity: 0; }
+  10% { opacity: 0.8; }
+  90% { opacity: 0.8; }
+  100% { top: 100%; opacity: 0; }
+}
+
+/* 7. Magnetic Button Click Ripple */
+.cyber-ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(0, 242, 254, 0.4);
+  transform: scale(0);
+  animation: rippleSpread 0.6s linear;
+  pointer-events: none;
+}
+
+@keyframes rippleSpread {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* 8. Text Scramble Decoder Glow */
+.scrambler-active {
+  color: var(--cyan, #00f2fe) !important;
+  text-shadow: 0 0 10px rgba(0, 242, 254, 0.6);
+  transition: color 0.2s ease;
+}
+
+/* ==========================================================================
+   9. CYBER SCROLL LASER PROGRESS BAR
+   ========================================================================== */
+#cyber-scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background: linear-gradient(90deg, #00f2fe, #a855f7, #ff007a);
+  box-shadow: 0 0 12px rgba(0, 242, 254, 0.8), 0 0 24px rgba(168, 85, 247, 0.5);
+  z-index: 99999;
+  pointer-events: none;
+  transition: width 0.08s ease-out;
+}
+
+
+
+/* ==========================================================================
+   11. HOLOGRAPHIC GLITCH & HUD CORNER ACCENTS
+   ========================================================================== */
+.cyber-glitch-hover:hover {
+  animation: cyberGlitch 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+@keyframes cyberGlitch {
+  0% { transform: translate(0); text-shadow: none; }
+  20% { transform: translate(-2px, 2px); text-shadow: 2px -2px #ff007a, -2px 2px #00f2fe; }
+  40% { transform: translate(-1px, -1px); text-shadow: -2px 2px #ff007a, 2px -2px #00f2fe; }
+  60% { transform: translate(2px, 1px); text-shadow: 1px 1px #ff007a, -1px -1px #00f2fe; }
+  80% { transform: translate(1px, -2px); text-shadow: -1px -1px #ff007a, 1px 1px #00f2fe; }
+  100% { transform: translate(0); text-shadow: none; }
+}
+
+/* Radiant Pulsing Ring */
+.radiant-pulse-ring {
+  position: relative;
+}
+
+.radiant-pulse-ring::after {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: inherit;
+  border: 1px solid rgba(0, 242, 254, 0.4);
+  animation: radiantPulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  pointer-events: none;
+}
+
+@keyframes radiantPulse {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  50% { transform: scale(1.08); opacity: 0; }
+  100% { transform: scale(0.95); opacity: 0; }
+}
+
+/* HUD Live Beacon Status */
+.hud-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.85rem;
+  background: rgba(0, 242, 254, 0.06);
+  border: 1px solid rgba(0, 242, 254, 0.25);
+  border-radius: 999px;
+  font-family: var(--font-mono, 'Courier New', monospace);
+  font-size: 0.76rem;
+  letter-spacing: 0.08em;
+  color: #00f2fe;
+  text-transform: uppercase;
+  backdrop-filter: blur(8px);
+}
+
+

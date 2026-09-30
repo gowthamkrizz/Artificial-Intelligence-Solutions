@@ -1,0 +1,1752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Services & Capabilities | Stackly</title>
+  <meta name="description" content="Explore Stackly's comprehensive AI services: Sovereign LLMs, Computer Vision, Autonomous Agents, Generative Multi-Modal AI, Big Data Analytics, and AI Cyber Defense.">
+  
+  <!-- CDNs for Animations -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/services.css">
+  <link rel="stylesheet" href="assets/css/enhancements.css">
+</head>
+<body>
+
+  <!-- Particle Background Canvas -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- Background Orbs -->
+  <div class="orb-glow orb-primary" style="top: 10%; left: 5%; width: 500px; height: 500px;"></div>
+  <div class="orb-glow orb-secondary" style="top: 40%; right: 10%; width: 600px; height: 600px;"></div>
+
+  <!-- Top Navigation Header -->
+  <header class="site-header">
+    <div class="container">
+      <div class="neuro-nav-wrapper">
+        <!-- Logo -->
+        <a href="index.html" class="neuro-logo"><img src="assets/images/stackly-logo.webp" alt="Stackly AI" class="site-logo-img"></a>
+
+        <!-- Center Floating Pill Navigation -->
+        <nav class="neuro-nav-pill">
+          <a href="index.html" class="neuro-nav-item">HOME</a>
+          <a href="about.html" class="neuro-nav-item">ABOUT US</a>
+          <a href="services.html" class="neuro-nav-item active">SERVICE</a>
+          <a href="blog.html" class="neuro-nav-item">BLOG</a>
+          <a href="contact.html" class="neuro-nav-item">CONTACT</a>
+        </nav>
+
+        <!-- Right Actions -->
+        <div class="neuro-actions">
+          <a href="404.html" class="neuro-search-btn" aria-label="Search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </a>
+          <a href="login.html" class="btn-contact-pill">LOGIN</a>
+          <!-- Mobile Hamburger Toggle -->
+          <button class="neuro-mobile-toggle" id="neuroMobileToggle" aria-label="Toggle Navigation Menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Dropdown Menu -->
+    <div class="neuro-mobile-menu" id="neuroMobileMenu">
+      <div class="neuro-mobile-menu-inner">
+        <nav class="neuro-mobile-nav-links">
+          <a href="index.html" class="neuro-mobile-nav-item"><i class="fa-solid fa-house"></i> HOME</a>
+          <a href="about.html" class="neuro-mobile-nav-item"><i class="fa-solid fa-microchip"></i> ABOUT US</a>
+          <a href="services.html" class="neuro-mobile-nav-item active"><i class="fa-solid fa-network-wired"></i> SERVICE</a>
+          <a href="blog.html" class="neuro-mobile-nav-item"><i class="fa-solid fa-newspaper"></i> BLOG</a>
+          <a href="contact.html" class="neuro-mobile-nav-item"><i class="fa-solid fa-envelope-open-text"></i> CONTACT</a>
+        </nav>
+        <div class="neuro-mobile-actions">
+          <a href="login.html" class="btn-mobile-auth"><i class="fa-solid fa-arrow-right-to-bracket"></i> LOGIN</a>
+          <a href="signup.html" class="btn-mobile-auth primary"><i class="fa-solid fa-user-plus"></i> SIGN UP</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- SECTION 1: Page Hero with Animated Enterprise Compute SVG Visual -->
+  <section class="page-hero">
+    <div class="hero-svg-bg-grid"></div>
+    <div class="hero-orb hero-orb-cyan"></div>
+    <div class="hero-orb hero-orb-purple"></div>
+
+    <div class="container">
+      <div class="hero-subpage-grid">
+        
+        <!-- Left Editorial Content -->
+        <div class="hero-subpage-text" data-aos="fade-right">
+          <div class="section-tag green" data-aos="fade-down">
+            <span class="dot"></span>
+            <span>Deep Neural Solutions</span>
+          </div>
+          <h1 data-aos="zoom-in" data-aos-delay="100">
+            Enterprise <span class="gradient-text">AI Services</span>
+          </h1>
+          <p class="section-desc" data-aos="fade-up" data-aos-delay="200">
+            From custom foundation model training to autonomous agent swarms and air-gapped VPC deployments, we engineer production-grade AI systems with mission-critical reliability.
+          </p>
+          
+          <div class="hero-subpage-chips" data-aos="fade-up" data-aos-delay="250">
+            <span class="hero-chip"><i class="fa-solid fa-server"></i> Sovereign VPC</span>
+            <span class="hero-chip"><i class="fa-solid fa-bolt"></i> &lt;12ms Latency</span>
+            <span class="hero-chip"><i class="fa-solid fa-layer-group"></i> 6 Core Pillars</span>
+          </div>
+
+          <div class="breadcrumbs" data-aos="fade-up" data-aos-delay="300">
+            <a href="index.html">Home</a>
+            <i class="fa-solid fa-chevron-right" style="font-size: 0.75rem;"></i>
+            <span>Services</span>
+          </div>
+        </div>
+
+        <!-- Right Animated Enterprise Compute SVG Visual -->
+        <div class="hero-subpage-visual" data-aos="fade-left" data-aos-delay="200">
+          <div class="hero-svg-card">
+            
+            <!-- Micro HUD Badges -->
+            <div class="hero-hud-badge top-right">
+              <span class="hud-pulse-dot green"></span>
+              <span>520+ ACTIVE MODELS // FP8</span>
+            </div>
+            <div class="hero-hud-badge bottom-left">
+              <span class="hud-pulse-dot"></span>
+              <span>SOVEREIGN VPC // &lt;12ms SLA</span>
+            </div>
+
+            <!-- Animated SVG Enterprise Cloud & Swarm Compute Platform -->
+            <svg class="hero-svg-art" viewBox="0 0 500 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="srvGradCyan" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#00f2fe" />
+                  <stop offset="100%" stop-color="#00c6ff" />
+                </linearGradient>
+                <linearGradient id="srvGradGreen" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#00ff87" />
+                  <stop offset="100%" stop-color="#60efff" />
+                </linearGradient>
+                <linearGradient id="srvGradPurple" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#a855f7" />
+                  <stop offset="100%" stop-color="#3b82f6" />
+                </linearGradient>
+                <radialGradient id="srvCenterGlow" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#00ff87" stop-opacity="0.85" />
+                  <stop offset="45%" stop-color="#00f2fe" stop-opacity="0.4" />
+                  <stop offset="100%" stop-color="#060a14" stop-opacity="0" />
+                </radialGradient>
+                <filter id="srvNeonGlow" x="-30%" y="-30%" width="160%" height="160%">
+                  <feGaussianBlur stdDeviation="5" result="blur" />
+                  <feMerge>
+                    <feMergeNode in="blur" />
+                    <feMergeNode in="SourceGraphic" />
+                  </feMerge>
+                </filter>
+              </defs>
+
+              <!-- Rotating Quantum Accelerator Halo (Clockwise) -->
+              <g class="svg-rot-cw">
+                <circle cx="250" cy="200" r="140" stroke="rgba(0, 255, 135, 0.2)" stroke-width="1.5" stroke-dasharray="12 18" />
+                <circle cx="250" cy="200" r="120" stroke="rgba(0, 242, 254, 0.25)" stroke-width="1" stroke-dasharray="35 15 5 15" />
+                <polygon points="250,56 254,64 246,64" fill="#00ff87" filter="url(#srvNeonGlow)" />
+                <polygon points="250,344 254,336 246,336" fill="#00f2fe" filter="url(#srvNeonGlow)" />
+                <polygon points="394,200 386,204 386,196" fill="#a855f7" filter="url(#srvNeonGlow)" />
+                <polygon points="106,200 114,204 114,196" fill="#00ff87" filter="url(#srvNeonGlow)" />
+              </g>
+
+              <!-- Isometric Compute Circuit Bus Lines -->
+              <!-- Line 1: Left to Center -->
+              <path d="M 80 200 L 160 200 L 210 200" stroke="rgba(0, 242, 254, 0.25)" stroke-width="2" fill="none" />
+              <path d="M 80 200 L 160 200 L 210 200" stroke="#00f2fe" stroke-width="2.5" fill="none" class="svg-flow-path" filter="url(#srvNeonGlow)" />
+
+              <!-- Line 2: Right to Center -->
+              <path d="M 420 200 L 340 200 L 290 200" stroke="rgba(0, 255, 135, 0.25)" stroke-width="2" fill="none" />
+              <path d="M 420 200 L 340 200 L 290 200" stroke="#00ff87" stroke-width="2.5" fill="none" class="svg-flow-path-rev" filter="url(#srvNeonGlow)" />
+
+              <!-- Line 3: Top Left to Center -->
+              <path d="M 120 100 L 190 150 L 225 180" stroke="rgba(168, 85, 247, 0.25)" stroke-width="2" fill="none" />
+              <path d="M 120 100 L 190 150 L 225 180" stroke="#a855f7" stroke-width="2.5" fill="none" class="svg-flow-path-fast" filter="url(#srvNeonGlow)" />
+
+              <!-- Line 4: Top Right to Center -->
+              <path d="M 380 100 L 310 150 L 275 180" stroke="rgba(0, 242, 254, 0.25)" stroke-width="2" fill="none" />
+              <path d="M 380 100 L 310 150 L 275 180" stroke="#00f2fe" stroke-width="2.5" fill="none" class="svg-flow-path" filter="url(#srvNeonGlow)" />
+
+              <!-- Line 5: Bottom Left to Center -->
+              <path d="M 120 300 L 190 250 L 225 220" stroke="rgba(0, 255, 135, 0.25)" stroke-width="2" fill="none" />
+              <path d="M 120 300 L 190 250 L 225 220" stroke="#00ff87" stroke-width="2.5" fill="none" class="svg-flow-path-fast" filter="url(#srvNeonGlow)" />
+
+              <!-- Line 6: Bottom Right to Center -->
+              <path d="M 380 300 L 310 250 L 275 220" stroke="rgba(168, 85, 247, 0.25)" stroke-width="2" fill="none" />
+              <path d="M 380 300 L 310 250 L 275 220" stroke="#a855f7" stroke-width="2.5" fill="none" class="svg-flow-path-rev" filter="url(#srvNeonGlow)" />
+
+              <!-- Hexagonal GPU & Swarm Compute Clusters -->
+              <g>
+                <!-- Cluster 1 (Left: Foundation LLM) -->
+                <polygon points="80,180 100,190 100,210 80,220 60,210 60,190" fill="#080e1a" stroke="#00f2fe" stroke-width="2" />
+                <circle cx="80" cy="200" r="4" fill="#00f2fe" filter="url(#srvNeonGlow)" />
+                <text x="80" y="240" fill="#a5f3fc" font-size="9" font-family="monospace" text-anchor="middle" font-weight="700">FOUNDATION</text>
+
+                <!-- Cluster 2 (Right: Swarms) -->
+                <polygon points="420,180 440,190 440,210 420,220 400,210 400,190" fill="#080e1a" stroke="#00ff87" stroke-width="2" />
+                <circle cx="420" cy="200" r="4" fill="#00ff87" filter="url(#srvNeonGlow)" />
+                <text x="420" y="240" fill="#a7f3d0" font-size="9" font-family="monospace" text-anchor="middle" font-weight="700">SWARMS</text>
+
+                <!-- Cluster 3 (Top Left: Vision) -->
+                <polygon points="120,80 140,90 140,110 120,120 100,110 100,90" fill="#080e1a" stroke="#a855f7" stroke-width="2" />
+                <circle cx="120" cy="100" r="4" fill="#a855f7" filter="url(#srvNeonGlow)" />
+                <text x="120" y="70" fill="#d8b4fe" font-size="9" font-family="monospace" text-anchor="middle" font-weight="700">VISION AI</text>
+
+                <!-- Cluster 4 (Top Right: Quantum NLP) -->
+                <polygon points="380,80 400,90 400,110 380,120 360,110 360,90" fill="#080e1a" stroke="#00f2fe" stroke-width="2" />
+                <circle cx="380" cy="100" r="4" fill="#00f2fe" filter="url(#srvNeonGlow)" />
+                <text x="380" y="70" fill="#a5f3fc" font-size="9" font-family="monospace" text-anchor="middle" font-weight="700">NEURAL NLP</text>
+
+                <!-- Cluster 5 (Bottom Left: Predictive) -->
+                <polygon points="120,280 140,290 140,310 120,320 100,310 100,290" fill="#080e1a" stroke="#00ff87" stroke-width="2" />
+                <circle cx="120" cy="300" r="4" fill="#00ff87" filter="url(#srvNeonGlow)" />
+                <text x="120" y="340" fill="#a7f3d0" font-size="9" font-family="monospace" text-anchor="middle" font-weight="700">PREDICTIVE</text>
+
+                <!-- Cluster 6 (Bottom Right: Cyber Security) -->
+                <polygon points="380,280 400,290 400,310 380,320 360,310 360,290" fill="#080e1a" stroke="#a855f7" stroke-width="2" />
+                <circle cx="380" cy="300" r="4" fill="#a855f7" filter="url(#srvNeonGlow)" />
+                <text x="380" y="340" fill="#d8b4fe" font-size="9" font-family="monospace" text-anchor="middle" font-weight="700">CYBER SEC</text>
+              </g>
+
+              <!-- Central Sovereign Compute Hub (Pulsing) -->
+              <g class="svg-core-pulse">
+                <!-- Radial Glow Background -->
+                <circle cx="250" cy="200" r="55" fill="url(#srvCenterGlow)" />
+
+                <!-- Double Central Hexagon Core -->
+                <polygon points="250,155 289,177 289,223 250,245 211,223 211,177" fill="#060c18" stroke="url(#srvGradGreen)" stroke-width="2.5" filter="url(#srvNeonGlow)" />
+                <polygon points="250,170 276,185 276,215 250,230 224,215 224,185" fill="#0b172a" stroke="url(#srvGradCyan)" stroke-width="1.8" />
+                
+                <!-- Core Chip Center -->
+                <rect x="240" y="190" width="20" height="20" rx="4" fill="#00ff87" filter="url(#srvNeonGlow)" />
+                <line x1="245" y1="190" x2="245" y2="182" stroke="#00ff87" stroke-width="2" />
+                <line x1="255" y1="190" x2="255" y2="182" stroke="#00ff87" stroke-width="2" />
+                <line x1="245" y1="210" x2="245" y2="218" stroke="#00ff87" stroke-width="2" />
+                <line x1="255" y1="210" x2="255" y2="218" stroke="#00ff87" stroke-width="2" />
+              </g>
+
+              <!-- Orbiting Processing Beacons -->
+              <circle cx="250" cy="200" r="5" fill="#00ff87" class="svg-orbiting-node-1" filter="url(#srvNeonGlow)" />
+              <circle cx="250" cy="200" r="4.5" fill="#00f2fe" class="svg-orbiting-node-2" filter="url(#srvNeonGlow)" />
+            </svg>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 1: AI Solutions Overview -->
+  <section id="overview" class="srv-overview-section">
+    <div class="srv-overview-ambient-glow"></div>
+    <div class="container">
+      <div class="srv-overview-grid">
+        
+        <!-- Left Editorial Column -->
+        <div class="srv-overview-left" data-aos="fade-right">
+          <div class="srv-eyebrow">
+            <span class="srv-eyebrow-dot"></span>
+            FULL-LIFECYCLE AI SOLUTIONS
+          </div>
+          <h2 class="srv-section-h2">Intelligence Engineered For <span class="srv-grad-text">Real-World Impact.</span></h2>
+          <p class="srv-lead-p">
+            Stackly delivers full-lifecycle artificial intelligence solutions &mdash; from strategic roadmap architecture to sovereign edge model deployment. We transform complex, high-dimensional data into autonomous enterprise value with zero operational friction.
+          </p>
+          
+          <div class="srv-meta-highlights">
+            <div class="srv-meta-pill"><i class="fa-solid fa-shield-halved text-cyan"></i> 100% Air-Gapped Security</div>
+            <div class="srv-meta-pill"><i class="fa-solid fa-bolt text-purple"></i> Sub-12ms Edge Latency</div>
+            <div class="srv-meta-pill"><i class="fa-solid fa-code text-pink"></i> Full IP &amp; Weight Ownership</div>
+            <div class="srv-meta-pill"><i class="fa-solid fa-arrows-rotate text-green"></i> Continuous Self-Tuning</div>
+          </div>
+
+          <!-- Live Production Telemetry Badge -->
+          <div class="srv-live-telemetry-badge">
+            <div class="cyber-equalizer"><span class="eq-bar"></span><span class="eq-bar"></span><span class="eq-bar"></span><span class="eq-bar"></span><span class="eq-bar"></span></div>
+            <span>ACTIVE DEPLOYMENTS: <strong>520+ Enterprise Nodes</strong> &bull; Target SLA <strong>99.999%</strong></span>
+          </div>
+        </div>
+
+        <!-- Right Expandable Category Deck -->
+        <div class="srv-overview-right" data-aos="fade-left" data-aos-delay="200">
+          <div class="srv-accordion-list">
+            
+            <div class="srv-acc-item active" data-aos="fade-up" data-aos-delay="100">
+              <div class="srv-acc-header">
+                <div class="srv-acc-title-wrap">
+                  <span class="srv-acc-num">01</span>
+                  <div>
+                    <h3>AI Strategy &amp; Architecture</h3>
+                    <span class="srv-acc-tag cyan">ROADMAPS &amp; AUDITS</span>
+                  </div>
+                </div>
+                <div class="srv-acc-icon-wrap">
+                  <i class="fa-solid fa-chevron-right srv-acc-icon"></i>
+                </div>
+              </div>
+              <div class="srv-acc-body">
+                <p>Enterprise readiness audits, sovereign AI architecture blueprints, regulatory compliance roadmaps, and high-ROI identification matrices tailored to your sector.</p>
+                <div class="srv-acc-chips">
+                  <span class="acc-chip"><i class="fa-solid fa-map text-cyan"></i> Architecture Blueprints</span>
+                  <span class="acc-chip"><i class="fa-solid fa-clipboard-check text-purple"></i> Readiness Audit</span>
+                  <span class="acc-chip"><i class="fa-solid fa-chart-pie text-pink"></i> ROI Feasibility</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="srv-acc-item" data-aos="fade-up" data-aos-delay="200">
+              <div class="srv-acc-header">
+                <div class="srv-acc-title-wrap">
+                  <span class="srv-acc-num">02</span>
+                  <div>
+                    <h3>Intelligent Automation</h3>
+                    <span class="srv-acc-tag purple">AUTONOMOUS SWARMS</span>
+                  </div>
+                </div>
+                <div class="srv-acc-icon-wrap">
+                  <i class="fa-solid fa-chevron-right srv-acc-icon"></i>
+                </div>
+              </div>
+              <div class="srv-acc-body">
+                <p>Cognitive robotic process automation, self-healing digital pipelines, automated document comprehension, and 24/7 autonomous back-office task swarms.</p>
+                <div class="srv-acc-chips">
+                  <span class="acc-chip"><i class="fa-solid fa-robot text-cyan"></i> Cognitive RPA</span>
+                  <span class="acc-chip"><i class="fa-solid fa-diagram-project text-purple"></i> Self-Healing DAGs</span>
+                  <span class="acc-chip"><i class="fa-solid fa-gears text-pink"></i> Zero-Touch Ops</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="srv-acc-item" data-aos="fade-up" data-aos-delay="300">
+              <div class="srv-acc-header">
+                <div class="srv-acc-title-wrap">
+                  <span class="srv-acc-num">03</span>
+                  <div>
+                    <h3>Machine Learning &amp; Models</h3>
+                    <span class="srv-acc-tag pink">CUSTOM FOUNDATIONS</span>
+                  </div>
+                </div>
+                <div class="srv-acc-icon-wrap">
+                  <i class="fa-solid fa-chevron-right srv-acc-icon"></i>
+                </div>
+              </div>
+              <div class="srv-acc-body">
+                <p>Custom domain-adapted neural networks, large-scale transformer fine-tuning, FP8 quantization pipelines, and predictive time-series forecasting engines.</p>
+                <div class="srv-acc-chips">
+                  <span class="acc-chip"><i class="fa-solid fa-brain text-cyan"></i> Transformer Fine-Tuning</span>
+                  <span class="acc-chip"><i class="fa-solid fa-microchip text-purple"></i> FP8 Quantization</span>
+                  <span class="acc-chip"><i class="fa-solid fa-chart-line text-pink"></i> Time-Series Predictor</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="srv-acc-item" data-aos="fade-up" data-aos-delay="400">
+              <div class="srv-acc-header">
+                <div class="srv-acc-title-wrap">
+                  <span class="srv-acc-num">04</span>
+                  <div>
+                    <h3>Enterprise Sovereign AI</h3>
+                    <span class="srv-acc-tag blue">ON-PREMISE &amp; CLOUD</span>
+                  </div>
+                </div>
+                <div class="srv-acc-icon-wrap">
+                  <i class="fa-solid fa-chevron-right srv-acc-icon"></i>
+                </div>
+              </div>
+              <div class="srv-acc-body">
+                <p>Air-gapped on-premise deployments, multi-tenant vector databases, sub-second RAG retrieval layers, and SOC 2 Type II-certified private cloud infrastructures.</p>
+                <div class="srv-acc-chips">
+                  <span class="acc-chip"><i class="fa-solid fa-shield-virus text-cyan"></i> Air-Gapped Enclaves</span>
+                  <span class="acc-chip"><i class="fa-solid fa-database text-purple"></i> Vector DB Matrix</span>
+                  <span class="acc-chip"><i class="fa-solid fa-bolt text-pink"></i> Sub-Second RAG</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2: AI Development Services -->
+  <section id="development" class="srv-dev-section">
+    <div class="dev-ambient-glow"></div>
+    <div class="container">
+      
+      <div class="ab-section-header text-center" data-aos="fade-up">
+        <div class="srv-eyebrow" style="justify-content: center;">
+          <span class="srv-eyebrow-dot"></span>
+          END-TO-END NEURAL ENGINEERING
+        </div>
+        <h2 class="srv-section-h2">From Intelligent Ideas To <span class="srv-grad-text">Production-Ready AI.</span></h2>
+        <p style="color: #94a3b8; max-width: 680px; margin: 1rem auto 0; font-size: 1.1rem; line-height: 1.7;">
+          We architect, train, optimize, and deploy scalable artificial intelligence systems engineered for mission-critical enterprise workloads.
+        </p>
+      </div>
+
+      <div class="srv-dev-grid">
+        <!-- Left Futuristic Dev Studio Frame -->
+        <div class="srv-dev-image-box glass-panel" data-aos="fade-right" data-aos-delay="150">
+          <!-- Dev Studio Top Bar -->
+          <div class="dev-studio-header">
+            <div class="console-dots">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+            </div>
+            <div class="dev-studio-title">STACKLY DEV STUDIO // ARCHITECTURE CORE</div>
+            <div class="dev-studio-badge"><span class="live-dot-pulse"></span> FP8 READY</div>
+          </div>
+
+          <div class="dev-studio-body">
+            <div class="hud-corner top-left"></div>
+            <div class="hud-corner top-right"></div>
+            <div class="hud-corner bottom-left"></div>
+            <div class="hud-corner bottom-right"></div>
+
+            <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=700&auto=format&fit=crop" alt="AI Neural Development Matrix" class="srv-dev-img">
+            <div class="dev-scanline"></div>
+
+            <!-- Floating Dev HUD 1 -->
+            <div class="floating-dev-hud dev-hud-1 glass-panel">
+              <div class="dev-hud-icon cyan"><i class="fa-solid fa-code"></i></div>
+              <div>
+                <div class="dev-hud-title">PyTorch / TensorRT</div>
+                <div class="dev-hud-sub">Optimized Compilation</div>
+              </div>
+            </div>
+
+            <!-- Floating Dev HUD 2 -->
+            <div class="floating-dev-hud dev-hud-2 glass-panel">
+              <div class="dev-hud-icon green"><i class="fa-solid fa-bolt"></i></div>
+              <div>
+                <div class="dev-hud-title">Sub-ms FP8 Inference</div>
+                <div class="dev-hud-sub">Quantized Stack</div>
+              </div>
+            </div>
+
+            <!-- Floating Dev HUD 3 -->
+            <div class="floating-dev-hud dev-hud-3 glass-panel">
+              <div class="dev-hud-icon purple"><i class="fa-solid fa-shield-halved"></i></div>
+              <div>
+                <div class="dev-hud-title">Air-Gapped Private Weights</div>
+                <div class="dev-hud-sub">Zero Data Leakage</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right 6 Compact Modules -->
+        <div class="srv-dev-modules-grid">
+          
+          <div class="srv-module-card card-cyan glass-panel" onclick="window.location.href='404.html'" style="cursor: pointer;" data-aos="zoom-in" data-aos-delay="100">
+            <div class="dev-card-beam"></div>
+            <div class="dev-card-header">
+              <div class="srv-mod-icon cyan"><i class="fa-solid fa-code"></i></div>
+              <span class="dev-card-tag cyan">BESPOKE CORE</span>
+            </div>
+            <h4>Custom AI Development</h4>
+            <p>Bespoke deep learning architectures engineered from the ground up for your unique requirements.</p>
+            <div class="dev-card-bottom">
+              <span class="dev-micro-spec"><i class="fa-solid fa-microchip text-cyan"></i> PyTorch &bull; CUDA</span>
+              <a href="404.html" class="srv-mod-arrow" onclick="event.stopPropagation();">Explore <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </div>
+
+          <div class="srv-module-card card-purple glass-panel" onclick="window.location.href='404.html'" style="cursor: pointer;" data-aos="zoom-in" data-aos-delay="200">
+            <div class="dev-card-beam"></div>
+            <div class="dev-card-header">
+              <div class="srv-mod-icon purple"><i class="fa-solid fa-brain"></i></div>
+              <span class="dev-card-tag purple">SUPERVISED &amp; RL</span>
+            </div>
+            <h4>Machine Learning Models</h4>
+            <p>High-accuracy supervised, unsupervised, and reinforcement learning pipelines trained on private data.</p>
+            <div class="dev-card-bottom">
+              <span class="dev-micro-spec"><i class="fa-solid fa-chart-diagram text-purple"></i> Reinforcement AI</span>
+              <a href="404.html" class="srv-mod-arrow" onclick="event.stopPropagation();">Explore <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </div>
+
+          <div class="srv-module-card card-pink glass-panel" onclick="window.location.href='404.html'" style="cursor: pointer;" data-aos="zoom-in" data-aos-delay="300">
+            <div class="dev-card-beam"></div>
+            <div class="dev-card-header">
+              <div class="srv-mod-icon pink"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+              <span class="dev-card-tag pink">MULTI-MODAL</span>
+            </div>
+            <h4>Generative AI &amp; LLMs</h4>
+            <p>Multi-modal diffusion models, sovereign fine-tuned LLMs, and custom synthetic data synthesis engines.</p>
+            <div class="dev-card-bottom">
+              <span class="dev-micro-spec"><i class="fa-solid fa-layer-group text-pink"></i> Diffusion &amp; Code</span>
+              <a href="404.html" class="srv-mod-arrow" onclick="event.stopPropagation();">Explore <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </div>
+
+          <div class="srv-module-card card-green glass-panel" onclick="window.location.href='404.html'" style="cursor: pointer;" data-aos="zoom-in" data-aos-delay="400">
+            <div class="dev-card-beam"></div>
+            <div class="dev-card-header">
+              <div class="srv-mod-icon green"><i class="fa-solid fa-comments"></i></div>
+              <span class="dev-card-tag green">SEMANTIC NLP</span>
+            </div>
+            <h4>Natural Language Processing</h4>
+            <p>Context-aware semantic analysis, sovereign multi-lingual LLMs, and deterministic entity extraction.</p>
+            <div class="dev-card-bottom">
+              <span class="dev-micro-spec"><i class="fa-solid fa-font text-green"></i> Context Extraction</span>
+              <a href="404.html" class="srv-mod-arrow" onclick="event.stopPropagation();">Explore <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </div>
+
+          <div class="srv-module-card card-cyan glass-panel" onclick="window.location.href='404.html'" style="cursor: pointer;" data-aos="zoom-in" data-aos-delay="500">
+            <div class="dev-card-beam"></div>
+            <div class="dev-card-header">
+              <div class="srv-mod-icon cyan"><i class="fa-solid fa-eye"></i></div>
+              <span class="dev-card-tag cyan">ZERO-LATENCY</span>
+            </div>
+            <h4>Computer Vision &amp; Edge</h4>
+            <p>Real-time edge object detection, facial biometrics, anomaly segmentation, and automated OCR.</p>
+            <div class="dev-card-bottom">
+              <span class="dev-micro-spec"><i class="fa-solid fa-camera text-cyan"></i> YOLOv9 &bull; Edge OCR</span>
+              <a href="404.html" class="srv-mod-arrow" onclick="event.stopPropagation();">Explore <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </div>
+
+          <div class="srv-module-card card-purple glass-panel" onclick="window.location.href='404.html'" style="cursor: pointer;" data-aos="zoom-in" data-aos-delay="600">
+            <div class="dev-card-beam"></div>
+            <div class="dev-card-header">
+              <div class="srv-mod-icon purple"><i class="fa-solid fa-chart-line"></i></div>
+              <span class="dev-card-tag purple">TIME-SERIES</span>
+            </div>
+            <h4>Predictive Analytics</h4>
+            <p>Dynamic forecasting models predicting market fluctuations, supply disruptions, and user churn.</p>
+            <div class="dev-card-bottom">
+              <span class="dev-micro-spec"><i class="fa-solid fa-arrow-trend-up text-purple"></i> Dynamic Forecast</span>
+              <a href="404.html" class="srv-mod-arrow" onclick="event.stopPropagation();">Explore <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECTION 3: Autonomous AI Agents -->
+  <section id="agents" class="srv-agents-section">
+    <div class="srv-agents-ambient-glow"></div>
+    <div class="srv-agents-ambient-grid"></div>
+    <div class="container">
+      
+      <div class="ab-section-header text-center" data-aos="fade-up">
+        <div class="srv-eyebrow" style="justify-content: center;">
+          <span class="srv-eyebrow-dot"></span>
+          AUTONOMOUS COGNITIVE ARCHITECTURE
+        </div>
+        <h2 class="srv-section-h2">AI Agents That <span class="srv-grad-text">Think. Act. Adapt.</span></h2>
+        <p style="color: #94a3b8; max-width: 680px; margin: 1rem auto 0; font-size: 1.1rem; line-height: 1.7;">
+          Continuous cognitive feedback loop powering self-governing multi-agent enterprise swarms with deterministic safety constraints.
+        </p>
+
+        <!-- Telemetry Status Bar -->
+        <div class="srv-agents-status-bar glass-panel" data-aos="fade-up" data-aos-delay="100">
+          <div class="status-pill"><span class="live-dot-pulse"></span> SYSTEM: <strong>COGNITIVE LOOP ACTIVE</strong></div>
+          <div class="status-divider"></div>
+          <div class="status-item"><i class="fa-solid fa-network-wired text-cyan"></i> SWARM MESH: <strong>1,480+ NODES</strong></div>
+          <div class="status-divider"></div>
+          <div class="status-item"><i class="fa-solid fa-bolt text-purple"></i> DECISION LATENCY: <strong>&lt;8.4ms</strong></div>
+          <div class="status-divider"></div>
+          <div class="status-item"><i class="fa-solid fa-shield-check text-pink"></i> SAFETY ENVELOPE: <strong>100% AIR-GAPPED</strong></div>
+        </div>
+      </div>
+
+      <!-- 5-Stage Agent Workflow Rail -->
+      <div class="srv-workflow-track" data-aos="fade-up" data-aos-delay="180">
+        <div class="srv-track-line">
+          <div class="srv-track-fill"></div>
+          <div class="srv-track-laser"></div>
+        </div>
+
+        <!-- Stage 01 -->
+        <div class="srv-agent-stage stage-cyan" data-aos="zoom-in" data-aos-delay="100">
+          <div class="srv-stage-node">
+            <div class="stage-halo"></div>
+            <div class="srv-stage-circle"><i class="fa-solid fa-eye"></i></div>
+            <span class="srv-stage-pill">01 // INGEST</span>
+          </div>
+          <div class="srv-stage-title">Observe</div>
+          <p class="srv-stage-desc">Real-time sensory ingest across multi-modal streams &amp; telemetry data</p>
+          <div class="stage-micro-specs">
+            <span class="micro-tag"><i class="fa-solid fa-wave-square text-cyan"></i> &lt;4ms Ingest</span>
+            <span class="micro-tag"><i class="fa-solid fa-cubes text-cyan"></i> Multi-Modal</span>
+          </div>
+        </div>
+
+        <!-- Stage 02 -->
+        <div class="srv-agent-stage stage-purple" data-aos="zoom-in" data-aos-delay="200">
+          <div class="srv-stage-node">
+            <div class="stage-halo"></div>
+            <div class="srv-stage-circle"><i class="fa-solid fa-brain"></i></div>
+            <span class="srv-stage-pill">02 // COGNITION</span>
+          </div>
+          <div class="srv-stage-title">Reason</div>
+          <p class="srv-stage-desc">Tree-of-thought heuristic search, MCTS planning &amp; counterfactual simulation</p>
+          <div class="stage-micro-specs">
+            <span class="micro-tag"><i class="fa-solid fa-diagram-project text-purple"></i> Tree-of-Thought</span>
+            <span class="micro-tag"><i class="fa-solid fa-microchip text-purple"></i> 99.4% Logic</span>
+          </div>
+        </div>
+
+        <!-- Stage 03 -->
+        <div class="srv-agent-stage stage-pink" data-aos="zoom-in" data-aos-delay="300">
+          <div class="srv-stage-node">
+            <div class="stage-halo"></div>
+            <div class="srv-stage-circle"><i class="fa-solid fa-scale-balanced"></i></div>
+            <span class="srv-stage-pill">03 // POLICY</span>
+          </div>
+          <div class="srv-stage-title">Decide</div>
+          <p class="srv-stage-desc">Constrained policy selection governed by deterministic safety guardrails</p>
+          <div class="stage-micro-specs">
+            <span class="micro-tag"><i class="fa-solid fa-shield-halved text-pink"></i> Guardrails</span>
+            <span class="micro-tag"><i class="fa-solid fa-user-shield text-pink"></i> HITL Fallback</span>
+          </div>
+        </div>
+
+        <!-- Stage 04 -->
+        <div class="srv-agent-stage stage-green" data-aos="zoom-in" data-aos-delay="400">
+          <div class="srv-stage-node">
+            <div class="stage-halo"></div>
+            <div class="srv-stage-circle"><i class="fa-solid fa-bolt"></i></div>
+            <span class="srv-stage-pill">04 // DISPATCH</span>
+          </div>
+          <div class="srv-stage-title">Execute</div>
+          <p class="srv-stage-desc">Autonomous multi-threaded API dispatch &amp; RPC tool execution in sandboxes</p>
+          <div class="stage-micro-specs">
+            <span class="micro-tag"><i class="fa-solid fa-terminal text-green"></i> Sub-10ms Tool</span>
+            <span class="micro-tag"><i class="fa-solid fa-box text-green"></i> WASM Sandbox</span>
+          </div>
+        </div>
+
+        <!-- Stage 05 -->
+        <div class="srv-agent-stage stage-orange" data-aos="zoom-in" data-aos-delay="500">
+          <div class="srv-stage-node">
+            <div class="stage-halo"></div>
+            <div class="srv-stage-circle"><i class="fa-solid fa-arrows-rotate"></i></div>
+            <span class="srv-stage-pill">05 // EVOLVE</span>
+          </div>
+          <div class="srv-stage-title">Learn</div>
+          <p class="srv-stage-desc">Recursive self-tuning, continuous DPO alignment &amp; reward parameter evolution</p>
+          <div class="stage-micro-specs">
+            <span class="micro-tag"><i class="fa-solid fa-infinity text-orange"></i> Auto-DPO</span>
+            <span class="micro-tag"><i class="fa-solid fa-chart-line text-orange"></i> Continual RL</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Autonomous Agent Core Capabilities Deck -->
+      <div class="srv-agent-bento-grid" data-aos="fade-up" data-aos-delay="250">
+        <!-- Card 1: Multi-Agent Swarms -->
+        <div class="srv-agent-bento-card glass-panel">
+          <div class="bento-beam beam-cyan"></div>
+          <div class="bento-card-header">
+            <div class="bento-icon cyan"><i class="fa-solid fa-cubes-stacked"></i></div>
+            <span class="bento-tag cyan">COOPERATIVE SWARMS</span>
+          </div>
+          <h4>Multi-Agent Consensus Protocol</h4>
+          <p>Decentralized autonomous subagents communicate over low-latency message buses to decompose complex enterprise objectives, debate strategies, and reach Byzantine fault-tolerant consensus.</p>
+          
+          <div class="bento-visual swarm-visual">
+            <div class="swarm-node-cluster">
+              <div class="swarm-node main"><i class="fa-solid fa-crown text-cyan"></i><span>Orchestrator</span></div>
+              <div class="swarm-connector-ring"></div>
+              <div class="swarm-node-orbit">
+                <div class="swarm-node sub"><i class="fa-solid fa-brain text-purple"></i><span>Planner</span></div>
+                <div class="swarm-node sub"><i class="fa-solid fa-shield-virus text-pink"></i><span>Verifier</span></div>
+                <div class="swarm-node sub"><i class="fa-solid fa-terminal text-green"></i><span>Worker</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bento-card-footer">
+            <span><i class="fa-solid fa-check-double text-cyan"></i> P2P Raft Consensus</span>
+            <span><i class="fa-solid fa-bolt text-cyan"></i> Sub-5ms Peer Sync</span>
+          </div>
+        </div>
+
+        <!-- Card 2: Persistent Episodic Memory -->
+        <div class="srv-agent-bento-card glass-panel">
+          <div class="bento-beam beam-purple"></div>
+          <div class="bento-card-header">
+            <div class="bento-icon purple"><i class="fa-solid fa-memory"></i></div>
+            <span class="bento-tag purple">EPISODIC &amp; SEMANTIC</span>
+          </div>
+          <h4>Persistent Vector Memory Engine</h4>
+          <p>Long-term cross-session memory retention using hybrid HNSW vector search and knowledge graphs. Agents remember past system interactions, user preferences, and enterprise context indefinitely.</p>
+          
+          <div class="bento-visual memory-visual">
+            <div class="mem-bar">
+              <div class="mem-info"><span>Working Context (Short-Term)</span><strong>128K Tokens (In-Memory)</strong></div>
+              <div class="mem-progress"><div class="mem-prog-fill cyan" style="width: 85%;"></div></div>
+            </div>
+            <div class="mem-bar">
+              <div class="mem-info"><span>Episodic Vector DB (Long-Term)</span><strong>100M+ Records</strong></div>
+              <div class="mem-progress"><div class="mem-prog-fill purple" style="width: 92%;"></div></div>
+            </div>
+            <div class="mem-bar">
+              <div class="mem-info"><span>Domain Knowledge Graph</span><strong>4.8M Semantic Nodes</strong></div>
+              <div class="mem-progress"><div class="mem-prog-fill pink" style="width: 78%;"></div></div>
+            </div>
+          </div>
+
+          <div class="bento-card-footer">
+            <span><i class="fa-solid fa-database text-purple"></i> Multi-Tenant Vector DB</span>
+            <span><i class="fa-solid fa-microchip text-purple"></i> 0.8ms Query Cache</span>
+          </div>
+        </div>
+
+        <!-- Card 3: Deterministic Tool Sandboxing -->
+        <div class="srv-agent-bento-card glass-panel">
+          <div class="bento-beam beam-pink"></div>
+          <div class="bento-card-header">
+            <div class="bento-icon pink"><i class="fa-solid fa-shield-halved"></i></div>
+            <span class="bento-tag pink">ZERO-TRUST SANDBOX</span>
+          </div>
+          <h4>Deterministic Tool &amp; Code Sandbox</h4>
+          <p>Safe, isolated execution environments allowing agents to dynamically generate code, execute terminal commands, query SQL databases, and call third-party APIs without security vulnerabilities.</p>
+          
+          <div class="bento-visual sandbox-visual">
+            <div class="sandbox-line"><span class="sb-badge green">SAFE</span> <code>POST /api/v2/erp/rebalance</code> <span class="sb-status text-green">200 OK</span></div>
+            <div class="sandbox-line"><span class="sb-badge purple">EXEC</span> <code>WASM::sandbox_run(0x9f)</code> <span class="sb-status text-purple">&lt;4ms</span></div>
+            <div class="sandbox-line"><span class="sb-badge pink">GUARD</span> <code>POLICY_CHECK(airgap=TRUE)</code> <span class="sb-status text-pink">PASS</span></div>
+          </div>
+
+          <div class="bento-card-footer">
+            <span><i class="fa-solid fa-lock text-pink"></i> SOC 2 Enclave</span>
+            <span><i class="fa-solid fa-user-shield text-pink"></i> Strict ACL RBAC</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECTION 4: Enterprise AI Integration -->
+  <section id="integration" class="srv-integration-section">
+    <div class="srv-integ-ambient-glow"></div>
+    <div class="srv-integ-ambient-grid"></div>
+    <div class="container">
+      
+      <div class="ab-section-header text-center" data-aos="fade-up">
+        <div class="srv-eyebrow" style="justify-content: center;">
+          <span class="srv-eyebrow-dot"></span>
+          UNIFIED ENTERPRISE FABRIC
+        </div>
+        <h2 class="srv-section-h2">Connect Intelligence To Your <span class="srv-grad-text">Entire Enterprise.</span></h2>
+        <p style="color: #94a3b8; max-width: 680px; margin: 1rem auto 0; font-size: 1.1rem; line-height: 1.7;">
+          Plug our sovereign neural intelligence layer directly into your legacy and cloud-native IT ecosystems with zero architectural disruption.
+        </p>
+
+        <!-- Live Integration Telemetry Bar -->
+        <div class="srv-integ-status-bar glass-panel" data-aos="fade-up" data-aos-delay="100">
+          <div class="status-pill"><span class="live-dot-pulse"></span> BRIDGE: <strong>ENTERPRISE MESH ACTIVE</strong></div>
+          <div class="status-divider"></div>
+          <div class="status-item"><i class="fa-solid fa-gauge-high text-cyan"></i> LATENCY: <strong>&lt;1.4ms</strong></div>
+          <div class="status-divider"></div>
+          <div class="status-item"><i class="fa-solid fa-plug text-purple"></i> ADAPTERS: <strong>240+ CONNECTORS</strong></div>
+          <div class="status-divider"></div>
+          <div class="status-item"><i class="fa-solid fa-shield-virus text-pink"></i> PROTOCOL: <strong>ZERO-TRUST AES-256</strong></div>
+        </div>
+      </div>
+
+      <!-- Radial Interactive Integration Graph -->
+      <div class="srv-integ-graph" data-aos="zoom-in" data-aos-delay="150">
+        
+        <!-- SVG Radial Connection Circuit Rays -->
+        <svg class="srv-integ-svg" viewBox="0 0 700 700">
+          <defs>
+            <linearGradient id="rayGradCyan" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#00f2fe" stop-opacity="0.8"/>
+              <stop offset="100%" stop-color="#a855f7" stop-opacity="0.2"/>
+            </linearGradient>
+            <filter id="glowFilter" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur stdDeviation="3" result="blur" />
+              <feMerge>
+                <feMergeNode in="blur"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+          </defs>
+
+          <!-- Outer Orbit Ring Guides -->
+          <circle cx="350" cy="350" r="260" class="svg-orbit-ring" />
+          <circle cx="350" cy="350" r="180" class="svg-orbit-ring dashed" />
+          <circle cx="350" cy="350" r="100" class="svg-orbit-ring pulse" />
+
+          <!-- Radial Conduits from Center (350,350) to 6 Nodes (R=260) -->
+          <!-- Node 1 (Top / -90deg): (350, 90) -->
+          <line x1="350" y1="350" x2="350" y2="90" class="svg-conduit-line line-1" />
+          <!-- Node 2 (Top-Right / -30deg): (575, 220) -->
+          <line x1="350" y1="350" x2="575" y2="220" class="svg-conduit-line line-2" />
+          <!-- Node 3 (Bottom-Right / 30deg): (575, 480) -->
+          <line x1="350" y1="350" x2="575" y2="480" class="svg-conduit-line line-3" />
+          <!-- Node 4 (Bottom / 90deg): (350, 610) -->
+          <line x1="350" y1="350" x2="350" y2="610" class="svg-conduit-line line-4" />
+          <!-- Node 5 (Bottom-Left / 150deg): (125, 480) -->
+          <line x1="350" y1="350" x2="125" y2="480" class="svg-conduit-line line-5" />
+          <!-- Node 6 (Top-Left / 210deg): (125, 220) -->
+          <line x1="350" y1="350" x2="125" y2="220" class="svg-conduit-line line-6" />
+
+          <!-- Traveling Data Packets on Conduits -->
+          <circle r="4" class="svg-packet pkt-1"><animateMotion path="M350,350 L350,90" dur="2.4s" repeatCount="indefinite" /></circle>
+          <circle r="4" class="svg-packet pkt-2"><animateMotion path="M350,350 L575,220" dur="2.8s" repeatCount="indefinite" /></circle>
+          <circle r="4" class="svg-packet pkt-3"><animateMotion path="M350,350 L575,480" dur="2.2s" repeatCount="indefinite" /></circle>
+          <circle r="4" class="svg-packet pkt-4"><animateMotion path="M350,350 L350,610" dur="3.0s" repeatCount="indefinite" /></circle>
+          <circle r="4" class="svg-packet pkt-5"><animateMotion path="M350,350 L125,480" dur="2.6s" repeatCount="indefinite" /></circle>
+          <circle r="4" class="svg-packet pkt-6"><animateMotion path="M350,350 L125,220" dur="2.5s" repeatCount="indefinite" /></circle>
+        </svg>
+
+        <!-- Central Quantum Core -->
+        <div class="srv-integ-core">
+          <div class="integ-core-glow"></div>
+          <div class="integ-gyro-ring ring-1"></div>
+          <div class="integ-gyro-ring ring-2"></div>
+          <div class="integ-gyro-ring ring-3"></div>
+          <div class="integ-core-inner">
+            <div class="core-logo-badge"><i class="fa-solid fa-brain text-cyan"></i></div>
+            <div class="core-title">STACKLY</div>
+            <div class="core-sub">AI CORE</div>
+            <div class="core-status"><span class="live-dot-pulse"></span> 99.999% SLA</div>
+          </div>
+        </div>
+
+        <!-- 6 Connected Enterprise Orbit Nodes -->
+        
+        <!-- Node 1: CRM -->
+        <div class="srv-integ-node node-1" style="--r: 260px; --deg: -90deg;">
+          <div class="node-wrapper" data-aos="fade-down" data-aos-delay="100">
+            <div class="node-pulse-ring cyan"></div>
+            <div class="srv-integ-icon-box icon-cyan">
+              <i class="fa-solid fa-users-gear"></i>
+            </div>
+            <div class="srv-integ-label">CRM Systems</div>
+            <span class="node-spec-chip">Salesforce &bull; HubSpot</span>
+          </div>
+        </div>
+
+        <!-- Node 2: ERP -->
+        <div class="srv-integ-node node-2" style="--r: 260px; --deg: -30deg;">
+          <div class="node-wrapper" data-aos="fade-left" data-aos-delay="200">
+            <div class="node-pulse-ring purple"></div>
+            <div class="srv-integ-icon-box icon-purple">
+              <i class="fa-solid fa-building-shield"></i>
+            </div>
+            <div class="srv-integ-label">ERP &amp; Supply</div>
+            <span class="node-spec-chip">SAP &bull; Oracle Cloud</span>
+          </div>
+        </div>
+
+        <!-- Node 3: Cloud Fabric -->
+        <div class="srv-integ-node node-3" style="--r: 260px; --deg: 30deg;">
+          <div class="node-wrapper" data-aos="fade-left" data-aos-delay="300">
+            <div class="node-pulse-ring pink"></div>
+            <div class="srv-integ-icon-box icon-pink">
+              <i class="fa-solid fa-cloud"></i>
+            </div>
+            <div class="srv-integ-label">Multi-Cloud</div>
+            <span class="node-spec-chip">AWS &bull; Azure &bull; GCP</span>
+          </div>
+        </div>
+
+        <!-- Node 4: Data Platforms -->
+        <div class="srv-integ-node node-4" style="--r: 260px; --deg: 90deg;">
+          <div class="node-wrapper" data-aos="fade-up" data-aos-delay="400">
+            <div class="node-pulse-ring green"></div>
+            <div class="srv-integ-icon-box icon-green">
+              <i class="fa-solid fa-database"></i>
+            </div>
+            <div class="srv-integ-label">Data Platforms</div>
+            <span class="node-spec-chip">Snowflake &bull; Pinecone</span>
+          </div>
+        </div>
+
+        <!-- Node 5: Enterprise APIs -->
+        <div class="srv-integ-node node-5" style="--r: 260px; --deg: 150deg;">
+          <div class="node-wrapper" data-aos="fade-right" data-aos-delay="500">
+            <div class="node-pulse-ring cyan"></div>
+            <div class="srv-integ-icon-box icon-cyan">
+              <i class="fa-solid fa-network-wired"></i>
+            </div>
+            <div class="srv-integ-label">RPC &amp; APIs</div>
+            <span class="node-spec-chip">gRPC &bull; EventBridge</span>
+          </div>
+        </div>
+
+        <!-- Node 6: Business Intelligence -->
+        <div class="srv-integ-node node-6" style="--r: 260px; --deg: 210deg;">
+          <div class="node-wrapper" data-aos="fade-right" data-aos-delay="600">
+            <div class="node-pulse-ring purple"></div>
+            <div class="srv-integ-icon-box icon-purple">
+              <i class="fa-solid fa-chart-pie"></i>
+            </div>
+            <div class="srv-integ-label">Business Intel</div>
+            <span class="node-spec-chip">Power BI &bull; Tableau</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 3 Enterprise Integration Capability Pillars -->
+      <div class="srv-integ-pillars-grid" data-aos="fade-up" data-aos-delay="200">
+        
+        <div class="integ-pillar-card glass-panel">
+          <div class="pillar-beam cyan"></div>
+          <div class="pillar-header">
+            <div class="pillar-icon cyan"><i class="fa-solid fa-bolt-lightning"></i></div>
+            <span class="pillar-tag cyan">ZERO-ETL MESH</span>
+          </div>
+          <h4>Real-Time Virtualization</h4>
+          <p>Direct query federation and real-time semantic caching without burdensome data duplication or costly batch pipelines.</p>
+          <div class="pillar-metrics">
+            <div class="p-metric"><span class="val">&lt;1.4ms</span><span class="lbl">Federation Latency</span></div>
+            <div class="p-metric"><span class="val">Zero</span><span class="lbl">Data Duplication</span></div>
+          </div>
+        </div>
+
+        <div class="integ-pillar-card glass-panel">
+          <div class="pillar-beam purple"></div>
+          <div class="pillar-header">
+            <div class="pillar-icon purple"><i class="fa-solid fa-cubes"></i></div>
+            <span class="pillar-tag purple">UNIVERSAL ADAPTERS</span>
+          </div>
+          <h4>240+ Native Connectors</h4>
+          <p>Pre-engineered bi-directional adapters bridging legacy mainframes, AS400, on-prem SQL, and cutting-edge GraphQL endpoints.</p>
+          <div class="pillar-metrics">
+            <div class="p-metric"><span class="val">240+</span><span class="lbl">Pre-Built Adapters</span></div>
+            <div class="p-metric"><span class="val">100%</span><span class="lbl">Schema Validation</span></div>
+          </div>
+        </div>
+
+        <div class="integ-pillar-card glass-panel">
+          <div class="pillar-beam pink"></div>
+          <div class="pillar-header">
+            <div class="pillar-icon pink"><i class="fa-solid fa-shield-halved"></i></div>
+            <span class="pillar-tag pink">ZERO-TRUST SECURITY</span>
+          </div>
+          <h4>Air-Gapped Enclaves</h4>
+          <p>Hardware-enforced encryption, strict RBAC granular permissions, automated SOC 2 audit logs, and sovereign model execution.</p>
+          <div class="pillar-metrics">
+            <div class="p-metric"><span class="val">AES-256</span><span class="lbl">At-Rest &amp; Transit</span></div>
+            <div class="p-metric"><span class="val">SOC 2</span><span class="lbl">Type II Certified</span></div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECTION 5: AI Automation (Cybernetic Automation Engine) -->
+  <section id="automation" class="srv-auto-section">
+    <div class="auto-ambient-glow"></div>
+    <div class="container">
+      <div class="srv-auto-grid">
+        
+        <!-- Left Content Side -->
+        <div class="srv-auto-left" data-aos="fade-right">
+          <div class="srv-eyebrow">
+            <span class="srv-eyebrow-dot"></span>
+            AUTONOMOUS PIPELINE ENGINE
+          </div>
+          <h2 class="srv-section-h2">Turn Repetitive Work Into <span class="srv-grad-text">Autonomous Workflows.</span></h2>
+          <p class="srv-auto-lead-p">
+            Eliminate human latency from critical decision paths. Stackly engineers end-to-end cognitive pipelines that ingest complex unstructured data and execute high-stakes operational workflows with sub-second precision.
+          </p>
+
+          <!-- 4 Interactive Cyber Automation Cards -->
+          <div class="auto-feature-deck">
+            
+            <div class="auto-feature-card card-cyan glass-panel" data-aos="zoom-in-up" data-aos-delay="100">
+              <div class="auto-card-beam"></div>
+              <div class="auto-card-top">
+                <div class="auto-icon-wrap cyan"><i class="fa-solid fa-diagram-project"></i></div>
+                <span class="auto-card-tag cyan">SELF-ROUTING</span>
+              </div>
+              <h4>Workflow Automation</h4>
+              <p>Self-routing decision trees and dynamic DAG orchestrators executing cross-application tasks.</p>
+              <div class="auto-card-stat"><i class="fa-solid fa-bolt text-cyan"></i> Latency: &lt;1.8ms</div>
+            </div>
+
+            <div class="auto-feature-card card-purple glass-panel" data-aos="zoom-in-up" data-aos-delay="200">
+              <div class="auto-card-beam"></div>
+              <div class="auto-card-top">
+                <div class="auto-icon-wrap purple"><i class="fa-solid fa-brain"></i></div>
+                <span class="auto-card-tag purple">REAL-TIME SCORING</span>
+              </div>
+              <h4>Intelligent Decisions</h4>
+              <p>Sub-second deterministic rule engines, anomaly triage, and real-time algorithmic scoring.</p>
+              <div class="auto-card-stat"><i class="fa-solid fa-shield-halved text-purple"></i> Accuracy: 99.98%</div>
+            </div>
+
+            <div class="auto-feature-card card-pink glass-panel" data-aos="zoom-in-up" data-aos-delay="300">
+              <div class="auto-card-beam"></div>
+              <div class="auto-card-top">
+                <div class="auto-icon-wrap pink"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+                <span class="auto-card-tag pink">MULTI-LINGUAL</span>
+              </div>
+              <h4>Document Intelligence</h4>
+              <p>Neural OCR, semantic entity extraction, and automated cross-system invoice & contract validation.</p>
+              <div class="auto-card-stat"><i class="fa-solid fa-layer-group text-pink"></i> 450+ Docs / min</div>
+            </div>
+
+            <div class="auto-feature-card card-blue glass-panel" data-aos="zoom-in-up" data-aos-delay="400">
+              <div class="auto-card-beam"></div>
+              <div class="auto-card-top">
+                <div class="auto-icon-wrap blue"><i class="fa-solid fa-robot"></i></div>
+                <span class="auto-card-tag blue">SELF-HEALING</span>
+              </div>
+              <h4>AI-Powered Ops</h4>
+              <p>24/7 predictive anomaly remediation, cluster auto-scaling, and proactive root-cause analysis.</p>
+              <div class="auto-card-stat"><i class="fa-solid fa-arrows-rotate text-blue"></i> Zero Downtime</div>
+            </div>
+
+          </div>
+
+          <!-- 3 Glowing Telemetry Metric Pods -->
+          <div class="auto-metrics-deck">
+            <div class="auto-metric-pod">
+              <div class="pod-val"><span class="srv-counter" data-val="10">10</span>&times;</div>
+              <div class="pod-lbl">Execution Velocity</div>
+              <div class="pod-bar-bg"><div class="pod-bar-fill cyan" style="width: 85%;"></div></div>
+              <div class="pod-indicator cyan"></div>
+            </div>
+            <div class="auto-metric-pod">
+              <div class="pod-val">24/7</div>
+              <div class="pod-lbl">Autonomous Swarms</div>
+              <div class="pod-bar-bg"><div class="pod-bar-fill pink" style="width: 100%;"></div></div>
+              <div class="pod-indicator pink live"></div>
+            </div>
+            <div class="auto-metric-pod">
+              <div class="pod-val"><span class="srv-counter" data-val="60">60</span>%</div>
+              <div class="pod-lbl">Less Manual Overhead</div>
+              <div class="pod-bar-bg"><div class="pod-bar-fill purple" style="width: 70%;"></div></div>
+              <div class="pod-indicator purple"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Futuristic Automation Visual with 3 Floating Glass Panels -->
+        <div class="srv-auto-right" data-aos="fade-left" data-aos-delay="200">
+          <div class="auto-console-wrapper glass-panel">
+            <!-- Console Top Bar -->
+            <div class="auto-console-header">
+              <div class="console-dots">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+              </div>
+              <div class="console-title">STACKLY RUNNER CORE // ORCHESTRATION ENGINE</div>
+              <div class="console-live-badge"><span class="live-dot"></span> LIVE 99.99%</div>
+            </div>
+
+            <!-- Console Body with Cyber Graphic & Live Pipeline -->
+            <div class="auto-console-body">
+              <div class="hud-corner top-left"></div>
+              <div class="hud-corner top-right"></div>
+              <div class="hud-corner bottom-left"></div>
+              <div class="hud-corner bottom-right"></div>
+
+              <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=700&auto=format&fit=crop" alt="AI Neural Automation Core" class="auto-visual-img">
+              <div class="auto-scanline"></div>
+
+              <!-- Live Mini Flow Pipeline Overlay -->
+              <div class="auto-pipeline-strip">
+                <div class="strip-step active"><span class="step-num">01</span> INGEST</div>
+                <div class="strip-arrow"><i class="fa-solid fa-angle-right"></i></div>
+                <div class="strip-step active"><span class="step-num">02</span> REASON</div>
+                <div class="strip-arrow"><i class="fa-solid fa-angle-right"></i></div>
+                <div class="strip-step active"><span class="step-num">03</span> DECIDE</div>
+                <div class="strip-arrow"><i class="fa-solid fa-angle-right"></i></div>
+                <div class="strip-step active"><span class="step-num">04</span> EXECUTE</div>
+              </div>
+
+              <!-- Floating UI Panel 1: Top Left -->
+              <div class="floating-hud-panel hud-panel-1 glass-panel">
+                <div class="hud-panel-icon cyan"><i class="fa-solid fa-bolt"></i></div>
+                <div>
+                  <div class="hud-panel-title">1,420 Tasks/sec</div>
+                  <div class="hud-panel-subtitle">Active Autonomous Swarms</div>
+                </div>
+              </div>
+
+              <!-- Floating UI Panel 2: Middle Right -->
+              <div class="floating-hud-panel hud-panel-2 glass-panel">
+                <div class="hud-panel-icon green"><i class="fa-solid fa-shield-halved"></i></div>
+                <div>
+                  <div class="hud-panel-title">0.002% Error Rate</div>
+                  <div class="hud-panel-subtitle">Self-Healing Pipeline</div>
+                </div>
+              </div>
+
+              <!-- Floating UI Panel 3: Bottom Left -->
+              <div class="floating-hud-panel hud-panel-3 glass-panel">
+                <div class="hud-panel-icon purple"><i class="fa-solid fa-chart-line"></i></div>
+                <div>
+                  <div class="hud-panel-title">+340% ROI Velocity</div>
+                  <div class="hud-panel-subtitle">Enterprise Efficiency Gain</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Console Bottom Live Feed -->
+            <div class="auto-console-footer">
+              <span class="console-prompt">&gt;</span>
+              <span class="console-log">Swarm-04: Batch processed 10,000 records in 142ms [SUCCESS]</span>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 6: AI Data & Analytics (Quantum Telemetry & Prediction Core) -->
+  <section id="analytics" class="srv-analytics-section">
+    <div class="analytics-ambient-glow"></div>
+    <div class="container">
+      
+      <div class="ab-section-header text-center" data-aos="fade-up">
+        <div class="srv-eyebrow" style="justify-content: center;">
+          <span class="srv-eyebrow-dot"></span>
+          QUANTUM NEURAL TELEMETRY
+        </div>
+        <h2 class="srv-section-h2">Transform Live Data <span class="srv-grad-text">Into Predictive Decisions.</span></h2>
+        <p style="color: #94a3b8; max-width: 680px; margin: 1rem auto 0; font-size: 1.1rem; line-height: 1.7;">
+          High-throughput neural analytics visualizing live telemetry, predictive vectors, drift metrics, and distributed model inference in real-time.
+        </p>
+      </div>
+
+      <!-- 4 Top Interactive Metric Pods -->
+      <div class="srv-telemetry-metrics-bar" data-aos="fade-up" data-aos-delay="100">
+        <div class="tel-metric-card glass-panel">
+          <div class="tel-icon cyan"><i class="fa-solid fa-bolt"></i></div>
+          <div>
+            <div class="tel-metric-val"><span class="srv-counter" data-val="4820">4,820</span> <span class="tel-unit">Req/s</span></div>
+            <div class="tel-metric-lbl">Inference Throughput</div>
+          </div>
+          <div class="tel-sparkline cyan"></div>
+        </div>
+
+        <div class="tel-metric-card glass-panel">
+          <div class="tel-icon green"><i class="fa-solid fa-bullseye"></i></div>
+          <div>
+            <div class="tel-metric-val"><span class="srv-counter-float" data-val="99.94">99.94</span><span class="tel-unit">%</span></div>
+            <div class="tel-metric-lbl">Model Convergence</div>
+          </div>
+          <div class="tel-sparkline green"></div>
+        </div>
+
+        <div class="tel-metric-card glass-panel">
+          <div class="tel-icon purple"><i class="fa-solid fa-gauge-high"></i></div>
+          <div>
+            <div class="tel-metric-val"><span class="srv-counter-float" data-val="8.4">8.4</span> <span class="tel-unit">ms</span></div>
+            <div class="tel-metric-lbl">P99 Edge Latency</div>
+          </div>
+          <div class="tel-sparkline purple"></div>
+        </div>
+
+        <div class="tel-metric-card glass-panel">
+          <div class="tel-icon pink"><i class="fa-solid fa-cubes-stacked"></i></div>
+          <div>
+            <div class="tel-metric-val"><span class="srv-counter" data-val="128">128</span> <span class="tel-unit">Nodes</span></div>
+            <div class="tel-metric-lbl">Distributed Swarms</div>
+          </div>
+          <div class="tel-sparkline pink"></div>
+        </div>
+      </div>
+
+      <!-- Holographic Analytics Command Deck -->
+      <div class="srv-dash-frame glass-panel" data-aos="zoom-in-up" data-aos-delay="200">
+        
+        <!-- Dashboard Top Bar -->
+        <div class="srv-dash-topbar">
+          <div class="srv-dash-left">
+            <div class="srv-dash-dots">
+              <span class="srv-dash-dot dot-red"></span>
+              <span class="srv-dash-dot dot-yellow"></span>
+              <span class="srv-dash-dot dot-green"></span>
+            </div>
+            <div class="dash-core-badge">
+              <i class="fa-solid fa-circle-nodes text-cyan"></i> STACKLY NEURAL TELEMETRY CORE v5.4
+            </div>
+          </div>
+
+          <!-- Interactive View Tabs -->
+          <div class="dash-view-tabs">
+            <button class="dash-tab active" data-chart="prediction"><i class="fa-solid fa-chart-area"></i> Prediction Flow</button>
+            <button class="dash-tab" data-chart="vectors"><i class="fa-solid fa-wave-square"></i> Vector Drift</button>
+            <button class="dash-tab" data-chart="cluster"><i class="fa-solid fa-microchip"></i> Node Load</button>
+          </div>
+
+          <div class="dash-status-live">
+            <span class="live-dot-pulse"></span>
+            <span>LIVE INFERENCE FEED</span>
+          </div>
+        </div>
+
+        <!-- Dashboard Main Visual Grid -->
+        <div class="srv-dash-grid">
+          
+          <!-- Main Holographic Chart Panel -->
+          <div class="srv-chart-panel">
+            <div class="chart-panel-header">
+              <div>
+                <h4 class="chart-title">Multi-Vector Prediction &amp; Confidence Flow</h4>
+                <p class="chart-sub">Real-time Bayesian confidence intervals across 16k tensor dimensions</p>
+              </div>
+              <div class="chart-hud-stat">
+                <span class="chart-stat-tag">OPTIMAL</span>
+                <span class="chart-stat-latency">P99: 8.4ms</span>
+              </div>
+            </div>
+
+            <!-- SVG Animated Wave Visual -->
+            <div class="chart-svg-wrap">
+              <svg viewBox="0 0 600 200" class="srv-chart-svg" preserveAspectRatio="none">
+                <defs>
+                  <linearGradient id="chartGradCyan" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#00f2fe" stop-opacity="0.35"/>
+                    <stop offset="100%" stop-color="#00f2fe" stop-opacity="0.0"/>
+                  </linearGradient>
+                  <linearGradient id="chartGradPurple" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#a855f7" stop-opacity="0.2"/>
+                    <stop offset="100%" stop-color="#a855f7" stop-opacity="0.0"/>
+                  </linearGradient>
+                  <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
+                    <feGaussianBlur stdDeviation="3" result="blur"/>
+                    <feMerge>
+                      <feMergeNode in="blur"/>
+                      <feMergeNode in="SourceGraphic"/>
+                    </feMerge>
+                  </filter>
+                </defs>
+                
+                <!-- Grid Lines -->
+                <line x1="0" y1="50" x2="600" y2="50" stroke="rgba(255,255,255,0.05)" stroke-dasharray="4 4" />
+                <line x1="0" y1="100" x2="600" y2="100" stroke="rgba(255,255,255,0.05)" stroke-dasharray="4 4" />
+                <line x1="0" y1="150" x2="600" y2="150" stroke="rgba(255,255,255,0.05)" stroke-dasharray="4 4" />
+
+                <!-- Area 1 (Cyan Primary Wave) -->
+                <path id="chartArea1" d="M0,130 Q90,40 180,85 T360,35 T540,75 L600,60 L600,200 L0,200 Z" fill="url(#chartGradCyan)"/>
+                <!-- Line 1 (Cyan Glowing Primary) -->
+                <path id="chartLine1" d="M0,130 Q90,40 180,85 T360,35 T540,75 L600,60" fill="none" stroke="#00f2fe" stroke-width="3" filter="url(#neonGlow)"/>
+
+                <!-- Area 2 (Purple Secondary Wave) -->
+                <path id="chartArea2" d="M0,160 Q100,100 200,125 T400,80 T560,95 L600,110 L600,200 L0,200 Z" fill="url(#chartGradPurple)"/>
+                <!-- Line 2 (Purple Secondary) -->
+                <path id="chartLine2" d="M0,160 Q100,100 200,125 T400,80 T560,95 L600,110" fill="none" stroke="#a855f7" stroke-width="2" stroke-dasharray="5 5"/>
+
+                <!-- Glowing Active Peak Point -->
+                <circle cx="360" cy="35" r="5" fill="#00f2fe" filter="url(#neonGlow)"/>
+                <circle cx="360" cy="35" r="10" fill="none" stroke="#00f2fe" opacity="0.6" class="chart-ping"/>
+              </svg>
+              
+              <!-- Floating Crosshair Tooltip -->
+              <div class="chart-hud-tooltip">
+                <span class="tooltip-dot"></span>
+                <span class="tooltip-txt">Peak Vector Confidence: <strong>99.8%</strong></span>
+              </div>
+            </div>
+
+            <!-- Chart Time Axis -->
+            <div class="chart-time-axis">
+              <span>-60s</span>
+              <span>-45s</span>
+              <span>-30s</span>
+              <span>-15s</span>
+              <span>NOW [LIVE]</span>
+            </div>
+          </div>
+
+          <!-- Right Real-Time Telemetry Feed & Health -->
+          <div class="srv-feed-panel">
+            
+            <!-- Telemetry Pod 1: Live Stream Log -->
+            <div class="srv-feed-card stream-feed">
+              <div class="feed-top">
+                <span class="feed-lbl"><i class="fa-solid fa-terminal text-cyan"></i> LIVE VECTOR LOG</span>
+                <span class="feed-badge-pulse">STREAMING</span>
+              </div>
+              <div class="live-stream-lines" id="telemetryStreamLines">
+                <div class="stream-line"><span class="stream-ts">11:22:04</span> <span class="stream-ok">[VEC-910]</span> Confidence 0.9984</div>
+                <div class="stream-line"><span class="stream-ts">11:22:03</span> <span class="stream-ok">[INF-412]</span> Latency 7.8ms</div>
+                <div class="stream-line"><span class="stream-ts">11:22:02</span> <span class="stream-warn">[DRF-003]</span> Tensor drift 0.001%</div>
+                <div class="stream-line"><span class="stream-ts">11:22:01</span> <span class="stream-ok">[SWM-12]</span> Cluster auto-synced</div>
+              </div>
+            </div>
+
+            <!-- Telemetry Pod 2: Dynamic Health Meters -->
+            <div class="srv-feed-card health-meters">
+              <div class="feed-top">
+                <span class="feed-lbl"><i class="fa-solid fa-heart-pulse text-pink"></i> CLUSTER HEALTH</span>
+                <span class="feed-stat-num">99.98%</span>
+              </div>
+
+              <div class="meter-item">
+                <div class="meter-info">
+                  <span>Tensor Drift Rate</span>
+                  <span class="text-cyan">0.012%</span>
+                </div>
+                <div class="meter-track"><div class="meter-bar cyan" style="width: 15%;"></div></div>
+              </div>
+
+              <div class="meter-item">
+                <div class="meter-info">
+                  <span>GPU Memory Allocation</span>
+                  <span class="text-purple">42.8%</span>
+                </div>
+                <div class="meter-track"><div class="meter-bar purple" style="width: 43%;"></div></div>
+              </div>
+
+              <div class="meter-item">
+                <div class="meter-info">
+                  <span>Model Cache Hit Rate</span>
+                  <span class="text-green">98.6%</span>
+                </div>
+                <div class="meter-track"><div class="meter-bar green" style="width: 98%;"></div></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 3 Supporting High-Impact Data Feature Cards -->
+      <div class="srv-data-features-deck" data-aos="fade-up" data-aos-delay="300">
+        <div class="data-feat-card glass-panel">
+          <div class="data-feat-icon cyan"><i class="fa-solid fa-network-wired"></i></div>
+          <h4>Zero-Latency Stream Ingestion</h4>
+          <p>Direct integration with Kafka, gRPC, and cloud pub/sub pipelines processing millions of sensory events per second.</p>
+        </div>
+
+        <div class="data-feat-card glass-panel">
+          <div class="data-feat-icon purple"><i class="fa-solid fa-shield-virus"></i></div>
+          <h4>Continuous Drift Shield</h4>
+          <p>Automated vector drift monitoring and self-triggering retraining loops that prevent accuracy decay over time.</p>
+        </div>
+
+        <div class="data-feat-card glass-panel">
+          <div class="data-feat-icon pink"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+          <h4>Explainable AI (XAI) Vectors</h4>
+          <p>Granular feature-attribution visualizers providing transparent, regulator-ready explainability for every prediction.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECTION 7: Industry AI Solutions -->
+  <section id="industries" class="srv-industry-section">
+    <div class="ind-ambient-glow"></div>
+    <div class="container">
+      
+      <div class="ab-section-header text-center" data-aos="fade-up">
+        <div class="srv-eyebrow" style="justify-content: center;">
+          <span class="srv-eyebrow-dot"></span>
+          SECTOR-SPECIFIC ARCHITECTURES
+        </div>
+        <h2 class="srv-section-h2">Tailored For <span class="srv-grad-text">Mission-Critical Industries.</span></h2>
+        <p style="color: #94a3b8; max-width: 680px; margin: 1rem auto 0; font-size: 1.1rem; line-height: 1.7;">
+          Engineered to satisfy stringent regulatory, latency, and throughput demands across high-stakes enterprise verticals.
+        </p>
+      </div>
+
+      <div class="srv-ind-layout">
+        <!-- Left Interactive Selector Menu -->
+        <div class="srv-ind-menu" data-aos="fade-right">
+          
+          <div class="srv-ind-btn active" data-ind="finance">
+            <div class="ind-btn-icon cyan"><i class="fa-solid fa-landmark"></i></div>
+            <div class="ind-btn-info">
+              <h4>Financial Services</h4>
+              <span class="ind-btn-sub">Algorithmic Trading &amp; Risk Guard</span>
+            </div>
+            <span class="ind-btn-badge">99.98% ACC</span>
+            <i class="fa-solid fa-angle-right ind-btn-arrow"></i>
+          </div>
+
+          <div class="srv-ind-btn" data-ind="healthcare">
+            <div class="ind-btn-icon green"><i class="fa-solid fa-heart-pulse"></i></div>
+            <div class="ind-btn-info">
+              <h4>Healthcare &amp; Bio</h4>
+              <span class="ind-btn-sub">Clinical Diagnostics &amp; Imaging</span>
+            </div>
+            <span class="ind-btn-badge">4.2x SPEED</span>
+            <i class="fa-solid fa-angle-right ind-btn-arrow"></i>
+          </div>
+
+          <div class="srv-ind-btn" data-ind="retail">
+            <div class="ind-btn-icon purple"><i class="fa-solid fa-cart-shopping"></i></div>
+            <div class="ind-btn-info">
+              <h4>Retail &amp; Commerce</h4>
+              <span class="ind-btn-sub">Dynamic Pricing &amp; Swarm Ops</span>
+            </div>
+            <span class="ind-btn-badge">+34% MARGIN</span>
+            <i class="fa-solid fa-angle-right ind-btn-arrow"></i>
+          </div>
+
+          <div class="srv-ind-btn" data-ind="manufacturing">
+            <div class="ind-btn-icon cyan"><i class="fa-solid fa-industry"></i></div>
+            <div class="ind-btn-info">
+              <h4>Smart Manufacturing</h4>
+              <span class="ind-btn-sub">Edge Vision &amp; Predictive QA</span>
+            </div>
+            <span class="ind-btn-badge">0 DOWNTIME</span>
+            <i class="fa-solid fa-angle-right ind-btn-arrow"></i>
+          </div>
+
+          <div class="srv-ind-btn" data-ind="logistics">
+            <div class="ind-btn-icon pink"><i class="fa-solid fa-truck-fast"></i></div>
+            <div class="ind-btn-info">
+              <h4>Logistics &amp; Freight</h4>
+              <span class="ind-btn-sub">Autonomous Routing &amp; Load Balancing</span>
+            </div>
+            <span class="ind-btn-badge">28% SAVED</span>
+            <i class="fa-solid fa-angle-right ind-btn-arrow"></i>
+          </div>
+
+          <div class="srv-ind-btn" data-ind="technology">
+            <div class="ind-btn-icon blue"><i class="fa-solid fa-server"></i></div>
+            <div class="ind-btn-info">
+              <h4>Enterprise Cloud &amp; Tech</h4>
+              <span class="ind-btn-sub">Developer Swarms &amp; Infra AI</span>
+            </div>
+            <span class="ind-btn-badge">-72% MTTR</span>
+            <i class="fa-solid fa-angle-right ind-btn-arrow"></i>
+          </div>
+
+        </div>
+
+        <!-- Right Dynamic Showcase Frame -->
+        <div class="srv-ind-preview-side" data-aos="fade-left" data-aos-delay="200">
+          <div class="srv-ind-showcase-frame glass-panel">
+            
+            <!-- Showcase Top Status Bar -->
+            <div class="showcase-topbar">
+              <span id="indCategory" class="showcase-cat-tag">FINANCIAL INTELLIGENCE CORE</span>
+              <div class="showcase-status"><span class="live-dot-pulse"></span> DEPLOYED AT SCALE</div>
+            </div>
+
+            <!-- Showcase Image with Overlay HUD -->
+            <div class="showcase-img-container">
+              <img id="indImg" src="https://images.unsplash.com/photo-1642543492481-44e81e3914a7?q=80&w=800&auto=format&fit=crop" alt="Industry AI Solution" class="showcase-img">
+              <div class="showcase-overlay-gradient"></div>
+              
+              <!-- Floating HUD Metric Overlay on Image -->
+              <div class="showcase-hud-badge glass-panel">
+                <i class="fa-solid fa-shield-halved text-cyan"></i>
+                <span id="indMetric">99.98% Fraud Detection Accuracy</span>
+              </div>
+            </div>
+
+            <!-- Showcase Detailed Content -->
+            <div class="showcase-body">
+              <h3 id="indTitle" class="showcase-title">
+                Algorithmic Finance &amp; Real-Time Risk
+              </h3>
+              <p id="indDesc" class="showcase-desc">
+                Deploy sovereign sub-millisecond fraud detection models, automated multi-asset portfolio rebalancing, and regulatory-compliant air-gapped risk analytics designed for high-frequency banking infrastructure.
+              </p>
+
+              <!-- Capability Feature Chips -->
+              <div class="showcase-chips" id="indChips">
+                <span class="ind-chip"><i class="fa-solid fa-bolt text-cyan"></i> Sub-ms Ingest</span>
+                <span class="ind-chip"><i class="fa-solid fa-shield-virus text-purple"></i> Air-Gapped Models</span>
+                <span class="ind-chip"><i class="fa-solid fa-file-shield text-pink"></i> SEC/FINRA Compliant</span>
+              </div>
+
+              <!-- 3 Key Metric Pods -->
+              <div class="showcase-metrics-grid" id="indMetrics">
+                <div class="showcase-kpi">
+                  <div class="kpi-val" id="kpi1Val">99.98%</div>
+                  <div class="kpi-lbl" id="kpi1Lbl">Detection Accuracy</div>
+                </div>
+                <div class="showcase-kpi">
+                  <div class="kpi-val" id="kpi2Val">&lt;1.2ms</div>
+                  <div class="kpi-lbl" id="kpi2Lbl">Scoring Latency</div>
+                </div>
+                <div class="showcase-kpi">
+                  <div class="kpi-val" id="kpi3Val">$2.4B+</div>
+                  <div class="kpi-lbl" id="kpi3Lbl">Capital Protected</div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECTION 8: AI Transformation CTA (Neural Super-Core) -->
+  <section id="cta" class="srv-cta-section">
+    <div class="cta-ambient-glow"></div>
+    <div class="container">
+      <div class="srv-cta-card glass-panel" data-aos="zoom-in-up" data-aos-duration="1000">
+        
+        <div class="cta-glow-bg"></div>
+        <div class="cta-mesh-grid"></div>
+        <div class="cta-border-stream"></div>
+
+        <div class="srv-cta-content">
+          <!-- Left CTA Text Column -->
+          <div class="srv-cta-text-col" data-aos="fade-right" data-aos-delay="200">
+            <div class="srv-eyebrow" style="background: rgba(0, 242, 254, 0.1); border-color: rgba(0, 242, 254, 0.3); color: var(--cyan); margin-bottom: 1.5rem;">
+              <span class="srv-eyebrow-dot" style="background: var(--cyan); box-shadow: 0 0 10px var(--cyan);"></span>
+              ENTERPRISE ONBOARDING v3.8
+            </div>
+            
+            <h2 class="srv-cta-heading">
+              Ready To Build Your<br>
+              <span class="srv-grad-text">Autonomous Future?</span>
+            </h2>
+            
+            <p class="srv-cta-desc">
+              From bespoke neural architectures to multi-agent production swarms, Stackly transforms complex operational challenges into self-improving enterprise AI engines with guaranteed SLAs.
+            </p>
+
+            <!-- 3 Key Assurance Badges -->
+            <div class="cta-assurances-row">
+              <div class="cta-badge-pill">
+                <i class="fa-solid fa-bolt text-cyan"></i> 2-Week Pilot
+              </div>
+              <div class="cta-badge-pill">
+                <i class="fa-solid fa-shield-halved text-purple"></i> SOC2 / HIPAA Ready
+              </div>
+              <div class="cta-badge-pill">
+                <i class="fa-solid fa-chart-line text-pink"></i> 10x ROI Velocity
+              </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="srv-cta-btns">
+              <a href="404.html" class="srv-cta-primary magnetic-btn">
+                <span>START AN AI PROJECT</span>
+                <i class="fa-solid fa-arrow-right btn-arrow"></i>
+              </a>
+              <a href="404.html" class="srv-cta-secondary magnetic-btn">
+                <i class="fa-solid fa-calendar-check" style="margin-right: 6px; color: var(--cyan);"></i>
+                <span>TALK TO OUR EXPERTS</span>
+              </a>
+            </div>
+
+            <!-- Social Proof Trust Line -->
+            <div class="cta-trust-bar">
+              <div class="trust-avatars">
+                <span class="t-avatar"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=120&auto=format&fit=crop" alt="Client 1"></span>
+                <span class="t-avatar"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=120&auto=format&fit=crop" alt="Client 2"></span>
+                <span class="t-avatar"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=120&auto=format&fit=crop" alt="Client 3"></span>
+                <span class="t-avatar text-avatar">+500</span>
+              </div>
+              <div class="trust-text">
+                <div class="trust-stars">
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                </div>
+                <span>Trusted by 500+ Global Enterprise Engineering Teams</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Right Multi-Ring Holographic Neural Orb -->
+          <div class="srv-cta-visual" data-aos="fade-left" data-aos-delay="400">
+            <div class="cta-hologram-stage">
+              
+              <!-- Ambient Orb Glows & Rings -->
+              <div class="orb-ambient-light"></div>
+              <div class="orb-ring ring-1"></div>
+              <div class="orb-ring ring-2"></div>
+              <div class="orb-ring ring-3"></div>
+
+              <!-- Central Cyber Core Sphere -->
+              <div class="orb-core-container">
+                <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=800&auto=format&fit=crop" alt="AI Neural Core Singularity" class="srv-cta-sphere">
+                <div class="orb-scanline-sweep"></div>
+              </div>
+
+              <!-- Orbiting Satellites -->
+              <div class="orbital-node node-1"><span>AGENTS</span></div>
+              <div class="orbital-node node-2"><span>MODELS</span></div>
+              <div class="orbital-node node-3"><span>DATA</span></div>
+
+              <!-- 3 Floating Glass HUD Badges -->
+              <div class="cta-hud-panel cta-hud-1 glass-panel">
+                <div class="cta-hud-icon cyan"><i class="fa-solid fa-rocket"></i></div>
+                <div>
+                  <div class="cta-hud-title">10x Velocity</div>
+                  <div class="cta-hud-sub">Rapid Deployment</div>
+                </div>
+              </div>
+
+              <div class="cta-hud-panel cta-hud-2 glass-panel">
+                <div class="cta-hud-icon green"><i class="fa-solid fa-shield-halved"></i></div>
+                <div>
+                  <div class="cta-hud-title">Air-Gapped</div>
+                  <div class="cta-hud-sub">Zero Data Leakage</div>
+                </div>
+              </div>
+
+              <div class="cta-hud-panel cta-hud-3 glass-panel">
+                <div class="cta-hud-icon purple"><i class="fa-solid fa-brain"></i></div>
+                <div>
+                  <div class="cta-hud-title">99.98% Accuracy</div>
+                  <div class="cta-hud-sub">Sovereign Precision</div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Site Footer -->
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="grid footer-grid">
+        <!-- Col 1: Brand & Global Infra -->
+        <div class="footer-brand">
+          <a href="index.html" class="neuro-logo"><img src="assets/images/stackly-logo.webp" alt="Stackly AI" class="site-logo-img"></a>
+          <p class="footer-brand-desc">
+            Stackly is the premier enterprise AI agency and neural technology framework empowering high-growth innovators with sovereign models and cognitive swarms.
+          </p>
+          <div class="footer-infra-tag">
+            <i class="fa-solid fa-server"></i>
+            <span>MMR COMPLEX, CHINNA THIRUPATHI, NEAR CHINNA MUNIYAPPAN KOVIL, SALEM - 636 003</span>
+          </div>
+          <div class="footer-socials">
+            <a href="404.html" class="social-icon" aria-label="Twitter / X"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="404.html" class="social-icon" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="404.html" class="social-icon" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+            <a href="404.html" class="social-icon" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          </div>
+        </div>
+
+        <!-- Col 2: Navigation (Exact User Request) -->
+        <div class="footer-col footer-nav-col">
+          <h4>Navigation</h4>
+          <div class="footer-links">
+            <a href="index.html">HOME</a>
+            <a href="about.html">ABOUT US</a>
+            <a href="services.html">SERVICE</a>
+            <a href="blog.html">BLOG</a>
+            <a href="contact.html">CONTACT</a>
+          </div>
+        </div>
+
+        <!-- Col 3: AI Platform -->
+        <div class="footer-col">
+          <h4>AI Platform</h4>
+          <div class="footer-links">
+            <a href="404.html">Sovereign LLMs</a>
+            <a href="404.html">Autonomous Swarms</a>
+            <a href="404.html">Computer Vision</a>
+            <a href="404.html">Neural Big Data</a>
+            <a href="404.html">Predictive Pipelines</a>
+            <a href="404.html">API Documentation</a>
+          </div>
+        </div>
+
+        <!-- Col 4: Research & Resources -->
+        <div class="footer-col">
+          <h4>Research &amp; Docs</h4>
+          <div class="footer-links">
+            <a href="404.html">Research Papers</a>
+            <a href="404.html">Silicon Architecture</a>
+            <a href="404.html">Security Perimeter</a>
+            <a href="404.html">Model Benchmarks</a>
+            <a href="404.html">Enterprise Case Studies</a>
+            <a href="404.html">Python SDK / REST</a>
+          </div>
+        </div>
+
+        <!-- Col 5: Stay Informed & Direct NOC -->
+        <div class="footer-col">
+          <h4>Stay Informed</h4>
+          <p style="color: var(--text-secondary); font-size: 0.88rem; margin-bottom: 1rem; line-height: 1.6;">
+            Subscribe to our weekly AI research briefing, zero-latency benchmarks, and model releases.
+          </p>
+          <form class="newsletter-form" style="display:flex; flex-direction:column; gap:0.65rem;">
+            <input type="email" class="form-control" placeholder="Enter your work email..." required>
+            <button type="submit" class="btn btn-primary"><i class="fa-solid fa-paper-plane" style="margin-right:6px;"></i> Subscribe</button>
+          </form>
+
+          <div class="footer-contact-block">
+            <a href="tel:+919090909090" class="footer-contact-item"><i class="fa-solid fa-headset"></i> <span>+91 90909 09090</span></a>
+            <a href="mailto:info@stackly.com" class="footer-contact-item"><i class="fa-solid fa-envelope"></i> <span>info@stackly.com</span></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Security & Compliance Trust Strip -->
+      <div class="footer-trust-strip">
+        <div class="trust-badges-list">
+          <span class="trust-badge"><i class="fa-solid fa-shield-halved"></i> SOC 2 TYPE II</span>
+          <span class="trust-badge"><i class="fa-solid fa-lock"></i> ISO/IEC 27001</span>
+          <span class="trust-badge"><i class="fa-solid fa-hospital"></i> HIPAA COMPLIANT</span>
+          <span class="trust-badge"><i class="fa-solid fa-scale-balanced"></i> GDPR SOVEREIGN</span>
+          <span class="trust-badge"><i class="fa-solid fa-microchip"></i> AIR-GAPPED HARDWARE</span>
+        </div>
+        <div class="footer-legal-links">
+          <a href="404.html">Privacy Policy</a>
+          <a href="404.html">Terms of Service</a>
+          <a href="404.html">Security Whitepaper</a>
+          <a href="404.html">Compliance Portal</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 Stackly AI Technologies Inc. All rights reserved.</div>
+        <div class="system-status">
+          <span class="dot"></span> All Neural Nodes Operational (99.999% SLA)
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <!-- GSAP & ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <!-- AOS JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  
+  <script src="assets/js/particles.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/forms.js"></script>
+  <script src="assets/js/services.js"></script>
+  <script src="assets/js/enhancements.js"></script>
+</body>
+</html>

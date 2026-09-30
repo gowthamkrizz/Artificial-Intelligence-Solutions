@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In – Stackly AI Neural Platform</title>
+  <meta name="description" content="Sign in to your Stackly AI console to manage sovereign neural models, autonomous agent swarms, and high-performance GPU clusters.">
+  
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Dedicated Auth Theme Stylesheet -->
+  <link rel="stylesheet" href="assets/css/auth.css">
+  <link rel="stylesheet" href="assets/css/enhancements.css">
+</head>
+<body class="auth-body">
+
+  <!-- Ambient Glow Orbs -->
+  <div class="auth-bg-orb cyan"></div>
+  <div class="auth-bg-orb purple"></div>
+
+  <div class="auth-container">
+    <div class="hud-corner top-left"></div>
+    <div class="hud-corner top-right"></div>
+    <div class="hud-corner bottom-left"></div>
+    <div class="hud-corner bottom-right"></div>
+    
+    <!-- Left Dark Cyber Brand Panel -->
+    <div class="auth-brand-panel">
+      <div>
+        <!-- Top Logo & Status Badge -->
+        <div class="brand-top-row">
+          <a href="index.html" class="brand-logo-link"><img src="assets/images/stackly-logo.webp" alt="Stackly AI" class="auth-logo-img"></a>
+          <span class="brand-top-badge">
+            <i class="fa-solid fa-shield-halved"></i> SECURE GATEWAY
+          </span>
+        </div>
+
+        <!-- Heading & Paragraph -->
+        <div class="brand-hero-content">
+          <h2 class="brand-title">
+            Unlock your <span class="theme-gradient-text">neural</span> potential
+          </h2>
+          <p class="brand-desc">
+            Access your Stackly AI console to manage sovereign LLMs, orchestrate autonomous agent swarms, track real-time cluster telemetry, and benchmark inference workloads.
+          </p>
+        </div>
+
+        <!-- Center AI Graphic -->
+        <div class="brand-burger-container">
+          <img 
+            src="assets/images/hero-ai-brain.webp" 
+            alt="Stackly Neural Core" 
+            class="brand-burger-img"
+          />
+        </div>
+      </div>
+
+      <!-- Bottom Feature Badges -->
+      <div class="brand-footer-badges">
+        <div class="brand-pill-badge">
+          <i class="fa-solid fa-lock"></i>
+          <span>Air-Gapped NOC</span>
+        </div>
+        <div class="brand-pill-badge">
+          <i class="fa-solid fa-bolt"></i>
+          <span>&lt;14ms Latency</span>
+        </div>
+        <div class="brand-pill-badge">
+          <i class="fa-solid fa-microchip"></i>
+          <span>H100 Clusters</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Form Panel -->
+    <div class="auth-form-panel">
+      
+      <!-- Top Navigation & Context -->
+      <div>
+        <div class="form-top-row">
+          <a href="index.html" class="back-home-btn">
+            <i class="fa-solid fa-house"></i>
+            <span>Back to Home</span>
+          </a>
+          <span class="form-context-tag">— WELCOME BACK</span>
+        </div>
+
+        <!-- Form Title & Description -->
+        <div class="form-header">
+          <h1 class="auth-form-title">Sign <span class="theme-accent-text">in</span></h1>
+          <p class="auth-form-subtitle">Enter your credentials below to access your Stackly AI enterprise account.</p>
+        </div>
+
+        <!-- Sign In Form -->
+        <form id="stackly-login-form" novalidate>
+          <div class="auth-fields-grid">
+            
+            <!-- Username Field -->
+            <div class="auth-field-group">
+              <label class="auth-label" for="username-field">
+                USERNAME <span class="required-star">*</span>
+              </label>
+              <div class="input-icon-wrapper">
+                <i class="fa-regular fa-user input-left-icon"></i>
+                <input 
+                  type="text" 
+                  id="username-field" 
+                  class="auth-input" 
+                  placeholder="Enter your username" 
+                  required
+                />
+              </div>
+            </div>
+
+            <!-- Select Portal Dropdown -->
+            <div class="auth-field-group">
+              <label class="auth-label" for="portal-field">
+                SELECT PORTAL <span class="required-star">*</span>
+              </label>
+              <div class="input-icon-wrapper">
+                <i class="fa-solid fa-network-wired input-left-icon"></i>
+                <select id="portal-field" class="auth-select" required>
+                  <option value="" disabled selected>Select your portal...</option>
+                  <option value="Admin Portal">Admin Portal</option>
+                  <option value="Customer Portal">Customer Portal</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Email Address Field -->
+            <div class="auth-field-group">
+              <label class="auth-label" for="email-field">
+                EMAIL ADDRESS <span class="required-star">*</span>
+              </label>
+              <div class="input-icon-wrapper">
+                <i class="fa-regular fa-envelope input-left-icon"></i>
+                <input 
+                  type="email" 
+                  id="email-field" 
+                  class="auth-input" 
+                  placeholder="developer@enterprise.io" 
+                  required
+                />
+              </div>
+            </div>
+
+            <!-- Password Field -->
+            <div class="auth-field-group">
+              <label class="auth-label" for="password-field">
+                PASSWORD <span class="required-star">*</span>
+              </label>
+              <div class="input-icon-wrapper">
+                <i class="fa-solid fa-lock input-left-icon"></i>
+                <input 
+                  type="password" 
+                  id="password-field" 
+                  class="auth-input" 
+                  placeholder="Min. 8 characters" 
+                  required
+                />
+                <button type="button" class="pwd-toggle-btn" data-target="password-field" aria-label="Toggle password visibility">
+                  <i class="fa-regular fa-eye"></i>
+                </button>
+              </div>
+
+              <!-- Password Live Criteria Checklist -->
+              <div class="password-rules-matrix">
+                <span class="val-rule-item" id="rule-len">
+                  <i class="fa-regular fa-circle-check"></i> At least 8 characters
+                </span>
+                <span class="val-rule-item" id="rule-upper">
+                  <i class="fa-regular fa-circle-check"></i> At least one uppercase (A-Z)
+                </span>
+                <span class="val-rule-item" id="rule-lower">
+                  <i class="fa-regular fa-circle-check"></i> At least one lowercase (a-z)
+                </span>
+                <span class="val-rule-item" id="rule-num">
+                  <i class="fa-regular fa-circle-check"></i> At least one number (0-9)
+                </span>
+              </div>
+            </div>
+
+            <!-- Options Row (Remember Me & Forgot Password) -->
+            <div class="auth-options-row">
+              <label class="auth-checkbox-label">
+                <input type="checkbox" id="remember-me-checkbox" checked />
+                <span>Remember hardware token</span>
+              </label>
+              <a href="404.html" class="auth-forgot-link">
+                Forgot password?
+              </a>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="auth-submit-btn">
+              <span>SIGN IN</span>
+              <i class="fa-solid fa-arrow-right-to-bracket"></i>
+            </button>
+
+          </div>
+        </form>
+      </div>
+
+      <!-- Footer Switch Link -->
+      <div class="auth-switch-footer">
+        Don't have an enterprise account? <a href="signup.html" class="auth-switch-link">Create one free</a>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="assets/js/auth.js"></script>
+  <script src="assets/js/enhancements.js"></script>
+</body>
+</html>

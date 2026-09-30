@@ -1,0 +1,1842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Admin NOC Console – Stackly AI Global Compute Platform</title>
+  <meta name="description" content="Stackly AI Global NOC & Hyper-Scale Admin Portal for real-time GPU cluster telemetry, sovereign LLM weights, autonomous swarm orchestration, and air-gapped security enclaves.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/webp" href="assets/images/stackly-logo.webp">
+
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+  <link rel="stylesheet" href="assets/css/enhancements.css">
+</head>
+<body class="dash-body">
+
+  <!-- Ambient Glow Orbs -->
+  <div class="dash-ambient-orb cyan"></div>
+  <div class="dash-ambient-orb purple"></div>
+
+  <div class="dash-layout">
+    
+    <!-- Mobile Sidebar Overlay Backdrop -->
+    <div class="sidebar-mobile-overlay" id="sidebar-mobile-overlay"></div>
+    
+    <!-- ══════════════════════════════════════════
+         ADMIN SIDEBAR NAVIGATION
+    ══════════════════════════════════════════ -->
+    <aside class="dash-sidebar" id="dash-sidebar">
+      
+      <!-- Brand & Title -->
+      <div class="sidebar-brand">
+        <a href="index.html" class="brand-logo-wrap">
+          <img src="assets/images/stackly-logo.webp" alt="Stackly AI" class="dash-logo-img">
+          <span class="brand-badge admin-tag">ADMIN NOC</span>
+        </a>
+        <button class="sidebar-close-btn" id="sidebar-close-btn" aria-label="Close Sidebar">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <!-- Cluster Live Status Chip -->
+      <div class="sidebar-cluster-status">
+        <div class="cluster-status-left">
+          <div class="pulse-beacon"></div>
+          <div>
+            <div class="cluster-status-text">FLEET OPERATIONAL</div>
+            <div class="cluster-region-text">REGION: US-EAST-NOC-01</div>
+          </div>
+        </div>
+        <i class="fa-solid fa-server" style="color: var(--dash-cyan); font-size: 0.85rem;"></i>
+      </div>
+
+      <!-- Navigation Links -->
+      <div class="sidebar-nav-wrap">
+        
+        <div class="nav-section-title">NOC INFRASTRUCTURE</div>
+        <ul class="sidebar-nav">
+          <li class="sidebar-nav-item">
+            <button class="nav-link-btn active" data-target-view="view-overview">
+              <span class="nav-left"><i class="fa-solid fa-chart-line"></i> <span>Global Telemetry</span></span>
+              <span class="nav-badge">LIVE</span>
+            </button>
+          </li>
+          <li class="sidebar-nav-item">
+            <button class="nav-link-btn" data-target-view="view-clusters">
+              <span class="nav-left"><i class="fa-solid fa-microchip"></i> <span>GPU Clusters &amp; Nodes</span></span>
+              <span class="nav-badge">512 H100</span>
+            </button>
+          </li>
+          <li class="sidebar-nav-item">
+            <button class="nav-link-btn" data-target-view="view-models">
+              <span class="nav-left"><i class="fa-solid fa-brain"></i> <span>Model Registry &amp; FP8</span></span>
+              <span class="nav-badge">12 Active</span>
+            </button>
+          </li>
+          <li class="sidebar-nav-item">
+            <button class="nav-link-btn" data-target-view="view-swarms">
+              <span class="nav-left"><i class="fa-solid fa-network-wired"></i> <span>Autonomous Swarms</span></span>
+              <span class="nav-badge">1.4k Units</span>
+            </button>
+          </li>
+        </ul>
+
+        <div class="nav-section-title">SECURITY &amp; AUDIT</div>
+        <ul class="sidebar-nav">
+          <li class="sidebar-nav-item">
+            <button class="nav-link-btn" data-target-view="view-security">
+              <span class="nav-left"><i class="fa-solid fa-shield-halved"></i> <span>VPC Enclaves &amp; Firewall</span></span>
+              <span class="nav-badge">0 Breaches</span>
+            </button>
+          </li>
+          <li class="sidebar-nav-item">
+            <button class="nav-link-btn" data-target-view="view-logs">
+              <span class="nav-left"><i class="fa-solid fa-terminal"></i> <span>Audit Trail &amp; Logs</span></span>
+              <span class="nav-badge live-alert">STREAM</span>
+            </button>
+          </li>
+        </ul>
+
+      </div>
+
+      <!-- Footer User Card -->
+      <div class="sidebar-footer">
+        <div class="sidebar-user-info">
+          <div class="user-avatar-wrap">
+            <img src="assets/images/avatar-1.webp" alt="Admin Profile" class="user-avatar-img">
+            <div class="user-online-dot"></div>
+          </div>
+          <div class="user-name-role">
+            <span class="user-display-name">Admin</span>
+            <span class="user-display-role">admin@stackly.ai</span>
+          </div>
+        </div>
+        <a href="login.html" class="user-logout-btn" title="Sign Out &amp; Terminate Session">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i>
+        </a>
+      </div>
+
+    </aside>
+
+    <!-- ══════════════════════════════════════════
+         MAIN CONTENT REGION
+    ══════════════════════════════════════════ -->
+    <main class="dash-main">
+      
+      <!-- Top Sticky Navigation Bar -->
+      <header class="dash-topbar">
+        
+        <div class="topbar-left">
+          <button class="sidebar-toggle-btn" id="sidebar-toggle-btn" aria-label="Open Mobile Menu">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+        </div>
+
+        <div class="topbar-right">
+          
+          <!-- Live Telemetry Status Badges -->
+          <div class="topbar-telemetry-chip">
+            <i class="fa-solid fa-bolt" style="color: var(--dash-cyan);"></i>
+            <span>THROUGHPUT:</span>
+            <span class="metric-val" id="jitter-tps">482.6k</span>
+          </div>
+
+          <div class="topbar-telemetry-chip">
+            <i class="fa-solid fa-gauge-high" style="color: var(--dash-green);"></i>
+            <span>LATENCY:</span>
+            <span class="metric-val" id="jitter-latency">&lt; 6.8ms</span>
+          </div>
+
+          <!-- Notification Bell -->
+          <a href="404.html" class="topbar-icon-btn" aria-label="Notifications" title="Notifications">
+            <i class="fa-regular fa-bell"></i>
+            <div class="badge-dot"></div>
+          </a>
+
+          <!-- Deploy Node CTA -->
+          <a href="404.html" class="topbar-action-btn">
+            <i class="fa-solid fa-plus"></i>
+            <span>DEPLOY NODE</span>
+          </a>
+
+        </div>
+
+      </header>
+
+      <!-- Dashboard Body Content Container -->
+      <div class="dash-content-container">
+        
+        <!-- ══════════════════════════════════════════
+             VIEW 1: GLOBAL TELEMETRY OVERVIEW
+        ══════════════════════════════════════════ -->
+        <section class="dash-view-pane active" id="view-overview">
+          
+          <div class="dash-page-header">
+            <div class="page-title-wrap">
+              <h1><i class="fa-solid fa-shield-virus" style="color: var(--dash-cyan);"></i> Global NOC <span class="title-gradient">Command Center</span></h1>
+              <p>Autonomous hyper-scale cluster orchestrator and sovereign inference telemetry gateway.</p>
+            </div>
+            <div class="header-action-group">
+              <a href="404.html" class="btn-secondary-cyber">
+                <i class="fa-solid fa-arrows-rotate"></i> Sync Nodes
+              </a>
+              <a href="404.html" class="btn-secondary-cyber">
+                <i class="fa-solid fa-download"></i> Export Snapshot
+              </a>
+            </div>
+          </div>
+
+          <!-- KPI Metric Matrix (4 Cards) -->
+          <div class="kpi-grid">
+            
+            <div class="kpi-card">
+              <div class="kpi-top-row">
+                <span class="kpi-label">GPU Cluster Load</span>
+                <div class="kpi-icon-wrap cyan"><i class="fa-solid fa-microchip"></i></div>
+              </div>
+              <div class="kpi-value-row">
+                <span class="kpi-number" id="jitter-gpu-load">88.4%</span>
+                <span class="kpi-trend positive"><i class="fa-solid fa-arrow-up"></i> +2.1%</span>
+              </div>
+              <div class="kpi-subtext">512 / 576 H100 SXM5 Racks Allocated</div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-top-row">
+                <span class="kpi-label">Inference Tokens / Sec</span>
+                <div class="kpi-icon-wrap blue"><i class="fa-solid fa-bolt"></i></div>
+              </div>
+              <div class="kpi-value-row">
+                <span class="kpi-number">482.6k</span>
+                <span class="kpi-trend positive"><i class="fa-solid fa-arrow-up"></i> +14.2%</span>
+              </div>
+              <div class="kpi-subtext">Peak burst capacity: 1.2M Tokens/s</div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-top-row">
+                <span class="kpi-label">Global P99 Latency</span>
+                <div class="kpi-icon-wrap purple"><i class="fa-solid fa-gauge"></i></div>
+              </div>
+              <div class="kpi-value-row">
+                <span class="kpi-number">6.8ms</span>
+                <span class="kpi-trend positive"><i class="fa-solid fa-check"></i> Target Met</span>
+              </div>
+              <div class="kpi-subtext">Hardware-enforced sub-10ms SLA</div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-top-row">
+                <span class="kpi-label">Active Swarm Units</span>
+                <div class="kpi-icon-wrap green"><i class="fa-solid fa-network-wired"></i></div>
+              </div>
+              <div class="kpi-value-row">
+                <span class="kpi-number">1,428</span>
+                <span class="kpi-trend positive"><i class="fa-solid fa-arrow-up"></i> +84</span>
+              </div>
+              <div class="kpi-subtext">99.998% Execution Integrity</div>
+            </div>
+
+          </div>
+
+          <!-- Section 2: Live GPU Cluster Topology Visualizer -->
+          <div class="dash-card" style="margin-bottom: 2rem;">
+            <div class="dash-card-header">
+              <div class="dash-card-title">
+                <i class="fa-solid fa-cubes-stacked"></i>
+                <span>Live Cluster Topology &amp; Hardware Health Visualizer</span>
+              </div>
+              <div class="card-header-actions">
+                <span class="status-pill active"><i class="fa-solid fa-circle" style="font-size: 6px;"></i> 4 Racks Operational</span>
+              </div>
+            </div>
+            <div class="dash-card-body">
+              
+              <div class="topology-rack-grid">
+                
+                <!-- Rack 1 -->
+                <div class="rack-box">
+                  <div class="rack-top">
+                    <span class="rack-name"><i class="fa-solid fa-server" style="color: var(--dash-cyan);"></i> RACK-ALPHA-01</span>
+                    <span class="rack-status-badge online">ONLINE</span>
+                  </div>
+                  <div class="gpu-nodes-mini-grid">
+                    <div class="gpu-node-cell active"></div>
+                    <div class="gpu-node-cell active"></div>
+                    <div class="gpu-node-cell active"></div>
+                    <div class="gpu-node-cell active"></div>
+                    <div class="gpu-node-cell active"></div>
+                    <div class="gpu-node-cell active"></div>
+                    <div class="gpu-node-cell purple"></div>
+                    <div class="gpu-node-cell active"></div>
+                    <div class="gpu-node-cell active"></div>
+                    <div class="gpu-node-cell active"></div>
+                    <div class="gpu-node-cell active"></div>
+                    <div class="gpu-node-cell active"></div>
+                    <div class="gpu-node-cell purple"></div>
+                    <div class="gpu-node-cell active"></div>
+                    <div class="gpu-node-cell active"></div>
+                    <div class="gpu-node-cell active"></div>
+                  </div>
+                  <div class="rack-telemetry-row">
+                    <span>VRAM: 1,280 GB HBM3</span>
+                    <span style="color: var(--dash-cyan);">94% Util</span>
+                  </div>
+                  <div class="rack-bar-wrap">
+                    <div class="rack-bar-fill" style="width: 94%;"></div>
+                  </div>
+                </div>
+
+                <!-- Rack 2 -->
+                <div class="rack-box">
+                  <div class="rack-top">
+                    <span class="rack-name"><i class="fa-solid fa-server" style="color: var(--dash-blue);"></i> RACK-PHOENIX-02</span>
+                    <span class="rack-status-badge online">ONLINE</span>
+                  </div>
+                  <div class="gpu-nodes-mini-grid">
+                    <div class="gpu-node-cell active"></div>
+                    <div class="gpu-node-cell active"></div>
+                    <div class="gpu-node-cell active"></div>
+                    <div class="gpu-node-cell active"></div>
+                    <div class="gpu-node-cell purple"></div>
+                    <div class="gpu-node-cell active"></div>
+                    <div class="gpu-node-cell active"></div>
+                    <div class="gpu-node-cell active"></div>
+                    <div class="gpu-node-cell active"></div>
+                    <div class="gpu-node-cell active"></div>
+                    <div class="gpu-node-cell active"></div>
+                    <div class="gpu-node-cell active"></div>
+                    <div class="gpu-node-cell active"></div>
+                    <div class="gpu-node-cell active"></div>
+                    <div class="gpu-node-cell purple"></div>
+                    <div class="gpu-node-cell active"></div>
+                  </div>
+                  <div class="rack-telemetry-row">
+                    <span>VRAM: 1,280 GB HBM3</span>
+                    <span style="color: var(--dash-cyan);">82% Util</span>
+                  </div>
+                  <div class="rack-bar-wrap">
+                    <div class="rack-bar-fill" style="width: 82%;"></div>
+                  </div>
+                </div>
+
+                <!-- Rack 3 -->
+                <div class="rack-box">
+                  <div class="rack-top">
+                    <span class="rack-name"><i class="fa-solid fa-server" style="color: var(--dash-purple);"></i> RACK-TOKYO-03</span>
+                    <span class="rack-status-badge online">ONLINE</span>
+                  </div>
+                  <div class="gpu-nodes-mini-grid">
+                    <div class="gpu-node-cell active"></div>
+                    <div class="gpu-node-cell purple"></div>
+                    <div class="gpu-node-cell active"></div>
+                    <div class="gpu-node-cell active"></div>
+                    <div class="gpu-node-cell active"></div>
+                    <div class="gpu-node-cell active"></div>
+                    <div class="gpu-node-cell active"></div>
+                    <div class="gpu-node-cell active"></div>
+                    <div class="gpu-node-cell active"></div>
+                    <div class="gpu-node-cell active"></div>
+                    <div class="gpu-node-cell purple"></div>
+                    <div class="gpu-node-cell active"></div>
+                    <div class="gpu-node-cell active"></div>
+                    <div class="gpu-node-cell active"></div>
+                    <div class="gpu-node-cell active"></div>
+                    <div class="gpu-node-cell active"></div>
+                  </div>
+                  <div class="rack-telemetry-row">
+                    <span>VRAM: 1,280 GB HBM3</span>
+                    <span style="color: var(--dash-cyan);">89% Util</span>
+                  </div>
+                  <div class="rack-bar-wrap">
+                    <div class="rack-bar-fill" style="width: 89%;"></div>
+                  </div>
+                </div>
+
+                <!-- Rack 4 -->
+                <div class="rack-box">
+                  <div class="rack-top">
+                    <span class="rack-name"><i class="fa-solid fa-server" style="color: var(--dash-amber);"></i> RACK-FRANKFURT-04</span>
+                    <span class="rack-status-badge rebalancing">REBALANCING</span>
+                  </div>
+                  <div class="gpu-nodes-mini-grid">
+                    <div class="gpu-node-cell active"></div>
+                    <div class="gpu-node-cell active"></div>
+                    <div class="gpu-node-cell busy"></div>
+                    <div class="gpu-node-cell active"></div>
+                    <div class="gpu-node-cell active"></div>
+                    <div class="gpu-node-cell active"></div>
+                    <div class="gpu-node-cell active"></div>
+                    <div class="gpu-node-cell active"></div>
+                    <div class="gpu-node-cell active"></div>
+                    <div class="gpu-node-cell active"></div>
+                    <div class="gpu-node-cell busy"></div>
+                    <div class="gpu-node-cell active"></div>
+                    <div class="gpu-node-cell active"></div>
+                    <div class="gpu-node-cell active"></div>
+                    <div class="gpu-node-cell active"></div>
+                    <div class="gpu-node-cell active"></div>
+                  </div>
+                  <div class="rack-telemetry-row">
+                    <span>VRAM: 1,280 GB HBM3</span>
+                    <span style="color: var(--dash-amber);">67% Util</span>
+                  </div>
+                  <div class="rack-bar-wrap">
+                    <div class="rack-bar-fill" style="width: 67%; background: linear-gradient(90deg, var(--dash-amber), var(--dash-red));"></div>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Section 3: Model Registry (Full Width) -->
+          <div class="dash-card" style="margin-bottom: 2rem;">
+            <div class="dash-card-header">
+              <div class="dash-card-title">
+                <i class="fa-solid fa-brain"></i>
+                <span>Active Model Registry &amp; Precision Quantization</span>
+              </div>
+              <a href="404.html" class="btn-secondary-cyber" style="padding: 0.35rem 0.75rem; font-size: 0.75rem;">
+                <i class="fa-solid fa-rotate"></i> Refresh
+              </a>
+            </div>
+            <div class="dash-card-body" style="padding: 0;">
+              <div class="table-responsive">
+                <table class="cyber-table">
+                  <thead>
+                    <tr>
+                      <th>Model Identifier</th>
+                      <th>Quant Format</th>
+                      <th>Status</th>
+                      <th>Avg Latency</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <div class="model-name-cell">
+                          <div class="model-icon-box"><i class="fa-solid fa-bolt"></i></div>
+                          <div>
+                            <div>Stackly-LLM-70B</div>
+                            <span style="font-size: 0.72rem; color: var(--dash-text-dim);">Production v4.2</span>
+                          </div>
+                        </div>
+                      </td>
+                      <td><code style="color: var(--dash-cyan); font-family: var(--font-mono);">FP8 SXM</code></td>
+                      <td><span class="status-pill active"><i class="fa-solid fa-circle" style="font-size: 6px;"></i> Active</span></td>
+                      <td><span style="font-family: var(--font-mono); color: var(--dash-green);">5.8ms</span></td>
+                      <td>
+                        <a href="404.html" class="action-icon-btn" title="Inspect Node"><i class="fa-regular fa-eye"></i></a>
+                        <a href="404.html" class="action-icon-btn" title="Scale Replicas"><i class="fa-solid fa-sliders"></i></a>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <div class="model-name-cell">
+                          <div class="model-icon-box" style="background: rgba(138,43,226,0.15); color: #ba75ff;"><i class="fa-solid fa-eye"></i></div>
+                          <div>
+                            <div>VisionNeuron-Spatial</div>
+                            <span style="font-size: 0.72rem; color: var(--dash-text-dim);">Multimodal v2</span>
+                          </div>
+                        </div>
+                      </td>
+                      <td><code style="color: #ba75ff; font-family: var(--font-mono);">INT4 Tensor</code></td>
+                      <td><span class="status-pill active"><i class="fa-solid fa-circle" style="font-size: 6px;"></i> Active</span></td>
+                      <td><span style="font-family: var(--font-mono); color: var(--dash-green);">4.2ms</span></td>
+                      <td>
+                        <a href="404.html" class="action-icon-btn" title="Inspect Node"><i class="fa-regular fa-eye"></i></a>
+                        <a href="404.html" class="action-icon-btn" title="Scale Replicas"><i class="fa-solid fa-sliders"></i></a>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <div class="model-name-cell">
+                          <div class="model-icon-box" style="background: rgba(0,245,155,0.15); color: var(--dash-green);"><i class="fa-solid fa-network-wired"></i></div>
+                          <div>
+                            <div>SwarmAgent-Router</div>
+                            <span style="font-size: 0.72rem; color: var(--dash-text-dim);">MoE 8x7B</span>
+                          </div>
+                        </div>
+                      </td>
+                      <td><code style="color: var(--dash-green); font-family: var(--font-mono);">BF16 Native</code></td>
+                      <td><span class="status-pill training"><i class="fa-solid fa-arrows-rotate fa-spin" style="font-size: 8px;"></i> Fine-Tuning</span></td>
+                      <td><span style="font-family: var(--font-mono); color: var(--dash-cyan);">9.4ms</span></td>
+                      <td>
+                        <a href="404.html" class="action-icon-btn" title="Inspect Metrics"><i class="fa-regular fa-chart-bar"></i></a>
+                        <a href="404.html" class="action-icon-btn danger" title="Pause Checkpoint"><i class="fa-solid fa-pause"></i></a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+        </section>
+
+        <!-- ══════════════════════════════════════════
+             VIEW 2: GPU CLUSTERS & NODES
+        ══════════════════════════════════════════ -->
+        <section class="dash-view-pane" id="view-clusters">
+          <div class="dash-page-header">
+            <div class="page-title-wrap">
+              <h1><i class="fa-solid fa-microchip" style="color: var(--dash-cyan);"></i> GPU Cluster &amp; <span class="title-gradient">Node Orchestration</span></h1>
+              <p>Hardware telemetry, Infiniband 3.2 Tbps fabric interconnects, thermal telemetry, and dynamic compute provisioning.</p>
+            </div>
+            <div class="header-action-group">
+              <a href="404.html" class="btn-secondary-cyber">
+                <i class="fa-solid fa-arrows-rotate"></i> Sync Fabric
+              </a>
+              <a href="404.html" class="topbar-action-btn">
+                <i class="fa-solid fa-plus"></i>
+                <span>PROVISION RACK</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Cluster KPI Summary Matrix -->
+          <div class="kpi-grid" style="margin-bottom: 2rem;">
+            <div class="kpi-card">
+              <div class="kpi-top-row">
+                <span class="kpi-label">Active GPU Nodes</span>
+                <div class="kpi-icon-wrap cyan"><i class="fa-solid fa-microchip"></i></div>
+              </div>
+              <div class="kpi-value-row">
+                <span class="kpi-number">512 <span style="font-size: 0.9rem; color: var(--dash-text-muted);">/ 576</span></span>
+                <span class="kpi-trend positive"><i class="fa-solid fa-circle-check"></i> 88.9% Util</span>
+              </div>
+              <div class="kpi-subtext">H100 SXM5 80GB VRAM Pods</div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-top-row">
+                <span class="kpi-label">Fabric Throughput</span>
+                <div class="kpi-icon-wrap blue"><i class="fa-solid fa-network-wired"></i></div>
+              </div>
+              <div class="kpi-value-row">
+                <span class="kpi-number">3.2 Tbps</span>
+                <span class="kpi-trend positive"><i class="fa-solid fa-arrow-up"></i> NVLink 4.0</span>
+              </div>
+              <div class="kpi-subtext">Non-blocking fat-tree spine</div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-top-row">
+                <span class="kpi-label">Avg Thermal Load</span>
+                <div class="kpi-icon-wrap green"><i class="fa-solid fa-temperature-half"></i></div>
+              </div>
+              <div class="kpi-value-row">
+                <span class="kpi-number">53.2°C</span>
+                <span class="kpi-trend positive"><i class="fa-solid fa-snowflake"></i> Liquid-Cooled</span>
+              </div>
+              <div class="kpi-subtext">Direct-to-chip CDU delta &lt; 2°C</div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-top-row">
+                <span class="kpi-label">Power Consumption</span>
+                <div class="kpi-icon-wrap purple"><i class="fa-solid fa-bolt"></i></div>
+              </div>
+              <div class="kpi-value-row">
+                <span class="kpi-number">384 kW</span>
+                <span class="kpi-trend positive"><i class="fa-solid fa-leaf"></i> PUE 1.08</span>
+              </div>
+              <div class="kpi-subtext">100% Sovereign Hydro &amp; Solar</div>
+            </div>
+          </div>
+
+          <!-- Enterprise Clusters Table Card -->
+          <div class="dash-card" style="margin-bottom: 2rem;">
+            <div class="dash-card-header">
+              <div class="dash-card-title"><i class="fa-solid fa-list-check"></i> Enterprise Dedicated Clusters</div>
+              <div class="card-header-actions">
+                <span class="status-pill active">512 H100 SXM5 / 4 Global Regions</span>
+                <a href="404.html" class="btn-secondary-cyber" style="padding: 0.35rem 0.75rem; font-size: 0.75rem;">
+                  <i class="fa-solid fa-filter"></i> Filter
+                </a>
+              </div>
+            </div>
+            <div class="dash-card-body" style="padding: 0;">
+              <div class="table-responsive">
+                <table class="cyber-table">
+                  <thead>
+                    <tr>
+                      <th>Cluster ID</th>
+                      <th>Region &amp; DC</th>
+                      <th>GPU Units</th>
+                      <th>Memory Allocation</th>
+                      <th>Thermal Status</th>
+                      <th>Power State</th>
+                      <th>Fabric Bandwidth</th>
+                      <th style="text-align: right;">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <div class="model-name-cell">
+                          <div class="model-icon-box"><i class="fa-solid fa-server"></i></div>
+                          <div>
+                            <div><strong>Alpha-Cluster-01</strong></div>
+                            <span style="font-size: 0.72rem; color: var(--dash-text-dim);">Rack #US-VA-01..16</span>
+                          </div>
+                        </div>
+                      </td>
+                      <td>US-East (N. Virginia, Equinix DC2)</td>
+                      <td><code style="color: var(--dash-cyan); font-family: var(--font-mono);">128x H100 SXM5</code></td>
+                      <td>1,280 GB HBM3</td>
+                      <td><span style="color: var(--dash-green); font-family: var(--font-mono);"><i class="fa-solid fa-circle" style="font-size: 6px;"></i> 52°C • Normal</span></td>
+                      <td><span class="status-pill active"><i class="fa-solid fa-bolt"></i> Operational</span></td>
+                      <td><span style="color: var(--dash-cyan); font-family: var(--font-mono);">3.2 Tbps NVLink</span></td>
+                      <td style="text-align: right;">
+                        <a href="404.html" class="action-icon-btn" title="Restart Telemetry Probe"><i class="fa-solid fa-arrows-rotate"></i></a>
+                        <a href="404.html" class="action-icon-btn" title="Rebalance Workloads"><i class="fa-solid fa-sliders"></i></a>
+                        <a href="404.html" class="action-icon-btn" title="Node Diagnostics"><i class="fa-solid fa-microchip"></i></a>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <div class="model-name-cell">
+                          <div class="model-icon-box" style="background: rgba(79, 172, 254, 0.15); color: var(--dash-blue);"><i class="fa-solid fa-server"></i></div>
+                          <div>
+                            <div><strong>Phoenix-Cluster-02</strong></div>
+                            <span style="font-size: 0.72rem; color: var(--dash-text-dim);">Rack #US-OR-17..32</span>
+                          </div>
+                        </div>
+                      </td>
+                      <td>US-West (Oregon, Hillsboro Pod 4)</td>
+                      <td><code style="color: var(--dash-cyan); font-family: var(--font-mono);">128x H100 SXM5</code></td>
+                      <td>1,280 GB HBM3</td>
+                      <td><span style="color: var(--dash-green); font-family: var(--font-mono);"><i class="fa-solid fa-circle" style="font-size: 6px;"></i> 54°C • Normal</span></td>
+                      <td><span class="status-pill active"><i class="fa-solid fa-bolt"></i> Operational</span></td>
+                      <td><span style="color: var(--dash-cyan); font-family: var(--font-mono);">3.2 Tbps NVLink</span></td>
+                      <td style="text-align: right;">
+                        <a href="404.html" class="action-icon-btn" title="Restart Telemetry Probe"><i class="fa-solid fa-arrows-rotate"></i></a>
+                        <a href="404.html" class="action-icon-btn" title="Rebalance Workloads"><i class="fa-solid fa-sliders"></i></a>
+                        <a href="404.html" class="action-icon-btn" title="Node Diagnostics"><i class="fa-solid fa-microchip"></i></a>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <div class="model-name-cell">
+                          <div class="model-icon-box" style="background: rgba(138, 43, 226, 0.15); color: #ba75ff;"><i class="fa-solid fa-server"></i></div>
+                          <div>
+                            <div><strong>Tokyo-Edge-03</strong></div>
+                            <span style="font-size: 0.72rem; color: var(--dash-text-dim);">Rack #AP-TY-33..48</span>
+                          </div>
+                        </div>
+                      </td>
+                      <td>AP-Northeast (Tokyo, Otemachi DC1)</td>
+                      <td><code style="color: var(--dash-cyan); font-family: var(--font-mono);">128x H100 SXM5</code></td>
+                      <td>1,280 GB HBM3</td>
+                      <td><span style="color: var(--dash-green); font-family: var(--font-mono);"><i class="fa-solid fa-circle" style="font-size: 6px;"></i> 49°C • Cool</span></td>
+                      <td><span class="status-pill active"><i class="fa-solid fa-bolt"></i> Operational</span></td>
+                      <td><span style="color: var(--dash-cyan); font-family: var(--font-mono);">3.2 Tbps NVLink</span></td>
+                      <td style="text-align: right;">
+                        <a href="404.html" class="action-icon-btn" title="Restart Telemetry Probe"><i class="fa-solid fa-arrows-rotate"></i></a>
+                        <a href="404.html" class="action-icon-btn" title="Rebalance Workloads"><i class="fa-solid fa-sliders"></i></a>
+                        <a href="404.html" class="action-icon-btn" title="Node Diagnostics"><i class="fa-solid fa-microchip"></i></a>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <div class="model-name-cell">
+                          <div class="model-icon-box" style="background: rgba(255, 183, 3, 0.15); color: var(--dash-amber);"><i class="fa-solid fa-server"></i></div>
+                          <div>
+                            <div><strong>Frankfurt-VPC-04</strong></div>
+                            <span style="font-size: 0.72rem; color: var(--dash-text-dim);">Rack #EU-FRA-49..64</span>
+                          </div>
+                        </div>
+                      </td>
+                      <td>EU-Central (Frankfurt, Interxion FRA2)</td>
+                      <td><code style="color: var(--dash-cyan); font-family: var(--font-mono);">128x H100 SXM5</code></td>
+                      <td>1,280 GB HBM3</td>
+                      <td><span style="color: var(--dash-amber); font-family: var(--font-mono);"><i class="fa-solid fa-circle" style="font-size: 6px;"></i> 58°C • Warm</span></td>
+                      <td><span class="status-pill paused"><i class="fa-solid fa-wrench"></i> Maintenance</span></td>
+                      <td><span style="color: var(--dash-amber); font-family: var(--font-mono);">1.6 Tbps Degraded</span></td>
+                      <td style="text-align: right;">
+                        <a href="404.html" class="action-icon-btn" title="Restart Node"><i class="fa-solid fa-power-off"></i></a>
+                        <a href="404.html" class="action-icon-btn" title="Set Fans 100%"><i class="fa-solid fa-fan"></i></a>
+                        <a href="404.html" class="action-icon-btn" title="Inspect Telemetry"><i class="fa-solid fa-wrench"></i></a>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <div class="model-name-cell">
+                          <div class="model-icon-box" style="background: rgba(0, 245, 155, 0.15); color: var(--dash-green);"><i class="fa-solid fa-server"></i></div>
+                          <div>
+                            <div><strong>Singapore-Staging-05</strong></div>
+                            <span style="font-size: 0.72rem; color: var(--dash-text-dim);">Rack #AP-SG-65..72</span>
+                          </div>
+                        </div>
+                      </td>
+                      <td>AP-Southeast (Singapore, Jurong DC)</td>
+                      <td><code style="color: var(--dash-cyan); font-family: var(--font-mono);">64x H100 SXM5</code></td>
+                      <td>640 GB HBM3</td>
+                      <td><span style="color: var(--dash-green); font-family: var(--font-mono);"><i class="fa-solid fa-circle" style="font-size: 6px;"></i> 48°C • Cool</span></td>
+                      <td><span class="status-pill active"><i class="fa-solid fa-bolt"></i> Operational</span></td>
+                      <td><span style="color: var(--dash-cyan); font-family: var(--font-mono);">3.2 Tbps NVLink</span></td>
+                      <td style="text-align: right;">
+                        <a href="404.html" class="action-icon-btn" title="Restart Telemetry Probe"><i class="fa-solid fa-arrows-rotate"></i></a>
+                        <a href="404.html" class="action-icon-btn" title="Rebalance Workloads"><i class="fa-solid fa-sliders"></i></a>
+                        <a href="404.html" class="action-icon-btn" title="Node Diagnostics"><i class="fa-solid fa-microchip"></i></a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section: Live Rack Topology & Infiniband Fabric Matrix -->
+          <div class="dash-grid-equal" style="margin-bottom: 2rem;">
+            
+            <div class="dash-card">
+              <div class="dash-card-header">
+                <div class="dash-card-title"><i class="fa-solid fa-network-wired"></i> Infiniband Fabric Interconnect Matrix</div>
+                <span class="status-pill active"><i class="fa-solid fa-circle" style="font-size: 6px;"></i> Quantum-2 InfiniBand</span>
+              </div>
+              <div class="dash-card-body">
+                <div style="display: flex; flex-direction: column; gap: 1.1rem;">
+                  <div>
+                    <div style="display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 4px;">
+                      <span>Spine Switch Fabric (400Gb/s QSFP-DD)</span>
+                      <strong style="color: var(--dash-cyan); font-family: var(--font-mono);">3.12 Tbps / 97.5% Line Rate</strong>
+                    </div>
+                    <div class="rack-bar-wrap"><div class="rack-bar-fill" style="width: 97%;"></div></div>
+                  </div>
+
+                  <div>
+                    <div style="display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 4px;">
+                      <span>GPUDirect RDMA Zero-Copy Transfer</span>
+                      <strong style="color: var(--dash-green); font-family: var(--font-mono);">&lt; 1.2 &mu;s Latency</strong>
+                    </div>
+                    <div class="rack-bar-wrap"><div class="rack-bar-fill" style="width: 89%; background: var(--dash-green);"></div></div>
+                  </div>
+
+                  <div>
+                    <div style="display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 4px;">
+                      <span>Optical Link Budget Margin</span>
+                      <strong style="color: #ba75ff; font-family: var(--font-mono);">+4.8 dB (Optimal)</strong>
+                    </div>
+                    <div class="rack-bar-wrap"><div class="rack-bar-fill" style="width: 82%; background: #ba75ff;"></div></div>
+                  </div>
+
+                  <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 0.5rem; border-top: 1px solid rgba(255,255,255,0.06); font-size: 0.78rem;">
+                    <span style="color: var(--dash-text-muted);">Fabric Congestion Control: <strong>ECN Enforced</strong></span>
+                    <a href="404.html" class="btn-secondary-cyber" style="padding: 0.3rem 0.7rem; font-size: 0.75rem;">
+                      <i class="fa-solid fa-chart-line"></i> Fabric Traces
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="dash-card">
+              <div class="dash-card-header">
+                <div class="dash-card-title"><i class="fa-solid fa-temperature-arrow-down"></i> Liquid Cooling &amp; Power Distribution</div>
+                <span class="status-pill active"><i class="fa-solid fa-circle" style="font-size: 6px;"></i> Closed-Loop CDU</span>
+              </div>
+              <div class="dash-card-body">
+                <div style="display: flex; flex-direction: column; gap: 1.1rem;">
+                  <div>
+                    <div style="display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 4px;">
+                      <span>Coolant Supply Inflow Temp</span>
+                      <strong style="color: var(--dash-green); font-family: var(--font-mono);">24.5°C (Target: 22-26°C)</strong>
+                    </div>
+                    <div class="rack-bar-wrap"><div class="rack-bar-fill" style="width: 65%; background: var(--dash-green);"></div></div>
+                  </div>
+
+                  <div>
+                    <div style="display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 4px;">
+                      <span>Flow Rate (Cooling Distribution Unit)</span>
+                      <strong style="color: var(--dash-cyan); font-family: var(--font-mono);">142 L/min (Nominal)</strong>
+                    </div>
+                    <div class="rack-bar-wrap"><div class="rack-bar-fill" style="width: 78%;"></div></div>
+                  </div>
+
+                  <div>
+                    <div style="display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 4px;">
+                      <span>Rack PDU Redundancy (N+1 Phase)</span>
+                      <strong style="color: var(--dash-cyan); font-family: var(--font-mono);">100% Dual-Feed Sync</strong>
+                    </div>
+                    <div class="rack-bar-wrap"><div class="rack-bar-fill" style="width: 100%;"></div></div>
+                  </div>
+
+                  <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 0.5rem; border-top: 1px solid rgba(255,255,255,0.06); font-size: 0.78rem;">
+                    <span style="color: var(--dash-text-muted);">Thermal Mitigation Mode: <strong>Dynamic Adaptive</strong></span>
+                    <a href="404.html" class="btn-secondary-cyber" style="padding: 0.3rem 0.7rem; font-size: 0.75rem;">
+                      <i class="fa-solid fa-fan"></i> Adjust Pumps
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ══════════════════════════════════════════
+             VIEW 3: MODEL REGISTRY & FINE-TUNING
+        ══════════════════════════════════════════ -->
+        <section class="dash-view-pane" id="view-models">
+          <div class="dash-page-header">
+            <div class="page-title-wrap">
+              <h1><i class="fa-solid fa-brain" style="color: var(--dash-cyan);"></i> Model Registry &amp; <span class="title-gradient">FP8 Quantization</span></h1>
+              <p>Sovereign weights repository, LoRA fine-tuning jobs, FP8/INT4 quantization profiles, and checkpoint artifacts.</p>
+            </div>
+            <div class="header-action-group">
+              <a href="404.html" class="btn-secondary-cyber">
+                <i class="fa-solid fa-arrows-rotate"></i> Sync Weights
+              </a>
+              <a href="404.html" class="topbar-action-btn">
+                <i class="fa-solid fa-cloud-arrow-up"></i>
+                <span>REGISTER NEW WEIGHTS</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Model Registry KPI Summary Matrix -->
+          <div class="kpi-grid" style="margin-bottom: 2rem;">
+            <div class="kpi-card">
+              <div class="kpi-top-row">
+                <span class="kpi-label">Active Sovereign Models</span>
+                <div class="kpi-icon-wrap cyan"><i class="fa-solid fa-brain"></i></div>
+              </div>
+              <div class="kpi-value-row">
+                <span class="kpi-number">12 <span style="font-size: 0.9rem; color: var(--dash-text-muted);">/ 16 Slots</span></span>
+                <span class="kpi-trend positive"><i class="fa-solid fa-circle-check"></i> 100% Verified</span>
+              </div>
+              <div class="kpi-subtext">Air-Gapped Checkpoint Enclaves</div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-top-row">
+                <span class="kpi-label">FP8 Quantization Gain</span>
+                <div class="kpi-icon-wrap blue"><i class="fa-solid fa-bolt"></i></div>
+              </div>
+              <div class="kpi-value-row">
+                <span class="kpi-number">2.4x <span style="font-size: 0.9rem; color: var(--dash-text-muted);">Speedup</span></span>
+                <span class="kpi-trend positive"><i class="fa-solid fa-arrow-up"></i> 99.8% Acc</span>
+              </div>
+              <div class="kpi-subtext">Transformer Engine SXM5 Native</div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-top-row">
+                <span class="kpi-label">Active LoRA Jobs</span>
+                <div class="kpi-icon-wrap purple"><i class="fa-solid fa-sliders"></i></div>
+              </div>
+              <div class="kpi-value-row">
+                <span class="kpi-number">3 <span style="font-size: 0.9rem; color: var(--dash-text-muted);">Running</span></span>
+                <span class="kpi-trend positive"><i class="fa-solid fa-arrows-rotate fa-spin"></i> Epoch 4/5</span>
+              </div>
+              <div class="kpi-subtext">DeepSpeed ZeRO-3 Distributed</div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-top-row">
+                <span class="kpi-label">KV-Cache Utilization</span>
+                <div class="kpi-icon-wrap green"><i class="fa-solid fa-microchip"></i></div>
+              </div>
+              <div class="kpi-value-row">
+                <span class="kpi-number">74.6%</span>
+                <span class="kpi-trend positive"><i class="fa-solid fa-circle-check"></i> PagedAttention</span>
+              </div>
+              <div class="kpi-subtext">128k Token Context Windows</div>
+            </div>
+          </div>
+
+          <!-- Active Models Registry Table -->
+          <div class="dash-card" style="margin-bottom: 2rem;">
+            <div class="dash-card-header">
+              <div class="dash-card-title">
+                <i class="fa-solid fa-cube"></i>
+                <span>Deployed Model Weights &amp; Quantization Matrix</span>
+              </div>
+              <div class="card-header-actions">
+                <span class="status-pill active">12 Production Replicas</span>
+                <a href="404.html" class="btn-secondary-cyber" style="padding: 0.35rem 0.75rem; font-size: 0.75rem;">
+                  <i class="fa-solid fa-rotate"></i> Refresh
+                </a>
+              </div>
+            </div>
+            <div class="dash-card-body" style="padding: 0;">
+              <div class="table-responsive">
+                <table class="cyber-table">
+                  <thead>
+                    <tr>
+                      <th>Model Identifier</th>
+                      <th>Quant Format</th>
+                      <th>Context Window</th>
+                      <th>Weights Size</th>
+                      <th>Avg Latency</th>
+                      <th>Status</th>
+                      <th style="text-align: right;">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <div class="model-name-cell">
+                          <div class="model-icon-box"><i class="fa-solid fa-bolt"></i></div>
+                          <div>
+                            <div><strong>Stackly-LLM-70B</strong></div>
+                            <span style="font-size: 0.72rem; color: var(--dash-text-dim);">Production v4.2 • Sovereign Weights</span>
+                          </div>
+                        </div>
+                      </td>
+                      <td><code style="color: var(--dash-cyan); font-family: var(--font-mono);">FP8 SXM5</code></td>
+                      <td><span style="font-family: var(--font-mono);">128k Tokens</span></td>
+                      <td>39.2 GB VRAM</td>
+                      <td><span style="font-family: var(--font-mono); color: var(--dash-green);">5.8ms</span></td>
+                      <td><span class="status-pill active"><i class="fa-solid fa-circle" style="font-size: 6px;"></i> Active</span></td>
+                      <td style="text-align: right;">
+                        <a href="404.html" class="action-icon-btn" title="Inspect Weights"><i class="fa-regular fa-eye"></i></a>
+                        <a href="404.html" class="action-icon-btn" title="Scale Replicas"><i class="fa-solid fa-sliders"></i></a>
+                        <a href="404.html" class="action-icon-btn" title="Export Checkpoint"><i class="fa-solid fa-download"></i></a>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <div class="model-name-cell">
+                          <div class="model-icon-box" style="background: rgba(138,43,226,0.15); color: #ba75ff;"><i class="fa-solid fa-eye"></i></div>
+                          <div>
+                            <div><strong>VisionNeuron-Spatial</strong></div>
+                            <span style="font-size: 0.72rem; color: var(--dash-text-dim);">Multimodal v2 • Omni-Sensor Fusion</span>
+                          </div>
+                        </div>
+                      </td>
+                      <td><code style="color: #ba75ff; font-family: var(--font-mono);">INT4 Tensor</code></td>
+                      <td><span style="font-family: var(--font-mono);">64k Tokens</span></td>
+                      <td>18.4 GB VRAM</td>
+                      <td><span style="font-family: var(--font-mono); color: var(--dash-green);">4.2ms</span></td>
+                      <td><span class="status-pill active"><i class="fa-solid fa-circle" style="font-size: 6px;"></i> Active</span></td>
+                      <td style="text-align: right;">
+                        <a href="404.html" class="action-icon-btn" title="Inspect Weights"><i class="fa-regular fa-eye"></i></a>
+                        <a href="404.html" class="action-icon-btn" title="Scale Replicas"><i class="fa-solid fa-sliders"></i></a>
+                        <a href="404.html" class="action-icon-btn" title="Export Checkpoint"><i class="fa-solid fa-download"></i></a>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <div class="model-name-cell">
+                          <div class="model-icon-box" style="background: rgba(0,245,155,0.15); color: var(--dash-green);"><i class="fa-solid fa-network-wired"></i></div>
+                          <div>
+                            <div><strong>SwarmAgent-Router</strong></div>
+                            <span style="font-size: 0.72rem; color: var(--dash-text-dim);">MoE 8x7B • Sparse Dynamic Routing</span>
+                          </div>
+                        </div>
+                      </td>
+                      <td><code style="color: var(--dash-green); font-family: var(--font-mono);">BF16 Native</code></td>
+                      <td><span style="font-family: var(--font-mono);">32k Tokens</span></td>
+                      <td>48.0 GB VRAM</td>
+                      <td><span style="font-family: var(--font-mono); color: var(--dash-cyan);">9.4ms</span></td>
+                      <td><span class="status-pill training"><i class="fa-solid fa-arrows-rotate fa-spin" style="font-size: 8px;"></i> Fine-Tuning</span></td>
+                      <td style="text-align: right;">
+                        <a href="404.html" class="action-icon-btn" title="Inspect Metrics"><i class="fa-regular fa-chart-bar"></i></a>
+                        <a href="404.html" class="action-icon-btn danger" title="Pause Checkpoint"><i class="fa-solid fa-pause"></i></a>
+                        <a href="404.html" class="action-icon-btn" title="Inspect Weights"><i class="fa-solid fa-sliders"></i></a>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <div class="model-name-cell">
+                          <div class="model-icon-box" style="background: rgba(255,183,3,0.15); color: var(--dash-amber);"><i class="fa-solid fa-code"></i></div>
+                          <div>
+                            <div><strong>Codex-Synthesizer-34B</strong></div>
+                            <span style="font-size: 0.72rem; color: var(--dash-text-dim);">Polyglot AST • Multi-Turn Agentic</span>
+                          </div>
+                        </div>
+                      </td>
+                      <td><code style="color: var(--dash-cyan); font-family: var(--font-mono);">FP8 SXM5</code></td>
+                      <td><span style="font-family: var(--font-mono);">128k Tokens</span></td>
+                      <td>22.5 GB VRAM</td>
+                      <td><span style="font-family: var(--font-mono); color: var(--dash-green);">6.1ms</span></td>
+                      <td><span class="status-pill active"><i class="fa-solid fa-circle" style="font-size: 6px;"></i> Active</span></td>
+                      <td style="text-align: right;">
+                        <a href="404.html" class="action-icon-btn" title="Inspect Weights"><i class="fa-regular fa-eye"></i></a>
+                        <a href="404.html" class="action-icon-btn" title="Scale Replicas"><i class="fa-solid fa-sliders"></i></a>
+                        <a href="404.html" class="action-icon-btn" title="Export Checkpoint"><i class="fa-solid fa-download"></i></a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- Fine-Tuning & Quantization Detail Grids -->
+          <div class="dash-grid-equal" style="margin-bottom: 2rem;">
+            
+            <!-- Fine-Tuning LoRA Curve Card -->
+            <div class="dash-card">
+              <div class="dash-card-header">
+                <div class="dash-card-title"><i class="fa-solid fa-chart-area"></i> Active Fine-Tuning Loss Curve (LoRA)</div>
+                <div class="card-header-actions">
+                  <span class="status-pill training">Epoch 4/5</span>
+                  <a href="404.html" class="action-icon-btn" title="Export Logs"><i class="fa-solid fa-download"></i></a>
+                </div>
+              </div>
+              <div class="dash-card-body">
+                <div style="height: 180px; display: flex; align-items: flex-end; gap: 8px; padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                  <div style="flex: 1; height: 90%; background: rgba(0,242,254,0.3); border-radius: 4px 4px 0 0; position: relative;" title="Epoch 1: Loss 1.84"></div>
+                  <div style="flex: 1; height: 65%; background: rgba(0,242,254,0.45); border-radius: 4px 4px 0 0;" title="Epoch 2: Loss 0.92"></div>
+                  <div style="flex: 1; height: 42%; background: rgba(0,242,254,0.65); border-radius: 4px 4px 0 0;" title="Epoch 3: Loss 0.38"></div>
+                  <div style="flex: 1; height: 22%; background: var(--dash-cyan); border-radius: 4px 4px 0 0; box-shadow: 0 0 10px var(--dash-cyan);" title="Epoch 4: Loss 0.08"></div>
+                  <div style="flex: 1; height: 12%; background: rgba(255,255,255,0.1); border-radius: 4px 4px 0 0; border: 1px dashed var(--dash-cyan);" title="Target: Loss 0.04"></div>
+                </div>
+                <div style="display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 0.72rem; color: var(--dash-text-muted); margin-top: 0.5rem;">
+                  <span>Validation Loss: 0.0821</span>
+                  <span style="color: var(--dash-green);">Gradient Norm: 0.98 (Stable)</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1rem; padding-top: 0.75rem; border-top: 1px solid rgba(255,255,255,0.06);">
+                  <span style="font-size: 0.8rem; color: var(--dash-text-dim);">Checkpoint: <code style="color: var(--dash-cyan);">ckpt-step-8400.pt</code></span>
+                  <a href="404.html" class="btn-secondary-cyber" style="padding: 0.3rem 0.75rem; font-size: 0.75rem;">
+                    <i class="fa-solid fa-sliders"></i> Hyperparameters
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Quantization & Latency Profiles Card -->
+            <div class="dash-card">
+              <div class="dash-card-header">
+                <div class="dash-card-title"><i class="fa-solid fa-sliders"></i> Quantization &amp; Latency Profiles</div>
+                <a href="404.html" class="action-icon-btn" title="Benchmark Engines"><i class="fa-solid fa-gauge-high"></i></a>
+              </div>
+              <div class="dash-card-body">
+                <div style="display: flex; flex-direction: column; gap: 1rem;">
+                  <div>
+                    <div style="display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 4px;">
+                      <span>FP8 Transformer Engine (NVIDIA SXM5)</span>
+                      <strong style="color: var(--dash-cyan);">5.8ms / 99.8% Acc</strong>
+                    </div>
+                    <div class="rack-bar-wrap"><div class="rack-bar-fill" style="width: 96%;"></div></div>
+                  </div>
+                  <div>
+                    <div style="display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 4px;">
+                      <span>INT4 GPTQ Weight-Only</span>
+                      <strong style="color: #ba75ff;">3.9ms / 98.6% Acc</strong>
+                    </div>
+                    <div class="rack-bar-wrap"><div class="rack-bar-fill" style="width: 88%; background: #ba75ff;"></div></div>
+                  </div>
+                  <div>
+                    <div style="display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 4px;">
+                      <span>BF16 Native Sovereign Weights</span>
+                      <strong style="color: var(--dash-green);">11.2ms / 100% Acc</strong>
+                    </div>
+                    <div class="rack-bar-wrap"><div class="rack-bar-fill" style="width: 72%; background: var(--dash-green);"></div></div>
+                  </div>
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 0.2rem; padding-top: 0.75rem; border-top: 1px solid rgba(255,255,255,0.06);">
+                    <span style="font-size: 0.8rem; color: var(--dash-text-dim);">Engine: TensorRT-LLM v0.9.0</span>
+                    <a href="404.html" class="btn-secondary-cyber" style="padding: 0.3rem 0.75rem; font-size: 0.75rem;">
+                      <i class="fa-solid fa-microchip"></i> Run Precision Eval
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ══════════════════════════════════════════
+             VIEW 4: AUTONOMOUS SWARMS
+        ══════════════════════════════════════════ -->
+        <section class="dash-view-pane" id="view-swarms">
+          <div class="dash-page-header">
+            <div class="page-title-wrap">
+              <h1><i class="fa-solid fa-network-wired" style="color: var(--dash-cyan);"></i> Autonomous Swarm <span class="title-gradient">Orchestration</span></h1>
+              <p>Multi-agent cognitive loops, asynchronous task dispatching, Byzantine fault-tolerant voting, and real-time swarm telemetry.</p>
+            </div>
+            <div class="header-action-group">
+              <a href="404.html" class="btn-secondary-cyber">
+                <i class="fa-solid fa-arrows-rotate"></i> Sync Swarm Quorum
+              </a>
+              <a href="404.html" class="topbar-action-btn">
+                <i class="fa-solid fa-bolt"></i>
+                <span>DISPATCH SWARM TASK</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Swarm KPI Summary Matrix -->
+          <div class="kpi-grid" style="margin-bottom: 2rem;">
+            <div class="kpi-card">
+              <div class="kpi-top-row">
+                <span class="kpi-label">Active Agents</span>
+                <div class="kpi-icon-wrap cyan"><i class="fa-solid fa-robot"></i></div>
+              </div>
+              <div class="kpi-value-row">
+                <span class="kpi-number">1,428 <span style="font-size: 0.9rem; color: var(--dash-text-muted);">/ 2,048</span></span>
+                <span class="kpi-trend positive"><i class="fa-solid fa-arrow-up"></i> +84 Online</span>
+              </div>
+              <div class="kpi-subtext">Across 42 Autonomous Pipelines</div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-top-row">
+                <span class="kpi-label">Consensus Latency</span>
+                <div class="kpi-icon-wrap green"><i class="fa-solid fa-handshake"></i></div>
+              </div>
+              <div class="kpi-value-row">
+                <span class="kpi-number">28ms</span>
+                <span class="kpi-trend positive"><i class="fa-solid fa-check"></i> Quorum Met</span>
+              </div>
+              <div class="kpi-subtext">Multi-agent voting verification</div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-top-row">
+                <span class="kpi-label">Task Completion Rate</span>
+                <div class="kpi-icon-wrap purple"><i class="fa-solid fa-check-double"></i></div>
+              </div>
+              <div class="kpi-value-row">
+                <span class="kpi-number">99.99%</span>
+                <span class="kpi-trend positive"><i class="fa-solid fa-shield-check"></i> 0 Faults</span>
+              </div>
+              <div class="kpi-subtext">Zero failed execution loops</div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-top-row">
+                <span class="kpi-label">Cognitive Iterations / Sec</span>
+                <div class="kpi-icon-wrap blue"><i class="fa-solid fa-microchip"></i></div>
+              </div>
+              <div class="kpi-value-row">
+                <span class="kpi-number">14.8k <span style="font-size: 0.9rem; color: var(--dash-text-muted);">Loops/s</span></span>
+                <span class="kpi-trend positive"><i class="fa-solid fa-arrow-up"></i> +18.4%</span>
+              </div>
+              <div class="kpi-subtext">Non-blocking parallel subtasks</div>
+            </div>
+          </div>
+
+          <!-- Active Swarms Fleet Table -->
+          <div class="dash-card" style="margin-bottom: 2rem;">
+            <div class="dash-card-header">
+              <div class="dash-card-title">
+                <i class="fa-solid fa-sitemap"></i>
+                <span>Active Swarm Pipeline Deployments</span>
+              </div>
+              <div class="card-header-actions">
+                <span class="status-pill active">42 Pipelines Operational</span>
+                <a href="404.html" class="btn-secondary-cyber" style="padding: 0.35rem 0.75rem; font-size: 0.75rem;">
+                  <i class="fa-solid fa-filter"></i> Filter
+                </a>
+              </div>
+            </div>
+            <div class="dash-card-body" style="padding: 0;">
+              <div class="table-responsive">
+                <table class="cyber-table">
+                  <thead>
+                    <tr>
+                      <th>Swarm Pipeline</th>
+                      <th>Agent Topology</th>
+                      <th>Assigned Pods</th>
+                      <th>Consensus Protocol</th>
+                      <th>Active Subtasks</th>
+                      <th>Status</th>
+                      <th style="text-align: right;">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <div class="model-name-cell">
+                          <div class="model-icon-box"><i class="fa-solid fa-dna"></i></div>
+                          <div>
+                            <div><strong>Alpha-Research-Swarm</strong></div>
+                            <span style="font-size: 0.72rem; color: var(--dash-text-dim);">Cognitive Synthesis • MoE 8x7B</span>
+                          </div>
+                        </div>
+                      </td>
+                      <td><code style="color: var(--dash-cyan); font-family: var(--font-mono);">Hierarchical (64 Nodes)</code></td>
+                      <td>Alpha-Cluster-01 (VA)</td>
+                      <td><span style="color: var(--dash-green); font-family: var(--font-mono);">Raft Quorum (5/5)</span></td>
+                      <td><span style="font-family: var(--font-mono); color: var(--dash-cyan);">1,842 Tasks/min</span></td>
+                      <td><span class="status-pill active"><i class="fa-solid fa-circle" style="font-size: 6px;"></i> Active</span></td>
+                      <td style="text-align: right;">
+                        <a href="404.html" class="action-icon-btn" title="Inspect Swarm"><i class="fa-regular fa-eye"></i></a>
+                        <a href="404.html" class="action-icon-btn" title="Scale Agents"><i class="fa-solid fa-sliders"></i></a>
+                        <a href="404.html" class="action-icon-btn" title="Pause Loop"><i class="fa-solid fa-pause"></i></a>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <div class="model-name-cell">
+                          <div class="model-icon-box" style="background: rgba(138,43,226,0.15); color: #ba75ff;"><i class="fa-solid fa-shield-virus"></i></div>
+                          <div>
+                            <div><strong>Sentinel-Security-Watchdog</strong></div>
+                            <span style="font-size: 0.72rem; color: var(--dash-text-dim);">Zero-Day Intrusion Mitigation</span>
+                          </div>
+                        </div>
+                      </td>
+                      <td><code style="color: #ba75ff; font-family: var(--font-mono);">Decentralized Mesh (128 Nodes)</code></td>
+                      <td>Tokyo-Edge-03 (TY)</td>
+                      <td><span style="color: var(--dash-green); font-family: var(--font-mono);">Byzantine Paxos</span></td>
+                      <td><span style="font-family: var(--font-mono); color: var(--dash-cyan);">8,920 Pings/s</span></td>
+                      <td><span class="status-pill active"><i class="fa-solid fa-circle" style="font-size: 6px;"></i> Active</span></td>
+                      <td style="text-align: right;">
+                        <a href="404.html" class="action-icon-btn" title="Inspect Swarm"><i class="fa-regular fa-eye"></i></a>
+                        <a href="404.html" class="action-icon-btn" title="Scale Agents"><i class="fa-solid fa-sliders"></i></a>
+                        <a href="404.html" class="action-icon-btn" title="Export Telemetry"><i class="fa-solid fa-download"></i></a>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <div class="model-name-cell">
+                          <div class="model-icon-box" style="background: rgba(0,245,155,0.15); color: var(--dash-green);"><i class="fa-solid fa-database"></i></div>
+                          <div>
+                            <div><strong>Vector-Ingest-Synthesizer</strong></div>
+                            <span style="font-size: 0.72rem; color: var(--dash-text-dim);">Real-Time Graph RAG Vectorization</span>
+                          </div>
+                        </div>
+                      </td>
+                      <td><code style="color: var(--dash-green); font-family: var(--font-mono);">Fan-Out / Fan-In (32 Nodes)</code></td>
+                      <td>Phoenix-Cluster-02 (OR)</td>
+                      <td><span style="color: var(--dash-green); font-family: var(--font-mono);">Leader Election Sync</span></td>
+                      <td><span style="font-family: var(--font-mono); color: var(--dash-cyan);">540 Docs/sec</span></td>
+                      <td><span class="status-pill active"><i class="fa-solid fa-circle" style="font-size: 6px;"></i> Active</span></td>
+                      <td style="text-align: right;">
+                        <a href="404.html" class="action-icon-btn" title="Inspect Swarm"><i class="fa-regular fa-eye"></i></a>
+                        <a href="404.html" class="action-icon-btn" title="Scale Agents"><i class="fa-solid fa-sliders"></i></a>
+                        <a href="404.html" class="action-icon-btn" title="Pause Loop"><i class="fa-solid fa-pause"></i></a>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <div class="model-name-cell">
+                          <div class="model-icon-box" style="background: rgba(255,183,3,0.15); color: var(--dash-amber);"><i class="fa-solid fa-code-fork"></i></div>
+                          <div>
+                            <div><strong>Code-Auditor-AutoFix</strong></div>
+                            <span style="font-size: 0.72rem; color: var(--dash-text-dim);">AST Multi-Turn Code Verification</span>
+                          </div>
+                        </div>
+                      </td>
+                      <td><code style="color: var(--dash-cyan); font-family: var(--font-mono);">Ring Buffer (16 Nodes)</code></td>
+                      <td>Singapore-Staging-05 (SG)</td>
+                      <td><span style="color: var(--dash-amber); font-family: var(--font-mono);">Optimistic Concurrency</span></td>
+                      <td><span style="font-family: var(--font-mono); color: var(--dash-amber);">Rebalancing Pods</span></td>
+                      <td><span class="status-pill paused"><i class="fa-solid fa-wrench"></i> Syncing</span></td>
+                      <td style="text-align: right;">
+                        <a href="404.html" class="action-icon-btn" title="Force Sync"><i class="fa-solid fa-arrows-rotate"></i></a>
+                        <a href="404.html" class="action-icon-btn" title="Inspect Telemetry"><i class="fa-solid fa-sliders"></i></a>
+                        <a href="404.html" class="action-icon-btn" title="Restart Pipeline"><i class="fa-solid fa-power-off"></i></a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- Swarm Consensus & Cognitive Loop Metrics -->
+          <div class="dash-grid-equal" style="margin-bottom: 2rem;">
+            
+            <div class="dash-card">
+              <div class="dash-card-header">
+                <div class="dash-card-title"><i class="fa-solid fa-microchip"></i> Agent Consensus &amp; Memory Buffer</div>
+                <span class="status-pill active"><i class="fa-solid fa-circle" style="font-size: 6px;"></i> Quorum Lock 100%</span>
+              </div>
+              <div class="dash-card-body">
+                <div style="display: flex; flex-direction: column; gap: 1.1rem;">
+                  <div>
+                    <div style="display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 4px;">
+                      <span>Shared Embedding Memory Bus (HBM3)</span>
+                      <strong style="color: var(--dash-cyan); font-family: var(--font-mono);">1.18 TB / 92% Allocated</strong>
+                    </div>
+                    <div class="rack-bar-wrap"><div class="rack-bar-fill" style="width: 92%;"></div></div>
+                  </div>
+
+                  <div>
+                    <div style="display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 4px;">
+                      <span>Byzantine Fault Tolerance Threshold</span>
+                      <strong style="color: var(--dash-green); font-family: var(--font-mono);">3f + 1 Met (Zero Anomalies)</strong>
+                    </div>
+                    <div class="rack-bar-wrap"><div class="rack-bar-fill" style="width: 98%; background: var(--dash-green);"></div></div>
+                  </div>
+
+                  <div>
+                    <div style="display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 4px;">
+                      <span>Asynchronous Message Queue Depth</span>
+                      <strong style="color: #ba75ff; font-family: var(--font-mono);">12 items (0.4ms Drain)</strong>
+                    </div>
+                    <div class="rack-bar-wrap"><div class="rack-bar-fill" style="width: 15%; background: #ba75ff;"></div></div>
+                  </div>
+
+                  <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 0.5rem; border-top: 1px solid rgba(255,255,255,0.06); font-size: 0.78rem;">
+                    <span style="color: var(--dash-text-muted);">State Machine: <strong>RAFT Consensus v2.4</strong></span>
+                    <a href="404.html" class="btn-secondary-cyber" style="padding: 0.3rem 0.7rem; font-size: 0.75rem;">
+                      <i class="fa-solid fa-terminal"></i> Consensus Logs
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="dash-card">
+              <div class="dash-card-header">
+                <div class="dash-card-title"><i class="fa-solid fa-list-check"></i> Real-Time Swarm Task Queue</div>
+                <a href="404.html" class="action-icon-btn" title="Purge Completed Tasks"><i class="fa-solid fa-trash-can"></i></a>
+              </div>
+              <div class="dash-card-body">
+                <div style="display: flex; flex-direction: column; gap: 0.85rem; font-size: 0.84rem;">
+                  <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 0.5rem;">
+                    <div>
+                      <div><strong>#TASK-9921:</strong> Financial 10-K Cross-Doc Reconciliation</div>
+                      <span style="font-size: 0.72rem; color: var(--dash-text-dim);">Swarm: Alpha-Research • 32 Agents Assigned</span>
+                    </div>
+                    <span class="status-pill active"><i class="fa-solid fa-arrows-rotate fa-spin"></i> 94% Done</span>
+                  </div>
+
+                  <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 0.5rem;">
+                    <div>
+                      <div><strong>#TASK-9922:</strong> Real-Time VPC BGP Anomaly Classification</div>
+                      <span style="font-size: 0.72rem; color: var(--dash-text-dim);">Swarm: Sentinel-Security • 64 Agents Assigned</span>
+                    </div>
+                    <span class="status-pill active"><i class="fa-solid fa-arrows-rotate fa-spin"></i> Ingesting</span>
+                  </div>
+
+                  <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 0.5rem;">
+                    <div>
+                      <div><strong>#TASK-9923:</strong> AST Python-to-Rust Microservice Transpilation</div>
+                      <span style="font-size: 0.72rem; color: var(--dash-text-dim);">Swarm: Code-Auditor • 16 Agents Assigned</span>
+                    </div>
+                    <span class="status-pill active"><i class="fa-solid fa-circle-check"></i> Verified</span>
+                  </div>
+
+                  <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 0.25rem;">
+                    <span style="font-size: 0.78rem; color: var(--dash-text-muted);">Queue latency: <strong>&lt; 1.4ms</strong></span>
+                    <a href="404.html" class="btn-secondary-cyber" style="padding: 0.3rem 0.7rem; font-size: 0.75rem;">
+                      <i class="fa-solid fa-plus"></i> Enqueue Task
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ══════════════════════════════════════════
+             VIEW 5: SECURITY ENCLAVES & FIREWALL
+        ══════════════════════════════════════════ -->
+        <section class="dash-view-pane" id="view-security">
+          <div class="dash-page-header">
+            <div class="page-title-wrap">
+              <h1><i class="fa-solid fa-shield-halved" style="color: var(--dash-cyan);"></i> Zero-Trust Enclaves &amp; <span class="title-gradient">VPC Firewall</span></h1>
+              <p>Cryptographic hardware isolation, egress monitoring, eBPF packet inspection, and real-time intrusion mitigation.</p>
+            </div>
+            <div class="header-action-group">
+              <a href="404.html" class="btn-secondary-cyber">
+                <i class="fa-solid fa-shield-virus"></i> Run Security Audit
+              </a>
+              <a href="404.html" class="topbar-action-btn">
+                <i class="fa-solid fa-plus"></i>
+                <span>CREATE VPC POLICY</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Security KPI Summary Matrix -->
+          <div class="kpi-grid" style="margin-bottom: 2rem;">
+            <div class="kpi-card">
+              <div class="kpi-top-row">
+                <span class="kpi-label">Active Air-Gapped Enclaves</span>
+                <div class="kpi-icon-wrap cyan"><i class="fa-solid fa-lock"></i></div>
+              </div>
+              <div class="kpi-value-row">
+                <span class="kpi-number">8 <span style="font-size: 0.9rem; color: var(--dash-text-muted);">/ 8 Enclaves</span></span>
+                <span class="kpi-trend positive"><i class="fa-solid fa-circle-check"></i> 100% Isolated</span>
+              </div>
+              <div class="kpi-subtext">Hardware AMD SEV-SNP &amp; Intel TDX</div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-top-row">
+                <span class="kpi-label">Intrusion Attacks Blocked</span>
+                <div class="kpi-icon-wrap green"><i class="fa-solid fa-shield-check"></i></div>
+              </div>
+              <div class="kpi-value-row">
+                <span class="kpi-number">0 <span style="font-size: 0.9rem; color: var(--dash-text-muted);">Breaches</span></span>
+                <span class="kpi-trend positive"><i class="fa-solid fa-check"></i> 14,890 Filtered</span>
+              </div>
+              <div class="kpi-subtext">Real-time edge eBPF DDoS filter</div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-top-row">
+                <span class="kpi-label">Cryptographic In-Flight Hash</span>
+                <div class="kpi-icon-wrap purple"><i class="fa-solid fa-key"></i></div>
+              </div>
+              <div class="kpi-value-row">
+                <span class="kpi-number">AES-256 <span style="font-size: 0.9rem; color: var(--dash-text-muted);">GCM</span></span>
+                <span class="kpi-trend positive"><i class="fa-solid fa-lock"></i> TLS 1.3 mTLS</span>
+              </div>
+              <div class="kpi-subtext">Quantum-safe lattice key rotation</div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-top-row">
+                <span class="kpi-label">Hardware FIPS Compliance</span>
+                <div class="kpi-icon-wrap blue"><i class="fa-solid fa-certificate"></i></div>
+              </div>
+              <div class="kpi-value-row">
+                <span class="kpi-number">FIPS 140-3</span>
+                <span class="kpi-trend positive"><i class="fa-solid fa-circle-check"></i> Level 4 HSM</span>
+              </div>
+              <div class="kpi-subtext">Zero persistent weight leakage</div>
+            </div>
+          </div>
+
+          <!-- VPC Security Enclaves & Firewall Rules Table -->
+          <div class="dash-card" style="margin-bottom: 2rem;">
+            <div class="dash-card-header">
+              <div class="dash-card-title">
+                <i class="fa-solid fa-network-wired"></i>
+                <span>Active VPC Enclave Boundaries &amp; Firewall Gateways</span>
+              </div>
+              <div class="card-header-actions">
+                <span class="status-pill active">8 Active Sovereign Enclaves</span>
+                <a href="404.html" class="btn-secondary-cyber" style="padding: 0.35rem 0.75rem; font-size: 0.75rem;">
+                  <i class="fa-solid fa-arrows-rotate"></i> Refresh Rules
+                </a>
+              </div>
+            </div>
+            <div class="dash-card-body" style="padding: 0;">
+              <div class="table-responsive">
+                <table class="cyber-table">
+                  <thead>
+                    <tr>
+                      <th>Enclave Identifier</th>
+                      <th>Isolated Cluster</th>
+                      <th>Encryption Protocol</th>
+                      <th>Egress Policy</th>
+                      <th>Inspection Latency</th>
+                      <th>Status</th>
+                      <th style="text-align: right;">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <div class="model-name-cell">
+                          <div class="model-icon-box"><i class="fa-solid fa-lock"></i></div>
+                          <div>
+                            <div><strong>VPC-Enclave-Sovereign-01</strong></div>
+                            <span style="font-size: 0.72rem; color: var(--dash-text-dim);">CIDR: 10.240.0.0/16 • Air-Gapped</span>
+                          </div>
+                        </div>
+                      </td>
+                      <td>Alpha-Cluster-01 (US-East)</td>
+                      <td><code style="color: var(--dash-cyan); font-family: var(--font-mono);">AES-256-GCM + Kyber-1024</code></td>
+                      <td><span class="status-pill active"><i class="fa-solid fa-ban"></i> Strict Air-Gap</span></td>
+                      <td><span style="font-family: var(--font-mono); color: var(--dash-green);">&lt; 0.12ms</span></td>
+                      <td><span class="status-pill active"><i class="fa-solid fa-circle" style="font-size: 6px;"></i> Active</span></td>
+                      <td style="text-align: right;">
+                        <a href="404.html" class="action-icon-btn" title="Inspect Enclave"><i class="fa-regular fa-eye"></i></a>
+                        <a href="404.html" class="action-icon-btn" title="Edit Firewall Rules"><i class="fa-solid fa-sliders"></i></a>
+                        <a href="404.html" class="action-icon-btn" title="Export Security Proof"><i class="fa-solid fa-download"></i></a>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <div class="model-name-cell">
+                          <div class="model-icon-box" style="background: rgba(138,43,226,0.15); color: #ba75ff;"><i class="fa-solid fa-shield"></i></div>
+                          <div>
+                            <div><strong>VPC-Enclave-Inference-02</strong></div>
+                            <span style="font-size: 0.72rem; color: var(--dash-text-dim);">CIDR: 10.242.0.0/16 • mTLS Gateway</span>
+                          </div>
+                        </div>
+                      </td>
+                      <td>Phoenix-Cluster-02 (US-West)</td>
+                      <td><code style="color: #ba75ff; font-family: var(--font-mono);">TLS 1.3 Mutual Auth (mTLS)</code></td>
+                      <td><span class="status-pill training"><i class="fa-solid fa-filter"></i> eBPF Inspected</span></td>
+                      <td><span style="font-family: var(--font-mono); color: var(--dash-green);">&lt; 0.18ms</span></td>
+                      <td><span class="status-pill active"><i class="fa-solid fa-circle" style="font-size: 6px;"></i> Active</span></td>
+                      <td style="text-align: right;">
+                        <a href="404.html" class="action-icon-btn" title="Inspect Enclave"><i class="fa-regular fa-eye"></i></a>
+                        <a href="404.html" class="action-icon-btn" title="Edit Firewall Rules"><i class="fa-solid fa-sliders"></i></a>
+                        <a href="404.html" class="action-icon-btn" title="Export Security Proof"><i class="fa-solid fa-download"></i></a>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <div class="model-name-cell">
+                          <div class="model-icon-box" style="background: rgba(0,245,155,0.15); color: var(--dash-green);"><i class="fa-solid fa-fingerprint"></i></div>
+                          <div>
+                            <div><strong>VPC-Enclave-APAC-Tokyo-03</strong></div>
+                            <span style="font-size: 0.72rem; color: var(--dash-text-dim);">CIDR: 10.244.0.0/16 • Sovereign Node</span>
+                          </div>
+                        </div>
+                      </td>
+                      <td>Tokyo-Edge-03 (AP-Northeast)</td>
+                      <td><code style="color: var(--dash-green); font-family: var(--font-mono);">Hardware SEV-SNP Encrypted</code></td>
+                      <td><span class="status-pill active"><i class="fa-solid fa-ban"></i> Strict Air-Gap</span></td>
+                      <td><span style="font-family: var(--font-mono); color: var(--dash-green);">&lt; 0.09ms</span></td>
+                      <td><span class="status-pill active"><i class="fa-solid fa-circle" style="font-size: 6px;"></i> Active</span></td>
+                      <td style="text-align: right;">
+                        <a href="404.html" class="action-icon-btn" title="Inspect Enclave"><i class="fa-regular fa-eye"></i></a>
+                        <a href="404.html" class="action-icon-btn" title="Edit Firewall Rules"><i class="fa-solid fa-sliders"></i></a>
+                        <a href="404.html" class="action-icon-btn" title="Export Security Proof"><i class="fa-solid fa-download"></i></a>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <div class="model-name-cell">
+                          <div class="model-icon-box" style="background: rgba(255,183,3,0.15); color: var(--dash-amber);"><i class="fa-solid fa-shield-virus"></i></div>
+                          <div>
+                            <div><strong>VPC-Enclave-EU-Frankfurt-04</strong></div>
+                            <span style="font-size: 0.72rem; color: var(--dash-text-dim);">CIDR: 10.246.0.0/16 • GDPR Compliant</span>
+                          </div>
+                        </div>
+                      </td>
+                      <td>Frankfurt-VPC-04 (EU-Central)</td>
+                      <td><code style="color: var(--dash-cyan); font-family: var(--font-mono);">AES-256 + Intel TDX Keys</code></td>
+                      <td><span class="status-pill training"><i class="fa-solid fa-rotate"></i> Policy Rotation</span></td>
+                      <td><span style="font-family: var(--font-mono); color: var(--dash-amber);">0.42ms</span></td>
+                      <td><span class="status-pill paused"><i class="fa-solid fa-wrench"></i> Auditing</span></td>
+                      <td style="text-align: right;">
+                        <a href="404.html" class="action-icon-btn" title="Force Policy Sync"><i class="fa-solid fa-arrows-rotate"></i></a>
+                        <a href="404.html" class="action-icon-btn" title="Edit Firewall Rules"><i class="fa-solid fa-sliders"></i></a>
+                        <a href="404.html" class="action-icon-btn" title="Emergency Lock"><i class="fa-solid fa-power-off"></i></a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- Security Enclave Deep-Dive Modules -->
+          <div class="dash-grid-equal" style="margin-bottom: 2rem;">
+            
+            <div class="dash-card">
+              <div class="dash-card-header">
+                <div class="dash-card-title"><i class="fa-solid fa-lock"></i> Air-Gapped Security Policies</div>
+                <a href="404.html" class="btn-secondary-cyber" style="padding: 0.3rem 0.7rem; font-size: 0.75rem;">
+                  <i class="fa-solid fa-key"></i> Key Vault
+                </a>
+              </div>
+              <div class="dash-card-body">
+                <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.85rem; font-size: 0.88rem;">
+                  <li style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 0.5rem;">
+                    <div>
+                      <span>External Egress Data Gate</span>
+                      <div style="font-size: 0.72rem; color: var(--dash-text-dim);">Zero raw weight export permitted</div>
+                    </div>
+                    <span class="status-pill active"><i class="fa-solid fa-lock"></i> Air-Gapped Block</span>
+                  </li>
+                  <li style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 0.5rem;">
+                    <div>
+                      <span>AES-256 GCM In-Flight Encryption</span>
+                      <div style="font-size: 0.72rem; color: var(--dash-text-dim);">Inter-rack Infiniband encryption</div>
+                    </div>
+                    <span class="status-pill active"><i class="fa-solid fa-check"></i> Enforced</span>
+                  </li>
+                  <li style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 0.5rem;">
+                    <div>
+                      <span>FIPS 140-3 Hardware Key Storage</span>
+                      <div style="font-size: 0.72rem; color: var(--dash-text-dim);">Dedicated physical HSM chips</div>
+                    </div>
+                    <span class="status-pill active"><i class="fa-solid fa-check"></i> Verified</span>
+                  </li>
+                  <li style="display: flex; justify-content: space-between; align-items: center; padding-top: 0.2rem;">
+                    <div>
+                      <span>Post-Quantum Kyber-1024 Lattice</span>
+                      <div style="font-size: 0.72rem; color: var(--dash-text-dim);">PQC key exchange enabled</div>
+                    </div>
+                    <span class="status-pill active"><i class="fa-solid fa-check"></i> Active</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="dash-card">
+              <div class="dash-card-header">
+                <div class="dash-card-title"><i class="fa-solid fa-radar"></i> DDoS &amp; Anomaly Mitigation</div>
+                <a href="404.html" class="action-icon-btn" title="Scrubbing Settings"><i class="fa-solid fa-sliders"></i></a>
+              </div>
+              <div class="dash-card-body">
+                <p style="font-size: 0.85rem; color: var(--dash-text-muted); margin-bottom: 1rem;">
+                  Autonomous edge filtering with eBPF kernel scrubbing is neutralizing unauthorized ping bursts and malicious prompt injection vectors.
+                </p>
+                <div style="background: rgba(0,245,155,0.08); border: 1px solid rgba(0,245,155,0.25); padding: 1rem; border-radius: 8px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--dash-green); margin-bottom: 1rem;">
+                  <i class="fa-solid fa-shield-check"></i> INTRUSION DETECTION: 0 THREATS DETECTED (ALL CHANNELS CLEAR)
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.78rem; color: var(--dash-text-muted); border-top: 1px solid rgba(255,255,255,0.06); padding-top: 0.75rem;">
+                  <span>Scrubbing Rate: <strong>840 Gbps Capacity</strong></span>
+                  <a href="404.html" class="btn-secondary-cyber" style="padding: 0.3rem 0.7rem; font-size: 0.75rem;">
+                    <i class="fa-solid fa-chart-line"></i> View Live Traces
+                  </a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ══════════════════════════════════════════
+             VIEW 6: AUDIT LOGS STREAM
+        ══════════════════════════════════════════ -->
+        <section class="dash-view-pane" id="view-logs">
+          <div class="dash-page-header">
+            <div class="page-title-wrap">
+              <h1><i class="fa-solid fa-terminal" style="color: var(--dash-cyan);"></i> Cryptographic <span class="title-gradient">Audit Trail &amp; Logs</span></h1>
+              <p>Immutable Merkle-tree forensic ledger of administrative logins, cluster scaling events, model invocations, and cryptographic signatures.</p>
+            </div>
+            <div class="header-action-group">
+              <a href="404.html" class="btn-secondary-cyber">
+                <i class="fa-solid fa-download"></i> Export Forensic Archive
+              </a>
+              <a href="404.html" class="topbar-action-btn">
+                <i class="fa-solid fa-shield-halved"></i>
+                <span>VERIFY MERKLE ROOT</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Audit Log KPI Summary Matrix -->
+          <div class="kpi-grid" style="margin-bottom: 2rem;">
+            <div class="kpi-card">
+              <div class="kpi-top-row">
+                <span class="kpi-label">Ledger Integrity Hash</span>
+                <div class="kpi-icon-wrap cyan"><i class="fa-solid fa-fingerprint"></i></div>
+              </div>
+              <div class="kpi-value-row">
+                <span class="kpi-number" style="font-size: 1.35rem;">0x8F4A...B9</span>
+                <span class="kpi-trend positive"><i class="fa-solid fa-circle-check"></i> Validated</span>
+              </div>
+              <div class="kpi-subtext">Merkle-Tree Block #892,104</div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-top-row">
+                <span class="kpi-label">Events Ingested Today</span>
+                <div class="kpi-icon-wrap blue"><i class="fa-solid fa-database"></i></div>
+              </div>
+              <div class="kpi-value-row">
+                <span class="kpi-number">2.84M</span>
+                <span class="kpi-trend positive"><i class="fa-solid fa-arrow-up"></i> +12.4%</span>
+              </div>
+              <div class="kpi-subtext">Zero uncommitted write buffers</div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-top-row">
+                <span class="kpi-label">Compliance Audit SLA</span>
+                <div class="kpi-icon-wrap green"><i class="fa-solid fa-award"></i></div>
+              </div>
+              <div class="kpi-value-row">
+                <span class="kpi-number">100.0%</span>
+                <span class="kpi-trend positive"><i class="fa-solid fa-check"></i> SOC2 Type II</span>
+              </div>
+              <div class="kpi-subtext">HIPAA &amp; GDPR ISO-27001 Ready</div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-top-row">
+                <span class="kpi-label">Security Anomaly Alerts</span>
+                <div class="kpi-icon-wrap purple"><i class="fa-solid fa-triangle-exclamation"></i></div>
+              </div>
+              <div class="kpi-value-row">
+                <span class="kpi-number">0 <span style="font-size: 0.9rem; color: var(--dash-text-muted);">Alerts</span></span>
+                <span class="kpi-trend positive"><i class="fa-solid fa-shield-check"></i> Clean</span>
+              </div>
+              <div class="kpi-subtext">Zero unauthorized access triggers</div>
+            </div>
+          </div>
+
+          <!-- Live Forensic Streaming Terminal -->
+          <div class="terminal-card" style="margin-bottom: 2rem;">
+            <div class="terminal-header">
+              <div class="terminal-dots">
+                <div class="terminal-dot red"></div>
+                <div class="terminal-dot yellow"></div>
+                <div class="terminal-dot green"></div>
+              </div>
+              <span class="terminal-title">NOC-FORENSIC-LEDGER://audit.log.stream</span>
+              <div style="display: flex; align-items: center; gap: 0.75rem;">
+                <span style="font-size: 0.72rem; color: var(--dash-cyan); font-family: var(--font-mono);"><i class="fa-solid fa-circle" style="font-size: 6px;"></i> STREAMING ACTIVE</span>
+                <a href="404.html" class="action-icon-btn" title="Pause Stream" style="width: 24px; height: 24px;"><i class="fa-solid fa-pause"></i></a>
+                <a href="404.html" class="action-icon-btn" title="Download Raw Logs" style="width: 24px; height: 24px;"><i class="fa-solid fa-download"></i></a>
+              </div>
+            </div>
+            <div class="terminal-stream-body" style="height: 280px;">
+              <div class="log-line"><span class="log-ts">[22:41:02.11]</span><span class="log-level ok">[AUTH]</span><span>User root signed in from IP 10.240.0.1 via TLS 1.3 mutual auth (Hardware YubiKey 5 FIPS)</span></div>
+              <div class="log-line"><span class="log-ts">[22:41:05.42]</span><span class="log-level info">[SCALE]</span><span>Alpha-01 GPU cluster scaled from 64 to 128 nodes dynamically via Autonomous Swarm Router</span></div>
+              <div class="log-line"><span class="log-ts">[22:41:12.89]</span><span class="log-level info">[INFER]</span><span>Stackly-LLM-70B served 1,420 tokens in 242ms (Client ID #9921, Quant: FP8 SXM5)</span></div>
+              <div class="log-line"><span class="log-ts">[22:41:18.04]</span><span class="log-level ok">[SEC]</span><span>Zero-trust cryptographic enclave checksum verified: 0x8F4A...B9 (Merkle Leaf #892104)</span></div>
+              <div class="log-line"><span class="log-ts">[22:41:22.50]</span><span class="log-level warn">[THERM]</span><span>Rack 04 auxiliary cooling fan increased to 75% duty cycle (CDU supply temp 24.5°C)</span></div>
+              <div class="log-line"><span class="log-ts">[22:41:29.17]</span><span class="log-level ok">[SWARM]</span><span>Consensus quorum achieved for Autonomous Agent Swarm #442 (Raft Term #1402)</span></div>
+              <div class="log-line"><span class="log-ts">[22:41:34.02]</span><span class="log-level info">[VPC]</span><span>eBPF edge firewall inspected 420,891 packets with zero dropped SLA anomalies</span></div>
+              <div class="log-line"><span class="log-ts">[22:41:40.88]</span><span class="log-level ok">[CRYPTO]</span><span>Kyber-1024 quantum lattice session key rotated seamlessly across all 4 global regions</span></div>
+            </div>
+          </div>
+
+          <!-- Forensic Security Ledger History Table -->
+          <div class="dash-card" style="margin-bottom: 2rem;">
+            <div class="dash-card-header">
+              <div class="dash-card-title">
+                <i class="fa-solid fa-list-check"></i>
+                <span>Immutable Forensic Security Ledger</span>
+              </div>
+              <div class="card-header-actions">
+                <span class="status-pill active">Cryptographic Tamper-Proof</span>
+                <a href="404.html" class="btn-secondary-cyber" style="padding: 0.35rem 0.75rem; font-size: 0.75rem;">
+                  <i class="fa-solid fa-filter"></i> Filter Logs
+                </a>
+              </div>
+            </div>
+            <div class="dash-card-body" style="padding: 0;">
+              <div class="table-responsive">
+                <table class="cyber-table">
+                  <thead>
+                    <tr>
+                      <th>Timestamp (UTC)</th>
+                      <th>Category</th>
+                      <th>Actor / Enclave</th>
+                      <th>Operation Payload</th>
+                      <th>Cryptographic Signature</th>
+                      <th>Status</th>
+                      <th style="text-align: right;">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><span style="font-family: var(--font-mono); color: var(--dash-text-muted);">2026-09-29 22:41:02</span></td>
+                      <td><span class="status-pill active">AUTH</span></td>
+                      <td><code>admin@stackly.ai</code></td>
+                      <td>TLS 1.3 mTLS Hardware Root Session Initiated</td>
+                      <td><code style="color: var(--dash-cyan); font-family: var(--font-mono);">0x9a8b...3f12</code></td>
+                      <td><span class="status-pill active"><i class="fa-solid fa-circle-check"></i> Verified</span></td>
+                      <td style="text-align: right;">
+                        <a href="404.html" class="action-icon-btn" title="Inspect Signature"><i class="fa-solid fa-signature"></i></a>
+                        <a href="404.html" class="action-icon-btn" title="Audit Proof"><i class="fa-solid fa-shield"></i></a>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td><span style="font-family: var(--font-mono); color: var(--dash-text-muted);">2026-09-29 22:40:18</span></td>
+                      <td><span class="status-pill training">SCALE</span></td>
+                      <td><code>SwarmRouter-01</code></td>
+                      <td>Dynamic Cluster Scale: 128x H100 Node Allocation</td>
+                      <td><code style="color: var(--dash-cyan); font-family: var(--font-mono);">0x4c2e...88ad</code></td>
+                      <td><span class="status-pill active"><i class="fa-solid fa-circle-check"></i> Verified</span></td>
+                      <td style="text-align: right;">
+                        <a href="404.html" class="action-icon-btn" title="Inspect Signature"><i class="fa-solid fa-signature"></i></a>
+                        <a href="404.html" class="action-icon-btn" title="Audit Proof"><i class="fa-solid fa-shield"></i></a>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td><span style="font-family: var(--font-mono); color: var(--dash-text-muted);">2026-09-29 22:38:45</span></td>
+                      <td><span class="status-pill active">POLICY</span></td>
+                      <td><code>ZeroTrust-Gate</code></td>
+                      <td>Air-Gapped Egress Boundary Checksum Synchronized</td>
+                      <td><code style="color: var(--dash-cyan); font-family: var(--font-mono);">0x11ff...e3b8</code></td>
+                      <td><span class="status-pill active"><i class="fa-solid fa-circle-check"></i> Verified</span></td>
+                      <td style="text-align: right;">
+                        <a href="404.html" class="action-icon-btn" title="Inspect Signature"><i class="fa-solid fa-signature"></i></a>
+                        <a href="404.html" class="action-icon-btn" title="Audit Proof"><i class="fa-solid fa-shield"></i></a>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td><span style="font-family: var(--font-mono); color: var(--dash-text-muted);">2026-09-29 22:35:10</span></td>
+                      <td><span class="status-pill paused">THERM</span></td>
+                      <td><code>Frankfurt-CDU-04</code></td>
+                      <td>Automated Coolant Flow Adjust: Set to 142 L/min</td>
+                      <td><code style="color: var(--dash-cyan); font-family: var(--font-mono);">0x77ba...002a</code></td>
+                      <td><span class="status-pill active"><i class="fa-solid fa-circle-check"></i> Verified</span></td>
+                      <td style="text-align: right;">
+                        <a href="404.html" class="action-icon-btn" title="Inspect Signature"><i class="fa-solid fa-signature"></i></a>
+                        <a href="404.html" class="action-icon-btn" title="Audit Proof"><i class="fa-solid fa-shield"></i></a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+    </main>
+
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       MODAL: DEPLOY CLUSTER NODE
+  ══════════════════════════════════════════ -->
+  <div class="cyber-modal-backdrop" id="deploy-node-modal">
+    <div class="cyber-modal">
+      <div class="modal-header">
+        <div class="modal-title"><i class="fa-solid fa-server" style="color: var(--dash-cyan);"></i> Provision Compute Node</div>
+        <button class="modal-close-btn" aria-label="Close Modal">&times;</button>
+      </div>
+      <form id="deploy-node-form">
+        <div class="modal-body">
+          <div class="param-group">
+            <label>Cluster Rack Name</label>
+            <input type="text" id="modal-cluster-name" class="cyber-select" value="Rack-Alpha-05" required>
+          </div>
+          <div class="param-group">
+            <label>Target Region</label>
+            <select class="cyber-select">
+              <option value="us-east">US-East (N. Virginia)</option>
+              <option value="us-west">US-West (Oregon)</option>
+              <option value="eu-central">EU-Central (Frankfurt)</option>
+              <option value="ap-northeast">AP-Northeast (Tokyo)</option>
+            </select>
+          </div>
+          <div class="param-group">
+            <label>Hardware Configuration</label>
+            <select class="cyber-select">
+              <option value="8x">8x NVIDIA H100 SXM5 (640GB HBM3)</option>
+              <option value="16x">16x NVIDIA H100 SXM5 (1,280GB HBM3)</option>
+              <option value="32x">32x NVIDIA H100 SXM5 (2,560GB HBM3)</option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-secondary-cyber" data-close-modal>Cancel</button>
+          <button type="submit" class="topbar-action-btn"><i class="fa-solid fa-rocket"></i> Deploy Node</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="assets/js/dashboard.js"></script>
+  <script src="assets/js/enhancements.js"></script>
+</body>
+</html>

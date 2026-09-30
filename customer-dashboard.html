@@ -1,0 +1,1537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Customer Workspace – Stackly AI Neural Platform</title>
+  <meta name="description" content="Stackly AI Customer & Enterprise Workspace Console for managing sovereign LLMs, running inference in the interactive playground, creating secure API keys, and monitoring token usage.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/webp" href="assets/images/stackly-logo.webp">
+
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+  <link rel="stylesheet" href="assets/css/enhancements.css">
+</head>
+<body class="dash-body">
+
+  <!-- Ambient Glow Orbs -->
+  <div class="dash-ambient-orb cyan"></div>
+  <div class="dash-ambient-orb purple"></div>
+
+  <div class="dash-layout">
+    
+    <!-- Mobile Sidebar Overlay Backdrop -->
+    <div class="sidebar-mobile-overlay" id="sidebar-mobile-overlay"></div>
+    
+    <!-- ══════════════════════════════════════════
+         CUSTOMER SIDEBAR NAVIGATION
+    ══════════════════════════════════════════ -->
+    <aside class="dash-sidebar" id="dash-sidebar">
+      
+      <!-- Brand & Title -->
+      <div class="sidebar-brand">
+        <a href="index.html" class="brand-logo-wrap">
+          <img src="assets/images/stackly-logo.webp" alt="Stackly AI" class="dash-logo-img">
+          <span class="brand-badge customer-tag">CUSTOMER HUB</span>
+        </a>
+        <button class="sidebar-close-btn" id="sidebar-close-btn" aria-label="Close Sidebar">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <!-- Workspace Selector Chip -->
+      <div class="sidebar-cluster-status">
+        <div class="cluster-status-left">
+          <div class="pulse-beacon" style="background: var(--dash-cyan); box-shadow: 0 0 10px var(--dash-cyan);"></div>
+          <div>
+            <div class="cluster-status-text">ACME ENTERPRISE</div>
+            <div class="cluster-region-text">PLAN: DEDICATED TIER</div>
+          </div>
+        </div>
+        <i class="fa-solid fa-building" style="color: var(--dash-cyan); font-size: 0.85rem;"></i>
+      </div>
+
+      <!-- Navigation Links -->
+      <div class="sidebar-nav-wrap">
+        
+        <div class="nav-section-title">WORKSPACE</div>
+        <ul class="sidebar-nav">
+          <li class="sidebar-nav-item">
+            <button class="nav-link-btn active" data-target-view="view-cust-overview">
+              <span class="nav-left"><i class="fa-solid fa-chart-pie"></i> <span>Overview &amp; Usage</span></span>
+              <span class="nav-badge">STATS</span>
+            </button>
+          </li>
+          <li class="sidebar-nav-item">
+            <button class="nav-link-btn" data-target-view="view-cust-playground">
+              <span class="nav-left"><i class="fa-solid fa-terminal"></i> <span>Prompt Playground</span></span>
+              <span class="nav-badge" style="background: rgba(0,245,155,0.15); color: var(--dash-green);">INTERACTIVE</span>
+            </button>
+          </li>
+          <li class="sidebar-nav-item">
+            <button class="nav-link-btn" data-target-view="view-cust-models">
+              <span class="nav-left"><i class="fa-solid fa-brain"></i> <span>My Deployed Models</span></span>
+              <span class="nav-badge">3 Endpoints</span>
+            </button>
+          </li>
+          <li class="sidebar-nav-item">
+            <button class="nav-link-btn" data-target-view="view-cust-apikeys">
+              <span class="nav-left"><i class="fa-solid fa-key"></i> <span>API Keys &amp; Tokens</span></span>
+              <span class="nav-badge">Vault</span>
+            </button>
+          </li>
+        </ul>
+
+        <div class="nav-section-title">BILLING &amp; SUPPORT</div>
+        <ul class="sidebar-nav">
+          <li class="sidebar-nav-item">
+            <button class="nav-link-btn" data-target-view="view-cust-billing">
+              <span class="nav-left"><i class="fa-solid fa-credit-card"></i> <span>Compute &amp; Invoices</span></span>
+            </button>
+          </li>
+          <li class="sidebar-nav-item">
+            <button class="nav-link-btn" data-target-view="view-cust-support">
+              <span class="nav-left"><i class="fa-solid fa-headset"></i> <span>Dedicated AI Architect</span></span>
+              <span class="nav-badge">&lt; 15m SLA</span>
+            </button>
+          </li>
+        </ul>
+
+      </div>
+
+      <!-- Footer User Card -->
+      <div class="sidebar-footer">
+        <div class="sidebar-user-info">
+          <div class="user-avatar-wrap">
+            <img src="assets/images/avatar-2.webp" alt="Customer Profile" class="user-avatar-img">
+            <div class="user-online-dot"></div>
+          </div>
+          <div class="user-name-role">
+            <span class="user-display-name">Alex Vance</span>
+            <span class="user-display-role">alex.vance@enterprise.io</span>
+          </div>
+        </div>
+        <a href="login.html" class="user-logout-btn" title="Sign Out">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i>
+        </a>
+      </div>
+
+    </aside>
+
+    <!-- ══════════════════════════════════════════
+         MAIN CONTENT REGION
+    ══════════════════════════════════════════ -->
+    <main class="dash-main">
+      
+      <!-- Top Sticky Navigation Bar -->
+      <header class="dash-topbar">
+        
+        <div class="topbar-left">
+          <button class="sidebar-toggle-btn" id="sidebar-toggle-btn" aria-label="Open Mobile Menu">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+        </div>
+
+        <div class="topbar-right">
+          
+          <!-- Token Balance Widget -->
+          <div class="topbar-telemetry-chip">
+            <i class="fa-solid fa-coins" style="color: var(--dash-amber);"></i>
+            <span>CREDITS:</span>
+            <span class="metric-val" style="color: var(--dash-cyan);">842.5k / 1.0M</span>
+          </div>
+
+          <!-- Documentation Link -->
+          <a href="404.html" class="btn-secondary-cyber" style="text-decoration: none;">
+            <i class="fa-solid fa-book"></i> <span>API Docs</span>
+          </a>
+
+          <!-- Notification Bell -->
+          <a href="404.html" class="topbar-icon-btn" aria-label="Notifications" title="Notifications">
+            <i class="fa-regular fa-bell"></i>
+            <div class="badge-dot" style="background: var(--dash-cyan); box-shadow: 0 0 6px var(--dash-cyan);"></div>
+          </a>
+
+          <!-- Create API Key CTA -->
+          <a href="404.html" class="topbar-action-btn">
+            <i class="fa-solid fa-key"></i>
+            <span>NEW API KEY</span>
+          </a>
+
+        </div>
+
+      </header>
+
+      <!-- Dashboard Body Content Container -->
+      <div class="dash-content-container">
+        
+        <!-- ══════════════════════════════════════════
+             CUSTOMER VIEW 1: OVERVIEW & USAGE
+        ══════════════════════════════════════════ -->
+        <section class="dash-view-pane active" id="view-cust-overview">
+          
+          <div class="dash-page-header">
+            <div class="page-title-wrap">
+              <h1><i class="fa-solid fa-bolt" style="color: var(--dash-cyan);"></i> Welcome back, <span class="title-gradient" id="welcome-user-heading">Alex Vance</span></h1>
+              <p>Your enterprise AI workspace is connected to dedicated private H100 GPU compute.</p>
+            </div>
+            <div class="header-action-group">
+              <a href="404.html" class="btn-secondary-cyber">
+                <i class="fa-solid fa-arrows-rotate"></i> Refresh
+              </a>
+              <a href="404.html" class="topbar-action-btn">
+                <i class="fa-solid fa-plus"></i> Generate Key
+              </a>
+            </div>
+          </div>
+
+          <!-- KPI Metric Matrix (4 Cards) -->
+          <div class="kpi-grid">
+            
+            <div class="kpi-card">
+              <div class="kpi-top-row">
+                <span class="kpi-label">Available Token Balance</span>
+                <div class="kpi-icon-wrap cyan"><i class="fa-solid fa-coins"></i></div>
+              </div>
+              <div class="kpi-value-row">
+                <span class="kpi-number">842.5k</span>
+                <span class="kpi-trend positive"><i class="fa-solid fa-check"></i> Active</span>
+              </div>
+              <div class="kpi-subtext">84.2% of 1,000,000 monthly quota</div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-top-row">
+                <span class="kpi-label">Monthly API Invocations</span>
+                <div class="kpi-icon-wrap blue"><i class="fa-solid fa-chart-line"></i></div>
+              </div>
+              <div class="kpi-value-row">
+                <span class="kpi-number">2.41M</span>
+                <span class="kpi-trend positive"><i class="fa-solid fa-arrow-up"></i> +18.4%</span>
+              </div>
+              <div class="kpi-subtext">Avg Response Time: 5.4ms</div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-top-row">
+                <span class="kpi-label">Private Endpoints</span>
+                <div class="kpi-icon-wrap purple"><i class="fa-solid fa-network-wired"></i></div>
+              </div>
+              <div class="kpi-value-row">
+                <span class="kpi-number">3 Dedicated</span>
+                <span class="kpi-trend positive"><i class="fa-solid fa-shield"></i> 100% SLA</span>
+              </div>
+              <div class="kpi-subtext">Air-Gapped Sovereign Cluster</div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-top-row">
+                <span class="kpi-label">Estimated Cloud Savings</span>
+                <div class="kpi-icon-wrap green"><i class="fa-solid fa-wallet"></i></div>
+              </div>
+              <div class="kpi-value-row">
+                <span class="kpi-number">$1,420</span>
+                <span class="kpi-trend positive"><i class="fa-solid fa-arrow-down"></i> -42%</span>
+              </div>
+              <div class="kpi-subtext">Saved vs commercial generic APIs</div>
+            </div>
+
+          </div>
+
+          <!-- Section 2: Full-Width 7-Day Inference Volume Chart & Latency Distribution -->
+          <div class="dash-grid-equal" style="margin-bottom: 2rem;">
+            
+            <!-- 7-Day Usage Sparkline Visualizer -->
+            <div class="dash-card">
+              <div class="dash-card-header">
+                <div class="dash-card-title"><i class="fa-solid fa-chart-simple"></i> Weekly Token Consumption Telemetry</div>
+                <div class="card-header-actions">
+                  <span class="status-pill active">Auto-Scaling On</span>
+                  <a href="404.html" class="action-icon-btn" title="Export Consumption Metrics"><i class="fa-solid fa-download"></i></a>
+                </div>
+              </div>
+              <div class="dash-card-body">
+                <div style="height: 180px; display: flex; align-items: flex-end; gap: 12px; padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.08);">
+                  <div style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px;">
+                    <div style="width: 100%; height: 60px; background: rgba(0,242,254,0.3); border-radius: 6px;" title="Mon: 60k Tokens"></div>
+                    <span style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--dash-text-dim);">MON</span>
+                  </div>
+                  <div style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px;">
+                    <div style="width: 100%; height: 95px; background: rgba(0,242,254,0.4); border-radius: 6px;" title="Tue: 95k Tokens"></div>
+                    <span style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--dash-text-dim);">TUE</span>
+                  </div>
+                  <div style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px;">
+                    <div style="width: 100%; height: 130px; background: rgba(0,242,254,0.6); border-radius: 6px;" title="Wed: 130k Tokens"></div>
+                    <span style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--dash-text-dim);">WED</span>
+                  </div>
+                  <div style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px;">
+                    <div style="width: 100%; height: 85px; background: rgba(0,242,254,0.4); border-radius: 6px;" title="Thu: 85k Tokens"></div>
+                    <span style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--dash-text-dim);">THU</span>
+                  </div>
+                  <div style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px;">
+                    <div style="width: 100%; height: 160px; background: linear-gradient(to top, var(--dash-blue), var(--dash-cyan)); border-radius: 6px; box-shadow: 0 0 12px rgba(0,242,254,0.3);" title="Fri: 160k Tokens (Peak)"></div>
+                    <span style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--dash-cyan); font-weight: 700;">FRI</span>
+                  </div>
+                  <div style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px;">
+                    <div style="width: 100%; height: 45px; background: rgba(0,242,254,0.25); border-radius: 6px;" title="Sat: 45k Tokens"></div>
+                    <span style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--dash-text-dim);">SAT</span>
+                  </div>
+                  <div style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px;">
+                    <div style="width: 100%; height: 50px; background: rgba(0,242,254,0.25); border-radius: 6px;" title="Sun: 50k Tokens"></div>
+                    <span style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--dash-text-dim);">SUN</span>
+                  </div>
+                </div>
+                <div style="display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 0.75rem; color: var(--dash-text-muted); margin-top: 0.75rem;">
+                  <span>Peak Throughput: 160k Tokens (Friday)</span>
+                  <span style="color: var(--dash-cyan);">99.99% Hardware Efficiency</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Real-Time Latency & VPC Enclave Health Matrix -->
+            <div class="dash-card">
+              <div class="dash-card-header">
+                <div class="dash-card-title"><i class="fa-solid fa-gauge-high"></i> Cluster Health &amp; In-Flight SLA</div>
+                <a href="404.html" class="action-icon-btn" title="View Enclave Metrics"><i class="fa-solid fa-shield-halved"></i></a>
+              </div>
+              <div class="dash-card-body" style="display: flex; flex-direction: column; gap: 1.1rem;">
+                <div>
+                  <div style="display: flex; justify-content: space-between; font-size: 0.8rem; font-family: var(--font-mono); margin-bottom: 0.35rem;">
+                    <span style="color: var(--dash-text-muted);">Sovereign VPC Inference TTFT (Time-to-First-Token)</span>
+                    <span style="color: var(--dash-cyan); font-weight: 700;">14.2 ms (Optimal)</span>
+                  </div>
+                  <div class="rack-bar-wrap"><div class="rack-bar-fill" style="width: 22%; background: linear-gradient(90deg, var(--dash-cyan), var(--dash-blue));"></div></div>
+                </div>
+
+                <div>
+                  <div style="display: flex; justify-content: space-between; font-size: 0.8rem; font-family: var(--font-mono); margin-bottom: 0.35rem;">
+                    <span style="color: var(--dash-text-muted);">H100 SXM5 Tensor Core Saturation</span>
+                    <span style="color: var(--dash-green); font-weight: 700;">58.4% Nominal</span>
+                  </div>
+                  <div class="rack-bar-wrap"><div class="rack-bar-fill" style="width: 58.4%; background: linear-gradient(90deg, var(--dash-green), var(--dash-cyan));"></div></div>
+                </div>
+
+                <div>
+                  <div style="display: flex; justify-content: space-between; font-size: 0.8rem; font-family: var(--font-mono); margin-bottom: 0.35rem;">
+                    <span style="color: var(--dash-text-muted);">Dedicated NVLink Interconnect Throughput</span>
+                    <span style="color: #c084fc; font-weight: 700;">892 GB/s</span>
+                  </div>
+                  <div class="rack-bar-wrap"><div class="rack-bar-fill" style="width: 74%; background: linear-gradient(90deg, #c084fc, var(--dash-cyan));"></div></div>
+                </div>
+
+                <div style="display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 0.75rem; color: var(--dash-text-dim); margin-top: 0.2rem;">
+                  <span><i class="fa-solid fa-circle" style="color: var(--dash-green); font-size: 7px; margin-right: 4px;"></i> Air-Gapped WireGuard VPN: Active</span>
+                  <span style="color: var(--dash-cyan);">Region: US-East (Virginia)</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Section 3: Enterprise Workload Endpoints & Live Activity -->
+          <div class="dash-grid-equal" style="margin-bottom: 2rem;">
+            
+            <!-- Live Active Endpoints Quick Status -->
+            <div class="dash-card">
+              <div class="dash-card-header">
+                <div class="dash-card-title"><i class="fa-solid fa-server"></i> Active Dedicated Endpoints</div>
+                <a href="404.html" class="topbar-action-btn" style="padding: 0.35rem 0.75rem; font-size: 0.75rem;">
+                  <i class="fa-solid fa-plus"></i> Deploy
+                </a>
+              </div>
+              <div class="dash-card-body" style="padding: 0;">
+                <div class="table-responsive">
+                  <table class="cyber-table">
+                    <thead>
+                      <tr>
+                        <th>Model ID</th>
+                        <th>Hardware</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <strong>acme-support-70b</strong>
+                          <div style="font-size: 0.7rem; color: var(--dash-text-dim);">Llama-3 70B FP8</div>
+                        </td>
+                        <td><span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--dash-cyan);">2x H100</span></td>
+                        <td><span class="status-pill active">Running</span></td>
+                        <td><a href="404.html" class="action-icon-btn" title="Endpoint Config"><i class="fa-solid fa-sliders"></i></a></td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <strong>acme-codegen-moe</strong>
+                          <div style="font-size: 0.7rem; color: var(--dash-text-dim);">Mixtral 8x7B MoE</div>
+                        </td>
+                        <td><span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--dash-cyan);">4x H100</span></td>
+                        <td><span class="status-pill active">Running</span></td>
+                        <td><a href="404.html" class="action-icon-btn" title="Endpoint Config"><i class="fa-solid fa-sliders"></i></a></td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <strong>acme-vision-spatial</strong>
+                          <div style="font-size: 0.7rem; color: var(--dash-text-dim);">VisionNeuron-v2</div>
+                        </td>
+                        <td><span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--dash-cyan);">1x H100</span></td>
+                        <td><span class="status-pill active">Running</span></td>
+                        <td><a href="404.html" class="action-icon-btn" title="Endpoint Config"><i class="fa-solid fa-sliders"></i></a></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <!-- Live API Requests Stream & Audit Trail -->
+            <div class="dash-card">
+              <div class="dash-card-header">
+                <div class="dash-card-title"><i class="fa-solid fa-bolt-lightning"></i> Recent Inference Invocations</div>
+                <a href="404.html" class="action-icon-btn" title="View Full Logs"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+              </div>
+              <div class="dash-card-body" style="padding: 0;">
+                <div class="table-responsive">
+                  <table class="cyber-table">
+                    <thead>
+                      <tr>
+                        <th>Timestamp</th>
+                        <th>Caller API Key</th>
+                        <th>Tokens</th>
+                        <th>Latency</th>
+                        <th>Status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--dash-text-muted);">22:56:12</td>
+                        <td><code style="color: var(--dash-cyan); font-size: 0.75rem;">sk-live-7x92••</code></td>
+                        <td><strong>1,420</strong></td>
+                        <td style="color: var(--dash-green); font-family: var(--font-mono); font-size: 0.75rem;">4.2ms</td>
+                        <td><span class="status-pill active">200 OK</span></td>
+                      </tr>
+                      <tr>
+                        <td style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--dash-text-muted);">22:54:48</td>
+                        <td><code style="color: var(--dash-cyan); font-size: 0.75rem;">sk-live-7x92••</code></td>
+                        <td><strong>890</strong></td>
+                        <td style="color: var(--dash-green); font-family: var(--font-mono); font-size: 0.75rem;">3.8ms</td>
+                        <td><span class="status-pill active">200 OK</span></td>
+                      </tr>
+                      <tr>
+                        <td style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--dash-text-muted);">22:51:03</td>
+                        <td><code style="color: var(--dash-cyan); font-size: 0.75rem;">sk-stag-4a11••</code></td>
+                        <td><strong>2,850</strong></td>
+                        <td style="color: var(--dash-green); font-family: var(--font-mono); font-size: 0.75rem;">6.1ms</td>
+                        <td><span class="status-pill active">200 OK</span></td>
+                      </tr>
+                      <tr>
+                        <td style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--dash-text-muted);">22:48:21</td>
+                        <td><code style="color: var(--dash-cyan); font-size: 0.75rem;">sk-live-7x92••</code></td>
+                        <td><strong>640</strong></td>
+                        <td style="color: var(--dash-green); font-family: var(--font-mono); font-size: 0.75rem;">3.2ms</td>
+                        <td><span class="status-pill active">200 OK</span></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </section>
+
+        <!-- ══════════════════════════════════════════
+             CUSTOMER VIEW 2: INTERACTIVE PLAYGROUND STUDIO
+        ══════════════════════════════════════════ -->
+        <section class="dash-view-pane" id="view-cust-playground">
+          
+          <div class="dash-page-header">
+            <div class="page-title-wrap">
+              <h1><i class="fa-solid fa-terminal" style="color: var(--dash-cyan);"></i> Neural Prompt <span class="title-gradient">Playground Studio</span></h1>
+              <p>Test sovereign reasoning, adjust inference parameters, and benchmark token generation in real time.</p>
+            </div>
+            <a href="404.html" class="btn-secondary-cyber" style="text-decoration: none;">
+              <i class="fa-solid fa-trash-can"></i> Clear Session
+            </a>
+          </div>
+
+          <!-- Quick Starter Prompt Presets -->
+          <div style="display: flex; gap: 0.75rem; overflow-x: auto; margin-bottom: 1.25rem; padding-bottom: 0.25rem;">
+            <a href="404.html" class="btn-secondary-cyber" style="font-size: 0.75rem; white-space: nowrap; text-decoration: none;">
+              <i class="fa-solid fa-bolt" style="color: var(--dash-cyan);"></i> Semantic Cache Architecture
+            </a>
+            <a href="404.html" class="btn-secondary-cyber" style="font-size: 0.75rem; white-space: nowrap; text-decoration: none;">
+              <i class="fa-solid fa-network-wired" style="color: var(--dash-purple);"></i> Multi-GPU Cluster Routing
+            </a>
+            <a href="404.html" class="btn-secondary-cyber" style="font-size: 0.75rem; white-space: nowrap; text-decoration: none;">
+              <i class="fa-solid fa-shield-halved" style="color: var(--dash-green);"></i> SOC2 Compliance Audit
+            </a>
+            <a href="404.html" class="btn-secondary-cyber" style="font-size: 0.75rem; white-space: nowrap; text-decoration: none;">
+              <i class="fa-solid fa-code"></i> Export Playground cURL
+            </a>
+          </div>
+
+          <div class="playground-grid">
+            
+            <!-- Left: Interactive Chat Simulation -->
+            <div class="studio-chat-box">
+              
+              <!-- Chat Box Header Controls -->
+              <div style="padding: 0.75rem 1.25rem; background: rgba(0,0,0,0.4); border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: space-between;">
+                <div style="display: flex; align-items: center; gap: 0.6rem; font-family: var(--font-mono); font-size: 0.75rem; color: #a8c6e5;">
+                  <span class="pulse-beacon"></span>
+                  <span>SESSION ACTIVE:</span>
+                  <span style="color: var(--dash-cyan); font-weight: 700;">STREAMING FP8 TENSORS</span>
+                </div>
+                <div style="display: flex; gap: 0.5rem;">
+                  <a href="404.html" class="action-icon-btn" title="Download Session Transcript"><i class="fa-solid fa-download"></i></a>
+                  <a href="404.html" class="action-icon-btn" title="Share Session"><i class="fa-solid fa-share-nodes"></i></a>
+                </div>
+              </div>
+
+              <div class="chat-history" id="studio-chat-history">
+                <div class="chat-bubble system-msg">
+                  <div class="chat-meta"><i class="fa-solid fa-robot"></i> <span>STACKLY-LLM-70B-FP8</span> • Dedicated Cluster</div>
+                  <div>Welcome to your sovereign enterprise inference playground. Select your fine-tuned weights on the right, customize prompt temperatures, or select a preset template above to benchmark real-time token throughput.</div>
+                </div>
+              </div>
+
+              <!-- Prompt Input Bar -->
+              <div class="studio-input-bar">
+                <input 
+                  type="text" 
+                  id="studio-input-prompt" 
+                  class="studio-textarea" 
+                  placeholder="Enter an enterprise prompt (e.g. Synthesize a low-latency RAG query optimization plan)..."
+                />
+                <button type="button" class="studio-send-btn" id="studio-send-btn" title="Send Prompt (Enter)">
+                  <i class="fa-solid fa-paper-plane"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Right: Inference Parameters Panel -->
+            <div class="studio-params-panel">
+              <div style="display: flex; align-items: center; justify-content: space-between;">
+                <h3 style="font-size: 0.95rem; font-weight: 700; color: #fff; display: flex; align-items: center; gap: 0.5rem; margin: 0;">
+                  <i class="fa-solid fa-sliders" style="color: var(--dash-cyan);"></i> Hyperparameters
+                </h3>
+                <a href="404.html" class="action-icon-btn" title="Reset Defaults"><i class="fa-solid fa-rotate-left"></i></a>
+              </div>
+
+              <div class="param-group">
+                <label>Target Model Endpoint</label>
+                <select class="cyber-select" id="studio-model-select">
+                  <option value="Stackly-LLM-70B-FP8">Stackly-LLM-70B-FP8 (Dedicated)</option>
+                  <option value="VisionNeuron-Spatial-v2">VisionNeuron-Spatial-v2</option>
+                  <option value="CodeSwarm-MoE-8x7B">CodeSwarm-MoE-8x7B</option>
+                </select>
+              </div>
+
+              <div class="param-group">
+                <label>Temperature <span class="val" id="studio-temp-val">0.7</span></label>
+                <input type="range" class="cyber-slider" id="studio-temp-slider" min="0" max="2" step="0.1" value="0.7">
+              </div>
+
+              <div class="param-group">
+                <label>Top-P (Nucleus Sampling) <span class="val">0.95</span></label>
+                <input type="range" class="cyber-slider" min="0.1" max="1" step="0.05" value="0.95">
+              </div>
+
+              <div class="param-group">
+                <label>Max Context Window <span class="val">2,048 tokens</span></label>
+                <input type="range" class="cyber-slider" min="256" max="8192" step="256" value="2048">
+              </div>
+
+              <div class="param-group">
+                <label>System Instructions &amp; Guardrails</label>
+                <textarea class="cyber-select" style="height: 65px; resize: none;" placeholder="You are an enterprise sovereign AI architect with zero external data egress constraints."></textarea>
+              </div>
+
+              <div style="background: rgba(0,242,254,0.06); border: 1px solid rgba(0,242,254,0.15); border-radius: 8px; padding: 0.75rem 0.85rem; font-family: var(--font-mono); font-size: 0.72rem; color: #bde0fe;">
+                <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.3rem;">
+                  <i class="fa-solid fa-shield-halved" style="color: var(--dash-green);"></i>
+                  <strong>Hardware Isolation: Active</strong>
+                </div>
+                <div style="color: var(--dash-text-muted); font-size: 0.68rem;">Zero prompt egress. H100 dedicated SXM5 interconnect verified.</div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Section 3: Playground Benchmark Telemetry Matrix -->
+          <div class="dash-grid-3col" style="margin-top: 1.5rem;">
+            
+            <div class="dash-card" style="padding: 1.25rem;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                <span style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--dash-text-muted); text-transform: uppercase;">Streaming Speed</span>
+                <i class="fa-solid fa-bolt" style="color: var(--dash-cyan);"></i>
+              </div>
+              <div style="font-size: 1.4rem; font-weight: 800; color: #fff; font-family: var(--font-mono);">128.4 <span style="font-size: 0.8rem; color: var(--dash-cyan);">tok/s</span></div>
+              <div style="font-size: 0.72rem; color: var(--dash-text-dim); margin-top: 0.25rem;">Measured across private FP8 tensor cores</div>
+            </div>
+
+            <div class="dash-card" style="padding: 1.25rem;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                <span style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--dash-text-muted); text-transform: uppercase;">First Token Latency</span>
+                <i class="fa-solid fa-stopwatch" style="color: var(--dash-green);"></i>
+              </div>
+              <div style="font-size: 1.4rem; font-weight: 800; color: #fff; font-family: var(--font-mono);">&lt; 14.8 <span style="font-size: 0.8rem; color: var(--dash-green);">ms</span></div>
+              <div style="font-size: 0.72rem; color: var(--dash-text-dim); margin-top: 0.25rem;">P99 latency SLA: 100% compliant</div>
+            </div>
+
+            <div class="dash-card" style="padding: 1.25rem;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                <span style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--dash-text-muted); text-transform: uppercase;">Active KV-Cache</span>
+                <i class="fa-solid fa-memory" style="color: #c084fc;"></i>
+              </div>
+              <div style="font-size: 1.4rem; font-weight: 800; color: #fff; font-family: var(--font-mono);">3.2 <span style="font-size: 0.8rem; color: #c084fc;">GB / 80GB</span></div>
+              <div style="font-size: 0.72rem; color: var(--dash-text-dim); margin-top: 0.25rem;">Dedicated H100 HBM3 VRAM footprint</div>
+            </div>
+
+          </div>
+
+        </section>
+
+        <!-- ══════════════════════════════════════════
+             CUSTOMER VIEW 3: DEPLOYED MODELS
+        ══════════════════════════════════════════ -->
+        <section class="dash-view-pane" id="view-cust-models">
+          <div class="dash-page-header">
+            <div class="page-title-wrap">
+              <h1><i class="fa-solid fa-brain" style="color: var(--dash-cyan);"></i> My Dedicated <span class="title-gradient">Private Models</span></h1>
+              <p>Manage sovereign fine-tuned weights, dedicated H100 inference endpoints, and replica auto-scalers.</p>
+            </div>
+            <div class="header-action-group">
+              <a href="404.html" class="btn-secondary-cyber" style="text-decoration: none;">
+                <i class="fa-solid fa-arrows-rotate"></i> Sync Models
+              </a>
+              <a href="404.html" class="topbar-action-btn">
+                <i class="fa-solid fa-plus"></i> Deploy New Model
+              </a>
+            </div>
+          </div>
+
+          <!-- Model Health Metrics Matrix -->
+          <div class="kpi-grid">
+            <div class="kpi-card">
+              <div class="kpi-top-row">
+                <span class="kpi-label">Active Deployments</span>
+                <div class="kpi-icon-wrap cyan"><i class="fa-solid fa-server"></i></div>
+              </div>
+              <div class="kpi-value-row">
+                <span class="kpi-number">5 Live</span>
+                <span class="kpi-trend positive"><i class="fa-solid fa-check"></i> Healthy</span>
+              </div>
+              <div class="kpi-subtext">Across 3 Private VPC Enclaves</div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-top-row">
+                <span class="kpi-label">Allocated GPUs</span>
+                <div class="kpi-icon-wrap blue"><i class="fa-solid fa-microchip"></i></div>
+              </div>
+              <div class="kpi-value-row">
+                <span class="kpi-number">14x H100</span>
+                <span class="kpi-trend positive"><i class="fa-solid fa-bolt"></i> 100% SXM5</span>
+              </div>
+              <div class="kpi-subtext">80GB HBM3e Memory per Node</div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-top-row">
+                <span class="kpi-label">Avg P99 Latency</span>
+                <div class="kpi-icon-wrap green"><i class="fa-solid fa-gauge-high"></i></div>
+              </div>
+              <div class="kpi-value-row">
+                <span class="kpi-number">4.8 ms</span>
+                <span class="kpi-trend positive"><i class="fa-solid fa-arrow-down"></i> -12%</span>
+              </div>
+              <div class="kpi-subtext">Zero jitter with TensorRT-LLM</div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-top-row">
+                <span class="kpi-label">Fine-Tuned Checkpoints</span>
+                <div class="kpi-icon-wrap purple"><i class="fa-solid fa-dna"></i></div>
+              </div>
+              <div class="kpi-value-row">
+                <span class="kpi-number">8 LoRA</span>
+                <span class="kpi-trend positive"><i class="fa-solid fa-shield"></i> Encrypted</span>
+              </div>
+              <div class="kpi-subtext">Stored in Air-Gapped S3 Vault</div>
+            </div>
+          </div>
+
+          <!-- Table 1: Dedicated Active Endpoints -->
+          <div class="dash-card" style="margin-bottom: 2rem;">
+            <div class="dash-card-header">
+              <div class="dash-card-title"><i class="fa-solid fa-server"></i> Dedicated Sovereign Inference Endpoints</div>
+              <div class="card-header-actions">
+                <a href="404.html" class="btn-secondary-cyber" style="font-size: 0.75rem; text-decoration: none;"><i class="fa-solid fa-sliders"></i> Global Auto-Scaler</a>
+                <a href="404.html" class="action-icon-btn" title="Export Endpoints"><i class="fa-solid fa-download"></i></a>
+              </div>
+            </div>
+            <div class="dash-card-body" style="padding: 0;">
+              <div class="table-responsive">
+                <table class="cyber-table">
+                  <thead>
+                    <tr>
+                      <th>Endpoint Name</th>
+                      <th>Base Architecture</th>
+                      <th>Hardware Racks</th>
+                      <th>Quantization</th>
+                      <th>Avg Latency</th>
+                      <th>Uptime SLA</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <strong>acme-customer-support-70b</strong>
+                        <div style="font-size: 0.7rem; color: var(--dash-text-dim);">Internal Customer Experience Agent</div>
+                      </td>
+                      <td>Llama-3-70B-Instruct</td>
+                      <td><span style="font-family: var(--font-mono); color: var(--dash-cyan);">2x H100 SXM5</span></td>
+                      <td><span class="status-pill active" style="font-size: 0.68rem;">FP8 TensorRT</span></td>
+                      <td style="color: var(--dash-green); font-family: var(--font-mono);">4.2 ms</td>
+                      <td><span class="status-pill active">99.99% Uptime</span></td>
+                      <td>
+                        <a href="404.html" class="action-icon-btn" title="Copy Endpoint cURL"><i class="fa-solid fa-code"></i></a>
+                        <a href="404.html" class="action-icon-btn" title="Scale"><i class="fa-solid fa-sliders"></i></a>
+                        <a href="404.html" class="action-icon-btn" title="Metrics"><i class="fa-solid fa-chart-line"></i></a>
+                        <a href="404.html" class="action-icon-btn danger" title="Restart"><i class="fa-solid fa-power-off"></i></a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <strong>acme-internal-codegen-moe</strong>
+                        <div style="font-size: 0.7rem; color: var(--dash-text-dim);">Enterprise IDE Code Completion</div>
+                      </td>
+                      <td>Mixtral 8x7B MoE</td>
+                      <td><span style="font-family: var(--font-mono); color: var(--dash-cyan);">4x H100 SXM5</span></td>
+                      <td><span class="status-pill active" style="font-size: 0.68rem;">FP8 vLLM</span></td>
+                      <td style="color: var(--dash-green); font-family: var(--font-mono);">3.8 ms</td>
+                      <td><span class="status-pill active">100% Uptime</span></td>
+                      <td>
+                        <a href="404.html" class="action-icon-btn" title="Copy Endpoint cURL"><i class="fa-solid fa-code"></i></a>
+                        <a href="404.html" class="action-icon-btn" title="Scale"><i class="fa-solid fa-sliders"></i></a>
+                        <a href="404.html" class="action-icon-btn" title="Metrics"><i class="fa-solid fa-chart-line"></i></a>
+                        <a href="404.html" class="action-icon-btn danger" title="Restart"><i class="fa-solid fa-power-off"></i></a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <strong>acme-multimodal-spatial-v2</strong>
+                        <div style="font-size: 0.7rem; color: var(--dash-text-dim);">Visual Quality Inspection Pipeline</div>
+                      </td>
+                      <td>VisionNeuron-Spatial-v2</td>
+                      <td><span style="font-family: var(--font-mono); color: var(--dash-cyan);">2x H100 SXM5</span></td>
+                      <td><span class="status-pill active" style="font-size: 0.68rem;">FP16 Native</span></td>
+                      <td style="color: var(--dash-green); font-family: var(--font-mono);">6.1 ms</td>
+                      <td><span class="status-pill active">99.98% Uptime</span></td>
+                      <td>
+                        <a href="404.html" class="action-icon-btn" title="Copy Endpoint cURL"><i class="fa-solid fa-code"></i></a>
+                        <a href="404.html" class="action-icon-btn" title="Scale"><i class="fa-solid fa-sliders"></i></a>
+                        <a href="404.html" class="action-icon-btn" title="Metrics"><i class="fa-solid fa-chart-line"></i></a>
+                        <a href="404.html" class="action-icon-btn danger" title="Restart"><i class="fa-solid fa-power-off"></i></a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <strong>acme-financial-rag-embedding</strong>
+                        <div style="font-size: 0.7rem; color: var(--dash-text-dim);">Dense 4096-dim Vector Embeddings</div>
+                      </td>
+                      <td>Stackly-Embed-Large-v3</td>
+                      <td><span style="font-family: var(--font-mono); color: var(--dash-cyan);">2x L40S Racks</span></td>
+                      <td><span class="status-pill active" style="font-size: 0.68rem;">INT8 FlashInfer</span></td>
+                      <td style="color: var(--dash-green); font-family: var(--font-mono);">1.9 ms</td>
+                      <td><span class="status-pill active">100% Uptime</span></td>
+                      <td>
+                        <a href="404.html" class="action-icon-btn" title="Copy Endpoint cURL"><i class="fa-solid fa-code"></i></a>
+                        <a href="404.html" class="action-icon-btn" title="Scale"><i class="fa-solid fa-sliders"></i></a>
+                        <a href="404.html" class="action-icon-btn" title="Metrics"><i class="fa-solid fa-chart-line"></i></a>
+                        <a href="404.html" class="action-icon-btn danger" title="Restart"><i class="fa-solid fa-power-off"></i></a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <strong>acme-swarm-orchestrator-8b</strong>
+                        <div style="font-size: 0.7rem; color: var(--dash-text-dim);">Multi-Agent Decision Core</div>
+                      </td>
+                      <td>Llama-3-8B Sovereign</td>
+                      <td><span style="font-family: var(--font-mono); color: var(--dash-cyan);">4x H100 SXM5</span></td>
+                      <td><span class="status-pill active" style="font-size: 0.68rem;">FP8 TensorRT</span></td>
+                      <td style="color: var(--dash-green); font-family: var(--font-mono);">2.4 ms</td>
+                      <td><span class="status-pill active">100% Uptime</span></td>
+                      <td>
+                        <a href="404.html" class="action-icon-btn" title="Copy Endpoint cURL"><i class="fa-solid fa-code"></i></a>
+                        <a href="404.html" class="action-icon-btn" title="Scale"><i class="fa-solid fa-sliders"></i></a>
+                        <a href="404.html" class="action-icon-btn" title="Metrics"><i class="fa-solid fa-chart-line"></i></a>
+                        <a href="404.html" class="action-icon-btn danger" title="Restart"><i class="fa-solid fa-power-off"></i></a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- Table 2: Custom Fine-Tuned Checkpoints & LoRA Adapters -->
+          <div class="dash-card">
+            <div class="dash-card-header">
+              <div class="dash-card-title"><i class="fa-solid fa-dna"></i> Private LoRA Checkpoints &amp; Weights Vault</div>
+              <a href="404.html" class="topbar-action-btn" style="padding: 0.4rem 0.85rem; font-size: 0.75rem;">
+                <i class="fa-solid fa-upload"></i> Upload Weights (.safetensors)
+              </a>
+            </div>
+            <div class="dash-card-body" style="padding: 0;">
+              <div class="table-responsive">
+                <table class="cyber-table">
+                  <thead>
+                    <tr>
+                      <th>Checkpoint Name</th>
+                      <th>Target Base</th>
+                      <th>Rank / Alpha</th>
+                      <th>Trained On</th>
+                      <th>Validation Loss</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <strong>lora-acme-legal-v4</strong>
+                        <div style="font-size: 0.7rem; color: var(--dash-text-dim);">SHA256: e8f92a01bc...</div>
+                      </td>
+                      <td>Llama-3-70B</td>
+                      <td><code style="color: var(--dash-cyan);">r=64, α=128</code></td>
+                      <td>4.2M Sovereign Legal Tokens</td>
+                      <td style="color: var(--dash-green); font-weight: 700;">0.142 (Optimal)</td>
+                      <td>
+                        <a href="404.html" class="action-icon-btn" title="Deploy to Endpoint"><i class="fa-solid fa-rocket"></i></a>
+                        <a href="404.html" class="action-icon-btn" title="Download SafeTensors"><i class="fa-solid fa-download"></i></a>
+                        <a href="404.html" class="action-icon-btn danger" title="Delete"><i class="fa-solid fa-trash-can"></i></a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <strong>lora-acme-medical-rag-v2</strong>
+                        <div style="font-size: 0.7rem; color: var(--dash-text-dim);">SHA256: 7d11a84f32...</div>
+                      </td>
+                      <td>Mixtral 8x7B</td>
+                      <td><code style="color: var(--dash-cyan);">r=32, α=64</code></td>
+                      <td>1.8M Clinical Records</td>
+                      <td style="color: var(--dash-green); font-weight: 700;">0.189 (Optimal)</td>
+                      <td>
+                        <a href="404.html" class="action-icon-btn" title="Deploy to Endpoint"><i class="fa-solid fa-rocket"></i></a>
+                        <a href="404.html" class="action-icon-btn" title="Download SafeTensors"><i class="fa-solid fa-download"></i></a>
+                        <a href="404.html" class="action-icon-btn danger" title="Delete"><i class="fa-solid fa-trash-can"></i></a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <strong>lora-acme-sql-synthesizer</strong>
+                        <div style="font-size: 0.7rem; color: var(--dash-text-dim);">SHA256: 3c99f12d50...</div>
+                      </td>
+                      <td>Stackly-Code-8B</td>
+                      <td><code style="color: var(--dash-cyan);">r=128, α=256</code></td>
+                      <td>850k Schema Queries</td>
+                      <td style="color: var(--dash-green); font-weight: 700;">0.098 (Superior)</td>
+                      <td>
+                        <a href="404.html" class="action-icon-btn" title="Deploy to Endpoint"><i class="fa-solid fa-rocket"></i></a>
+                        <a href="404.html" class="action-icon-btn" title="Download SafeTensors"><i class="fa-solid fa-download"></i></a>
+                        <a href="404.html" class="action-icon-btn danger" title="Delete"><i class="fa-solid fa-trash-can"></i></a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ══════════════════════════════════════════
+             CUSTOMER VIEW 4: API KEYS & VAULT
+        ══════════════════════════════════════════ -->
+        <section class="dash-view-pane" id="view-cust-apikeys">
+          <div class="dash-page-header">
+            <div class="page-title-wrap">
+              <h1><i class="fa-solid fa-key" style="color: var(--dash-cyan);"></i> API Keys &amp; <span class="title-gradient">Token Vault</span></h1>
+              <p>Manage cryptographic API tokens with scoped hardware permissions, VPC pinning, and rate limits.</p>
+            </div>
+            <div class="header-action-group">
+              <a href="404.html" class="btn-secondary-cyber" style="text-decoration: none;">
+                <i class="fa-solid fa-rotate"></i> Rotate Secrets
+              </a>
+              <a href="404.html" class="topbar-action-btn">
+                <i class="fa-solid fa-plus"></i> Create New Key
+              </a>
+            </div>
+          </div>
+
+          <!-- API Security Matrix KPIs -->
+          <div class="kpi-grid">
+            <div class="kpi-card">
+              <div class="kpi-top-row">
+                <span class="kpi-label">Active Credentials</span>
+                <div class="kpi-icon-wrap cyan"><i class="fa-solid fa-key"></i></div>
+              </div>
+              <div class="kpi-value-row">
+                <span class="kpi-number">5 Tokens</span>
+                <span class="kpi-trend positive"><i class="fa-solid fa-check"></i> Vaulted</span>
+              </div>
+              <div class="kpi-subtext">Zero compromised credentials</div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-top-row">
+                <span class="kpi-label">Peak Hardware Throughput</span>
+                <div class="kpi-icon-wrap blue"><i class="fa-solid fa-gauge-high"></i></div>
+              </div>
+              <div class="kpi-value-row">
+                <span class="kpi-number">4,200 RPS</span>
+                <span class="kpi-trend positive"><i class="fa-solid fa-bolt"></i> Burst</span>
+              </div>
+              <div class="kpi-subtext">Limit: 10,000 req/sec maximum</div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-top-row">
+                <span class="kpi-label">IP Whitelisting</span>
+                <div class="kpi-icon-wrap green"><i class="fa-solid fa-shield-halved"></i></div>
+              </div>
+              <div class="kpi-value-row">
+                <span class="kpi-number">Enforced</span>
+                <span class="kpi-trend positive"><i class="fa-solid fa-lock"></i> Air-Gapped</span>
+              </div>
+              <div class="kpi-subtext">3 CIDR Blocks authorized</div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-top-row">
+                <span class="kpi-label">Cryptographic Standard</span>
+                <div class="kpi-icon-wrap purple"><i class="fa-solid fa-fingerprint"></i></div>
+              </div>
+              <div class="kpi-value-row">
+                <span class="kpi-number">Ed25519</span>
+                <span class="kpi-trend positive"><i class="fa-solid fa-microchip"></i> HSM</span>
+              </div>
+              <div class="kpi-subtext">Hardware Security Module verified</div>
+            </div>
+          </div>
+
+          <!-- Table 1: Active API Credentials -->
+          <div class="dash-card" style="margin-bottom: 2rem;">
+            <div class="dash-card-header">
+              <div class="dash-card-title"><i class="fa-solid fa-shield-halved"></i> Active Cryptographic API Credentials</div>
+              <div class="card-header-actions">
+                <a href="404.html" class="btn-secondary-cyber" style="font-size: 0.75rem; text-decoration: none;"><i class="fa-solid fa-clock-rotate-left"></i> Revocation History</a>
+                <a href="404.html" class="action-icon-btn" title="Export Public Hashes"><i class="fa-solid fa-download"></i></a>
+              </div>
+            </div>
+            <div class="dash-card-body" style="padding: 0;">
+              <div class="table-responsive">
+                <table class="cyber-table">
+                  <thead>
+                    <tr>
+                      <th>Key Description</th>
+                      <th>Token Hash</th>
+                      <th>Scope &amp; Limits</th>
+                      <th>Monthly Usage</th>
+                      <th>Status</th>
+                      <th>Created</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="api-keys-table-body">
+                    <tr>
+                      <td>
+                        <strong>Production Microservice Gateway</strong>
+                        <div style="font-size: 0.7rem; color: var(--dash-text-dim);">Kubernetes Production Cluster Node</div>
+                      </td>
+                      <td><code style="color: var(--dash-cyan); font-family: var(--font-mono);">sk-stackly-live-7x92•••••••••</code></td>
+                      <td><span class="status-pill active" style="font-size: 0.68rem;">Full Inference (5,000 RPS)</span></td>
+                      <td style="font-family: var(--font-mono); font-size: 0.78rem;">1.42M Tokens</td>
+                      <td><span class="status-pill active"><i class="fa-solid fa-circle" style="font-size: 6px;"></i> Active</span></td>
+                      <td style="font-size: 0.75rem; color: var(--dash-text-muted);">Sep 15, 2026</td>
+                      <td>
+                        <a href="404.html" class="action-icon-btn" title="Copy Key"><i class="fa-regular fa-copy"></i></a>
+                        <a href="404.html" class="action-icon-btn" title="Regenerate Token"><i class="fa-solid fa-arrows-rotate"></i></a>
+                        <a href="404.html" class="action-icon-btn danger" title="Revoke Key"><i class="fa-regular fa-trash-can"></i></a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <strong>Staging &amp; CI/CD Testing Runner</strong>
+                        <div style="font-size: 0.7rem; color: var(--dash-text-dim);">GitHub Actions Automated Pipeline</div>
+                      </td>
+                      <td><code style="color: var(--dash-cyan); font-family: var(--font-mono);">sk-stackly-stag-4a11•••••••••</code></td>
+                      <td><span class="status-pill active" style="font-size: 0.68rem;">Inference Only (1,000 RPS)</span></td>
+                      <td style="font-family: var(--font-mono); font-size: 0.78rem;">540k Tokens</td>
+                      <td><span class="status-pill active"><i class="fa-solid fa-circle" style="font-size: 6px;"></i> Active</span></td>
+                      <td style="font-size: 0.75rem; color: var(--dash-text-muted);">Sep 22, 2026</td>
+                      <td>
+                        <a href="404.html" class="action-icon-btn" title="Copy Key"><i class="fa-regular fa-copy"></i></a>
+                        <a href="404.html" class="action-icon-btn" title="Regenerate Token"><i class="fa-solid fa-arrows-rotate"></i></a>
+                        <a href="404.html" class="action-icon-btn danger" title="Revoke Key"><i class="fa-regular fa-trash-can"></i></a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <strong>Internal Enterprise Copilot IDE</strong>
+                        <div style="font-size: 0.7rem; color: var(--dash-text-dim);">VS Code &amp; JetBrains Developer Bridge</div>
+                      </td>
+                      <td><code style="color: var(--dash-cyan); font-family: var(--font-mono);">sk-stackly-ide-99f2•••••••••</code></td>
+                      <td><span class="status-pill active" style="font-size: 0.68rem;">Streaming Only (2,500 RPS)</span></td>
+                      <td style="font-family: var(--font-mono); font-size: 0.78rem;">320k Tokens</td>
+                      <td><span class="status-pill active"><i class="fa-solid fa-circle" style="font-size: 6px;"></i> Active</span></td>
+                      <td style="font-size: 0.75rem; color: var(--dash-text-muted);">Sep 25, 2026</td>
+                      <td>
+                        <a href="404.html" class="action-icon-btn" title="Copy Key"><i class="fa-regular fa-copy"></i></a>
+                        <a href="404.html" class="action-icon-btn" title="Regenerate Token"><i class="fa-solid fa-arrows-rotate"></i></a>
+                        <a href="404.html" class="action-icon-btn danger" title="Revoke Key"><i class="fa-regular fa-trash-can"></i></a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <strong>Financial RAG Knowledge Indexer</strong>
+                        <div style="font-size: 0.7rem; color: var(--dash-text-dim);">Milvus Vector Embeddings Ingestion</div>
+                      </td>
+                      <td><code style="color: var(--dash-cyan); font-family: var(--font-mono);">sk-stackly-emb-33c8•••••••••</code></td>
+                      <td><span class="status-pill active" style="font-size: 0.68rem;">Embeddings Only (Uncapped)</span></td>
+                      <td style="font-family: var(--font-mono); font-size: 0.78rem;">110k Tokens</td>
+                      <td><span class="status-pill active"><i class="fa-solid fa-circle" style="font-size: 6px;"></i> Active</span></td>
+                      <td style="font-size: 0.75rem; color: var(--dash-text-muted);">Sep 27, 2026</td>
+                      <td>
+                        <a href="404.html" class="action-icon-btn" title="Copy Key"><i class="fa-regular fa-copy"></i></a>
+                        <a href="404.html" class="action-icon-btn" title="Regenerate Token"><i class="fa-solid fa-arrows-rotate"></i></a>
+                        <a href="404.html" class="action-icon-btn danger" title="Revoke Key"><i class="fa-regular fa-trash-can"></i></a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <strong>Audit &amp; Telemetry Scraper</strong>
+                        <div style="font-size: 0.7rem; color: var(--dash-text-dim);">Datadog SIEM Compliance Streamer</div>
+                      </td>
+                      <td><code style="color: var(--dash-cyan); font-family: var(--font-mono);">sk-stackly-read-12b0•••••••••</code></td>
+                      <td><span class="status-pill active" style="font-size: 0.68rem;">Read Only (500 RPS)</span></td>
+                      <td style="font-family: var(--font-mono); font-size: 0.78rem;">18k Tokens</td>
+                      <td><span class="status-pill active"><i class="fa-solid fa-circle" style="font-size: 6px;"></i> Active</span></td>
+                      <td style="font-size: 0.75rem; color: var(--dash-text-muted);">Sep 28, 2026</td>
+                      <td>
+                        <a href="404.html" class="action-icon-btn" title="Copy Key"><i class="fa-regular fa-copy"></i></a>
+                        <a href="404.html" class="action-icon-btn" title="Regenerate Token"><i class="fa-solid fa-arrows-rotate"></i></a>
+                        <a href="404.html" class="action-icon-btn danger" title="Revoke Key"><i class="fa-regular fa-trash-can"></i></a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- Table 2: IP Whitelisting & CIDR Access Rules -->
+          <div class="dash-card">
+            <div class="dash-card-header">
+              <div class="dash-card-title"><i class="fa-solid fa-network-wired"></i> Authorized CIDR IP Ranges &amp; VPC Enclaves</div>
+              <a href="404.html" class="topbar-action-btn" style="padding: 0.4rem 0.85rem; font-size: 0.75rem;">
+                <i class="fa-solid fa-plus"></i> Add Allowed IP
+              </a>
+            </div>
+            <div class="dash-card-body" style="padding: 0;">
+              <div class="table-responsive">
+                <table class="cyber-table">
+                  <thead>
+                    <tr>
+                      <th>VPC / Network Label</th>
+                      <th>IP CIDR Block</th>
+                      <th>Interface</th>
+                      <th>Assigned Keys</th>
+                      <th>Status</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>Acme AWS Private Subnet (Virginia)</strong></td>
+                      <td><code style="color: var(--dash-cyan);">10.128.0.0/16</code></td>
+                      <td>DirectConnect / WireGuard</td>
+                      <td><code>sk-live-7x92••</code></td>
+                      <td><span class="status-pill active">Verified</span></td>
+                      <td><a href="404.html" class="action-icon-btn danger" title="Remove IP Rule"><i class="fa-solid fa-trash-can"></i></a></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Internal On-Premises HQ Gateway</strong></td>
+                      <td><code style="color: var(--dash-cyan);">192.168.10.0/24</code></td>
+                      <td>Air-Gapped IPSec Tunnel</td>
+                      <td><code>sk-ide-99f2••</code></td>
+                      <td><span class="status-pill active">Verified</span></td>
+                      <td><a href="404.html" class="action-icon-btn danger" title="Remove IP Rule"><i class="fa-solid fa-trash-can"></i></a></td>
+                    </tr>
+                    <tr>
+                      <td><strong>CI/CD GitHub Enterprise Runner</strong></td>
+                      <td><code style="color: var(--dash-cyan);">172.16.40.0/20</code></td>
+                      <td>TLS 1.3 Strict Mutual Auth</td>
+                      <td><code>sk-stag-4a11••</code></td>
+                      <td><span class="status-pill active">Verified</span></td>
+                      <td><a href="404.html" class="action-icon-btn danger" title="Remove IP Rule"><i class="fa-solid fa-trash-can"></i></a></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ══════════════════════════════════════════
+             CUSTOMER VIEW 5: BILLING & COMPUTE
+        ══════════════════════════════════════════ -->
+        <section class="dash-view-pane" id="view-cust-billing">
+          <div class="dash-page-header">
+            <div class="page-title-wrap">
+              <h1><i class="fa-solid fa-credit-card" style="color: var(--dash-cyan);"></i> Compute &amp; <span class="title-gradient">Billing Invoices</span></h1>
+              <p>Transparent real-time token tracking, dedicated hardware usage meters, and monthly enterprise invoices.</p>
+            </div>
+            <div class="header-action-group">
+              <a href="404.html" class="btn-secondary-cyber" style="text-decoration: none;">
+                <i class="fa-solid fa-sliders"></i> Adjust Budget Cap
+              </a>
+              <a href="404.html" class="topbar-action-btn">
+                <i class="fa-solid fa-file-invoice-dollar"></i> Download Invoice
+              </a>
+            </div>
+          </div>
+
+          <!-- Billing Overview KPI Matrix -->
+          <div class="kpi-grid">
+            <div class="kpi-card">
+              <div class="kpi-top-row">
+                <span class="kpi-label">Current Cycle Total</span>
+                <div class="kpi-icon-wrap cyan"><i class="fa-solid fa-receipt"></i></div>
+              </div>
+              <div class="kpi-value-row">
+                <span class="kpi-number">$1,890.00</span>
+                <span class="kpi-trend positive"><i class="fa-solid fa-check"></i> On Budget</span>
+              </div>
+              <div class="kpi-subtext">Estimated Month End: $2,450.00</div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-top-row">
+                <span class="kpi-label">Dedicated GPU Racks</span>
+                <div class="kpi-icon-wrap blue"><i class="fa-solid fa-microchip"></i></div>
+              </div>
+              <div class="kpi-value-row">
+                <span class="kpi-number">$1,400.00</span>
+                <span class="kpi-trend positive"><i class="fa-solid fa-bolt"></i> Flat Rate</span>
+              </div>
+              <div class="kpi-subtext">2x H100 SXM5 Air-Gapped Nodes</div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-top-row">
+                <span class="kpi-label">Token Overage</span>
+                <div class="kpi-icon-wrap green"><i class="fa-solid fa-coins"></i></div>
+              </div>
+              <div class="kpi-value-row">
+                <span class="kpi-number">$490.00</span>
+                <span class="kpi-trend positive"><i class="fa-solid fa-arrow-down"></i> -18%</span>
+              </div>
+              <div class="kpi-subtext">1.41M billable tokens beyond quota</div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-top-row">
+                <span class="kpi-label">Auto-Pay Status</span>
+                <div class="kpi-icon-wrap purple"><i class="fa-solid fa-building-columns"></i></div>
+              </div>
+              <div class="kpi-value-row">
+                <span class="kpi-number">ACH Wire</span>
+                <span class="kpi-trend positive"><i class="fa-solid fa-shield"></i> Verified</span>
+              </div>
+              <div class="kpi-subtext">Net 30 Enterprise Terms</div>
+            </div>
+          </div>
+
+          <!-- Section 2: Compute Snapshot & Plan Inclusions -->
+          <div class="dash-grid-equal" style="margin-bottom: 2rem;">
+            <div class="dash-card">
+              <div class="dash-card-header">
+                <div class="dash-card-title"><i class="fa-solid fa-chart-pie"></i> Resource Consumption Itemization</div>
+                <a href="404.html" class="action-icon-btn" title="Detailed Usage Graphs"><i class="fa-solid fa-chart-line"></i></a>
+              </div>
+              <div class="dash-card-body" style="display: flex; flex-direction: column; gap: 1rem;">
+                <div>
+                  <div style="display: flex; justify-content: space-between; font-size: 0.8rem; font-family: var(--font-mono); margin-bottom: 0.35rem;">
+                    <span style="color: var(--dash-text-muted);">Sovereign H100 SXM5 Compute Pool</span>
+                    <span style="color: var(--dash-cyan); font-weight: 700;">$1,400.00 (74.1%)</span>
+                  </div>
+                  <div class="rack-bar-wrap"><div class="rack-bar-fill" style="width: 74.1%; background: linear-gradient(90deg, var(--dash-cyan), var(--dash-blue));"></div></div>
+                </div>
+
+                <div>
+                  <div style="display: flex; justify-content: space-between; font-size: 0.8rem; font-family: var(--font-mono); margin-bottom: 0.35rem;">
+                    <span style="color: var(--dash-text-muted);">FP8 Tensor Inference Overage (1.41M Tokens)</span>
+                    <span style="color: var(--dash-green); font-weight: 700;">$352.50 (18.6%)</span>
+                  </div>
+                  <div class="rack-bar-wrap"><div class="rack-bar-fill" style="width: 18.6%; background: linear-gradient(90deg, var(--dash-green), var(--dash-cyan));"></div></div>
+                </div>
+
+                <div>
+                  <div style="display: flex; justify-content: space-between; font-size: 0.8rem; font-family: var(--font-mono); margin-bottom: 0.35rem;">
+                    <span style="color: var(--dash-text-muted);">Air-Gapped S3 Weights &amp; LoRA Vault Storage</span>
+                    <span style="color: #c084fc; font-weight: 700;">$137.50 (7.3%)</span>
+                  </div>
+                  <div class="rack-bar-wrap"><div class="rack-bar-fill" style="width: 7.3%; background: linear-gradient(90deg, #c084fc, var(--dash-purple));"></div></div>
+                </div>
+
+                <div style="display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 0.75rem; color: var(--dash-text-dim); margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid rgba(255,255,255,0.06);">
+                  <span>Next Cycle Reset: Oct 01, 2026</span>
+                  <span style="color: var(--dash-cyan);">Billing Cycle: Monthly Sovereign</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="dash-card">
+              <div class="dash-card-header">
+                <div class="dash-card-title"><i class="fa-solid fa-shield-halved"></i> Enterprise Tier Inclusions</div>
+                <a href="404.html" class="action-icon-btn" title="Upgrade Plan"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+              </div>
+              <div class="dash-card-body">
+                <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.85rem; font-size: 0.85rem;">
+                  <li><i class="fa-solid fa-circle-check" style="color: var(--dash-green); margin-right: 0.5rem;"></i> <strong>1,000,000 Included Sovereign Tokens/mo</strong> with zero external logging</li>
+                  <li><i class="fa-solid fa-circle-check" style="color: var(--dash-green); margin-right: 0.5rem;"></i> <strong>Dedicated Air-Gapped VPC Compute Enclave</strong> with dual NVLink interconnects</li>
+                  <li><i class="fa-solid fa-circle-check" style="color: var(--dash-green); margin-right: 0.5rem;"></i> <strong>&lt; 15 min Priority AI Architect SLA</strong> and 24/7 mission-critical hotline</li>
+                  <li><i class="fa-solid fa-circle-check" style="color: var(--dash-green); margin-right: 0.5rem;"></i> <strong>Hardware Security Module (HSM)</strong> token encryption at rest &amp; in transit</li>
+                </ul>
+                <div style="margin-top: 1.25rem;">
+                  <a href="404.html" class="btn-secondary-cyber" style="width: 100%; justify-content: center; text-decoration: none;">
+                    <i class="fa-solid fa-pen-to-square"></i> Modify Enterprise Contract
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 3: Monthly Enterprise Invoices & Receipts History -->
+          <div class="dash-card">
+            <div class="dash-card-header">
+              <div class="dash-card-title"><i class="fa-solid fa-receipt"></i> Historical Enterprise Invoices &amp; Receipts</div>
+              <a href="404.html" class="action-icon-btn" title="Export All Statements"><i class="fa-solid fa-file-export"></i></a>
+            </div>
+            <div class="dash-card-body" style="padding: 0;">
+              <div class="table-responsive">
+                <table class="cyber-table">
+                  <thead>
+                    <tr>
+                      <th>Invoice ID</th>
+                      <th>Billing Period</th>
+                      <th>Compute Usage</th>
+                      <th>Total Amount</th>
+                      <th>Payment Status</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong style="font-family: var(--font-mono); color: var(--dash-cyan);">INV-2026-09-8821</strong></td>
+                      <td>Sep 01 – Sep 30, 2026</td>
+                      <td>2x H100 + 2.41M Tokens</td>
+                      <td><strong style="font-family: var(--font-mono);">$1,890.00</strong></td>
+                      <td><span class="status-pill active"><i class="fa-solid fa-clock" style="font-size: 6px;"></i> Pending Cycle Close</span></td>
+                      <td>
+                        <a href="404.html" class="action-icon-btn" title="Download PDF"><i class="fa-solid fa-file-pdf"></i></a>
+                        <a href="404.html" class="action-icon-btn" title="Itemized Breakdown"><i class="fa-solid fa-list-check"></i></a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><strong style="font-family: var(--font-mono); color: var(--dash-cyan);">INV-2026-08-7419</strong></td>
+                      <td>Aug 01 – Aug 31, 2026</td>
+                      <td>2x H100 + 2.18M Tokens</td>
+                      <td><strong style="font-family: var(--font-mono);">$1,795.00</strong></td>
+                      <td><span class="status-pill active"><i class="fa-solid fa-check" style="font-size: 6px;"></i> Paid via Wire</span></td>
+                      <td>
+                        <a href="404.html" class="action-icon-btn" title="Download PDF"><i class="fa-solid fa-file-pdf"></i></a>
+                        <a href="404.html" class="action-icon-btn" title="Itemized Breakdown"><i class="fa-solid fa-list-check"></i></a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><strong style="font-family: var(--font-mono); color: var(--dash-cyan);">INV-2026-07-6204</strong></td>
+                      <td>Jul 01 – Jul 31, 2026</td>
+                      <td>2x H100 + 1.94M Tokens</td>
+                      <td><strong style="font-family: var(--font-mono);">$1,680.00</strong></td>
+                      <td><span class="status-pill active"><i class="fa-solid fa-check" style="font-size: 6px;"></i> Paid via Wire</span></td>
+                      <td>
+                        <a href="404.html" class="action-icon-btn" title="Download PDF"><i class="fa-solid fa-file-pdf"></i></a>
+                        <a href="404.html" class="action-icon-btn" title="Itemized Breakdown"><i class="fa-solid fa-list-check"></i></a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ══════════════════════════════════════════
+             CUSTOMER VIEW 6: DEDICATED SUPPORT
+        ══════════════════════════════════════════ -->
+        <section class="dash-view-pane" id="view-cust-support">
+          <div class="dash-page-header">
+            <div class="page-title-wrap">
+              <h1><i class="fa-solid fa-headset" style="color: var(--dash-cyan);"></i> Dedicated AI <span class="title-gradient">Architect Bridge</span></h1>
+              <p>Direct priority communication channel with Stackly principal AI systems engineers and cluster architects.</p>
+            </div>
+            <div class="header-action-group">
+              <a href="404.html" class="btn-secondary-cyber" style="text-decoration: none;">
+                <i class="fa-solid fa-phone"></i> Emergency Hotline
+              </a>
+              <a href="404.html" class="topbar-action-btn">
+                <i class="fa-solid fa-video"></i> Schedule 1-on-1 Sync
+              </a>
+            </div>
+          </div>
+
+          <!-- Support & SLA Metrics Matrix -->
+          <div class="kpi-grid">
+            <div class="kpi-card">
+              <div class="kpi-top-row">
+                <span class="kpi-label">Assigned Lead Architect</span>
+                <div class="kpi-icon-wrap cyan"><i class="fa-solid fa-user-astronaut"></i></div>
+              </div>
+              <div class="kpi-value-row">
+                <span class="kpi-number" style="font-size: 1.25rem;">Dr. Elena Rostova</span>
+                <span class="kpi-trend positive"><i class="fa-solid fa-circle" style="font-size: 6px;"></i> Online</span>
+              </div>
+              <div class="kpi-subtext">Principal Distributed ML Engineer</div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-top-row">
+                <span class="kpi-label">Guaranteed SLA</span>
+                <div class="kpi-icon-wrap blue"><i class="fa-solid fa-stopwatch"></i></div>
+              </div>
+              <div class="kpi-value-row">
+                <span class="kpi-number">&lt; 15 Mins</span>
+                <span class="kpi-trend positive"><i class="fa-solid fa-bolt"></i> Tier 1</span>
+              </div>
+              <div class="kpi-subtext">Median response time: 4.2 mins</div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-top-row">
+                <span class="kpi-label">Tickets Resolved</span>
+                <div class="kpi-icon-wrap green"><i class="fa-solid fa-circle-check"></i></div>
+              </div>
+              <div class="kpi-value-row">
+                <span class="kpi-number">100%</span>
+                <span class="kpi-trend positive"><i class="fa-solid fa-star"></i> 5.0 Rating</span>
+              </div>
+              <div class="kpi-subtext">14 of 14 tickets closed successfully</div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-top-row">
+                <span class="kpi-label">Private Enclave Channel</span>
+                <div class="kpi-icon-wrap purple"><i class="fa-solid fa-shield-halved"></i></div>
+              </div>
+              <div class="kpi-value-row">
+                <span class="kpi-number">E2E Encrypted</span>
+                <span class="kpi-trend positive"><i class="fa-solid fa-lock"></i> Signal Bridge</span>
+              </div>
+              <div class="kpi-subtext">Zero unencrypted plain text egress</div>
+            </div>
+          </div>
+
+          <!-- Section 2: Assigned Dedicated Engineer & Direct Telemetry Bridge -->
+          <div class="dash-grid-equal" style="margin-bottom: 2rem;">
+            
+            <!-- Architect Profile & Direct Channels -->
+            <div class="dash-card">
+              <div class="dash-card-header">
+                <div class="dash-card-title"><i class="fa-solid fa-id-badge"></i> Assigned Dedicated Lead Architect</div>
+                <span class="status-pill active"><i class="fa-solid fa-bolt"></i> Active On Call</span>
+              </div>
+              <div class="dash-card-body" style="display: flex; flex-direction: column; gap: 1.15rem;">
+                <div style="display: flex; gap: 1.25rem; align-items: center;">
+                  <div style="width: 64px; height: 64px; border-radius: 50%; border: 2.5px solid var(--dash-cyan); overflow: hidden; flex-shrink: 0; box-shadow: 0 0 20px rgba(0,242,254,0.35);">
+                    <img src="assets/images/avatar-1.webp" alt="Dr. Elena Rostova" style="width: 100%; height: 100%; object-fit: cover;">
+                  </div>
+                  <div>
+                    <h3 style="font-size: 1.15rem; font-weight: 800; color: #fff; margin-bottom: 0.2rem;">Dr. Elena Rostova</h3>
+                    <p style="font-size: 0.82rem; color: var(--dash-text-muted); margin-bottom: 0.25rem;">Principal AI Systems Architect • Ex-NVIDIA HPC Labs</p>
+                    <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--dash-cyan);"><i class="fa-solid fa-envelope"></i> elena.rostova@stackly.internal</div>
+                  </div>
+                </div>
+
+                <div style="background: rgba(0,0,0,0.35); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 1rem; font-size: 0.84rem; color: #c3d9ef; line-height: 1.5;">
+                  "I actively supervise Acme Enterprise’s sovereign cluster instances. If you experience latency spikes, require kernel quantization passes, or plan to scale to additional H100 nodes, reach out via direct signal bridge."
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+                  <a href="404.html" class="topbar-action-btn" style="justify-content: center; text-decoration: none;">
+                    <i class="fa-solid fa-comments"></i> Live Architect Chat
+                  </a>
+                  <a href="404.html" class="btn-secondary-cyber" style="justify-content: center; text-decoration: none;">
+                    <i class="fa-solid fa-calendar-check"></i> Book Technical Review
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Escalation Protocol & High-Availability SLA Guarantees -->
+            <div class="dash-card">
+              <div class="dash-card-header">
+                <div class="dash-card-title"><i class="fa-solid fa-shield-halved"></i> Mission-Critical Escalation Protocol</div>
+                <a href="404.html" class="action-icon-btn" title="View Full SLA Document"><i class="fa-solid fa-file-contract"></i></a>
+              </div>
+              <div class="dash-card-body" style="display: flex; flex-direction: column; gap: 0.9rem;">
+                <div style="display: flex; align-items: flex-start; gap: 0.85rem; padding: 0.75rem; background: rgba(0,242,254,0.04); border: 1px solid rgba(0,242,254,0.12); border-radius: 8px;">
+                  <div style="font-size: 1.1rem; color: var(--dash-cyan);"><i class="fa-solid fa-tower-broadcast"></i></div>
+                  <div>
+                    <div style="font-weight: 700; font-size: 0.85rem; color: #fff;">Priority 1 Outage Escalation (&lt; 15m)</div>
+                    <div style="font-size: 0.75rem; color: var(--dash-text-muted);">Direct pager escalation to ML engineering team and data center operations.</div>
+                  </div>
+                </div>
+
+                <div style="display: flex; align-items: flex-start; gap: 0.85rem; padding: 0.75rem; background: rgba(0,245,155,0.04); border: 1px solid rgba(0,245,155,0.12); border-radius: 8px;">
+                  <div style="font-size: 1.1rem; color: var(--dash-green);"><i class="fa-solid fa-code-merge"></i></div>
+                  <div>
+                    <div style="font-weight: 700; font-size: 0.85rem; color: #fff;">Bespoke LoRA &amp; FP8 Fine-Tuning Assistance</div>
+                    <div style="font-size: 0.75rem; color: var(--dash-text-muted);">1-on-1 model weight architecture validation and precision alignment.</div>
+                  </div>
+                </div>
+
+                <div style="display: flex; align-items: flex-start; gap: 0.85rem; padding: 0.75rem; background: rgba(192,132,252,0.04); border: 1px solid rgba(192,132,252,0.12); border-radius: 8px;">
+                  <div style="font-size: 1.1rem; color: #c084fc;"><i class="fa-solid fa-lock"></i></div>
+                  <div>
+                    <div style="font-weight: 700; font-size: 0.85rem; color: #fff;">Air-Gapped Sovereign Audit Logs</div>
+                    <div style="font-size: 0.75rem; color: var(--dash-text-muted);">Cryptographic evidence logs provided for SOC2 and HIPAA compliance.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Section 3: Recent Support Tickets History -->
+          <div class="dash-card">
+            <div class="dash-card-header">
+              <div class="dash-card-title"><i class="fa-solid fa-clock-rotate-left"></i> Support Incident &amp; Request History</div>
+              <a href="404.html" class="action-icon-btn" title="Export History"><i class="fa-solid fa-download"></i></a>
+            </div>
+            <div class="dash-card-body" style="padding: 0;">
+              <div class="table-responsive">
+                <table class="cyber-table">
+                  <thead>
+                    <tr>
+                      <th>Ticket ID</th>
+                      <th>Subject / Description</th>
+                      <th>Category</th>
+                      <th>Response Time</th>
+                      <th>Status</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong style="font-family: var(--font-mono); color: var(--dash-cyan);">TICK-8841-P1</strong></td>
+                      <td>
+                        <strong>FP8 Kernel Custom Quantization Review</strong>
+                        <div style="font-size: 0.7rem; color: var(--dash-text-dim);">Resolved by Dr. Elena Rostova</div>
+                      </td>
+                      <td>Performance Tuning</td>
+                      <td style="color: var(--dash-green); font-family: var(--font-mono);">3.8 Mins</td>
+                      <td><span class="status-pill active">Resolved</span></td>
+                      <td><a href="404.html" class="action-icon-btn" title="View Thread"><i class="fa-solid fa-eye"></i></a></td>
+                    </tr>
+                    <tr>
+                      <td><strong style="font-family: var(--font-mono); color: var(--dash-cyan);">TICK-8712-P2</strong></td>
+                      <td>
+                        <strong>Air-Gapped WireGuard CIDR Range Expansion</strong>
+                        <div style="font-size: 0.7rem; color: var(--dash-text-dim);">Added 10.128.0.0/16 subnet</div>
+                      </td>
+                      <td>VPC Networking</td>
+                      <td style="color: var(--dash-green); font-family: var(--font-mono);">5.4 Mins</td>
+                      <td><span class="status-pill active">Resolved</span></td>
+                      <td><a href="404.html" class="action-icon-btn" title="View Thread"><i class="fa-solid fa-eye"></i></a></td>
+                    </tr>
+                    <tr>
+                      <td><strong style="font-family: var(--font-mono); color: var(--dash-cyan);">TICK-8605-P3</strong></td>
+                      <td>
+                        <strong>LoRA Checkpoint Checksum Verification</strong>
+                        <div style="font-size: 0.7rem; color: var(--dash-text-dim);">SHA256 integrity check completed</div>
+                      </td>
+                      <td>Model Security</td>
+                      <td style="color: var(--dash-green); font-family: var(--font-mono);">8.1 Mins</td>
+                      <td><span class="status-pill active">Resolved</span></td>
+                      <td><a href="404.html" class="action-icon-btn" title="View Thread"><i class="fa-solid fa-eye"></i></a></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+    </main>
+
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       MODAL: CREATE NEW API KEY
+  ══════════════════════════════════════════ -->
+  <div class="cyber-modal-backdrop" id="create-key-modal">
+    <div class="cyber-modal">
+      <div class="modal-header">
+        <div class="modal-title"><i class="fa-solid fa-key" style="color: var(--dash-cyan);"></i> Generate Enterprise API Key</div>
+        <button class="modal-close-btn" aria-label="Close Modal">&times;</button>
+      </div>
+      <form id="create-key-form">
+        <div class="modal-body">
+          <div class="param-group">
+            <label>Key Name / Description</label>
+            <input type="text" id="modal-key-name" class="cyber-select" placeholder="e.g. Analytics Microservice Production" required>
+          </div>
+          <div class="param-group">
+            <label>Permission Scope</label>
+            <select class="cyber-select">
+              <option value="full">Full Inference &amp; Fine-Tuning (Admin)</option>
+              <option value="inference">Inference Only (Read/Execute)</option>
+              <option value="readonly">Telemetry &amp; Audit Logs (Read Only)</option>
+            </select>
+          </div>
+          <div class="param-group">
+            <label>Hardware Rate Limit</label>
+            <select class="cyber-select">
+              <option value="1000">1,000 req/sec (Default)</option>
+              <option value="5000">5,000 req/sec (High Concurrency)</option>
+              <option value="unlimited">Uncapped Sovereign Burst</option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-secondary-cyber" data-close-modal>Cancel</button>
+          <button type="submit" class="topbar-action-btn"><i class="fa-solid fa-check"></i> Generate Key</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="assets/js/dashboard.js"></script>
+  <script src="assets/js/enhancements.js"></script>
+</body>
+</html>

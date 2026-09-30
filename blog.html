@@ -1,0 +1,1338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Research & Insights Blog | Stackly</title>
+  <meta name="description" content="Explore breakthrough machine learning research, agentic architectures, and enterprise AI insights published by the Stackly research team.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/blog.css">
+  <link rel="stylesheet" href="assets/css/enhancements.css">
+</head>
+<body>
+
+  <!-- Particle Background Canvas -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- Background Ambient Glows -->
+  <div class="orb-glow orb-primary" style="top: 8%; right: 8%; width: 550px; height: 550px;"></div>
+  <div class="orb-glow orb-secondary" style="top: 45%; left: 5%; width: 600px; height: 600px;"></div>
+  <div class="orb-glow orb-pink" style="bottom: 12%; right: 10%; width: 500px; height: 500px;"></div>
+
+  <!-- Top Navigation Header -->
+  <header class="site-header">
+    <div class="container">
+      <div class="neuro-nav-wrapper">
+        <!-- Logo -->
+        <a href="index.html" class="neuro-logo"><img src="assets/images/stackly-logo.webp" alt="Stackly AI" class="site-logo-img"></a>
+
+        <!-- Center Floating Pill Navigation -->
+        <nav class="neuro-nav-pill">
+          <a href="index.html" class="neuro-nav-item">HOME</a>
+          <a href="about.html" class="neuro-nav-item">ABOUT US</a>
+          <a href="services.html" class="neuro-nav-item">SERVICE</a>
+          <a href="blog.html" class="neuro-nav-item active">BLOG</a>
+          <a href="contact.html" class="neuro-nav-item">CONTACT</a>
+        </nav>
+
+        <!-- Right Actions -->
+        <div class="neuro-actions">
+          <a href="404.html" class="neuro-search-btn" aria-label="Search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </a>
+          <a href="login.html" class="btn-contact-pill">LOGIN</a>
+          <!-- Mobile Hamburger Toggle -->
+          <button class="neuro-mobile-toggle" id="neuroMobileToggle" aria-label="Toggle Navigation Menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Dropdown Menu -->
+    <div class="neuro-mobile-menu" id="neuroMobileMenu">
+      <div class="neuro-mobile-menu-inner">
+        <nav class="neuro-mobile-nav-links">
+          <a href="index.html" class="neuro-mobile-nav-item"><i class="fa-solid fa-house"></i> HOME</a>
+          <a href="about.html" class="neuro-mobile-nav-item"><i class="fa-solid fa-microchip"></i> ABOUT US</a>
+          <a href="services.html" class="neuro-mobile-nav-item"><i class="fa-solid fa-network-wired"></i> SERVICE</a>
+          <a href="blog.html" class="neuro-mobile-nav-item active"><i class="fa-solid fa-newspaper"></i> BLOG</a>
+          <a href="contact.html" class="neuro-mobile-nav-item"><i class="fa-solid fa-envelope-open-text"></i> CONTACT</a>
+        </nav>
+        <div class="neuro-mobile-actions">
+          <a href="login.html" class="btn-mobile-auth"><i class="fa-solid fa-arrow-right-to-bracket"></i> LOGIN</a>
+          <a href="signup.html" class="btn-mobile-auth primary"><i class="fa-solid fa-user-plus"></i> SIGN UP</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- SECTION 1: Page Hero with Animated Frequency Spectrum SVG Visual -->
+  <section class="page-hero">
+    <div class="hero-svg-bg-grid"></div>
+    <div class="hero-orb hero-orb-cyan"></div>
+    <div class="hero-orb hero-orb-purple"></div>
+
+    <div class="container">
+      <div class="hero-subpage-grid">
+        
+        <!-- Left Editorial Content -->
+        <div class="hero-subpage-text" data-aos="fade-right">
+          <div class="section-tag green" data-aos="fade-down">
+            <span class="dot"></span>
+            <span>Frontier AI Dispatches</span>
+          </div>
+          <h1 data-aos="zoom-in" data-aos-delay="100">
+            Neural Research & <span class="gradient-text">Insights</span>
+          </h1>
+          <p class="section-desc" data-aos="fade-up" data-aos-delay="200">
+            Deep technical breakthroughs, architecture whitepapers, quantization benchmarks, and operational paradigms from the engineers defining tomorrow's cognitive computing.
+          </p>
+          
+          <div class="hero-subpage-chips" data-aos="fade-up" data-aos-delay="250">
+            <span class="hero-chip"><i class="fa-solid fa-book-open"></i> 140+ Whitepapers</span>
+            <span class="hero-chip"><i class="fa-solid fa-atom"></i> Quantum Benchmarks</span>
+            <span class="hero-chip"><i class="fa-solid fa-rss"></i> Weekly Dispatches</span>
+          </div>
+
+          <div class="breadcrumbs" data-aos="fade-up" data-aos-delay="300">
+            <a href="index.html">Home</a>
+            <i class="fa-solid fa-chevron-right" style="font-size: 0.75rem;"></i>
+            <span>Research Blog</span>
+          </div>
+        </div>
+
+        <!-- Right Animated Frequency Spectrum SVG Visual -->
+        <div class="hero-subpage-visual" data-aos="fade-left" data-aos-delay="200">
+          <div class="hero-svg-card">
+            
+            <!-- Micro HUD Badges -->
+            <div class="hero-hud-badge top-right">
+              <span class="hud-pulse-dot"></span>
+              <span>FRONTIER DISPATCH // v4.8</span>
+            </div>
+            <div class="hero-hud-badge bottom-left">
+              <span class="hud-pulse-dot purple"></span>
+              <span>3,420+ PEER CITATIONS</span>
+            </div>
+
+            <!-- Animated SVG Neural Waveform & Research Matrix -->
+            <svg class="hero-svg-art" viewBox="0 0 500 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="blgGradCyan" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#00f2fe" />
+                  <stop offset="50%" stop-color="#3b82f6" />
+                  <stop offset="100%" stop-color="#a855f7" />
+                </linearGradient>
+                <linearGradient id="blgGradPink" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#a855f7" />
+                  <stop offset="50%" stop-color="#ec4899" />
+                  <stop offset="100%" stop-color="#00f2fe" />
+                </linearGradient>
+                <linearGradient id="blgRadarGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#00f2fe" stop-opacity="0.5" />
+                  <stop offset="100%" stop-color="#00f2fe" stop-opacity="0" />
+                </linearGradient>
+                <filter id="blgNeonGlow" x="-30%" y="-30%" width="160%" height="160%">
+                  <feGaussianBlur stdDeviation="5" result="blur" />
+                  <feMerge>
+                    <feMergeNode in="blur" />
+                    <feMergeNode in="SourceGraphic" />
+                  </feMerge>
+                </filter>
+              </defs>
+
+              <!-- Radar Sonar Sweep Grid (Center) -->
+              <circle cx="250" cy="200" r="130" stroke="rgba(0, 242, 254, 0.12)" stroke-width="1" stroke-dasharray="4 6" />
+              <circle cx="250" cy="200" r="90" stroke="rgba(168, 85, 247, 0.15)" stroke-width="1" />
+              <circle cx="250" cy="200" r="50" stroke="rgba(0, 242, 254, 0.2)" stroke-width="1" stroke-dasharray="8 8" />
+              
+              <!-- Rotating Radar Sweep Beam -->
+              <g class="svg-radar-arm">
+                <path d="M 250 200 L 370 140 A 130 130 0 0 0 250 70 Z" fill="url(#blgRadarGrad)" />
+                <line x1="250" y1="200" x2="370" y2="140" stroke="#00f2fe" stroke-width="1.8" filter="url(#blgNeonGlow)" />
+              </g>
+
+              <!-- Multi-Frequency Harmonic Sine Waves (Undulating) -->
+              <!-- Wave 1: Primary Cyan Gradient Wave -->
+              <g class="svg-wave-layer-1">
+                <path d="M 20 200 C 80 130, 140 270, 200 160 C 260 50, 320 310, 380 180 C 420 110, 460 220, 490 200" 
+                      stroke="url(#blgGradCyan)" stroke-width="3" fill="none" filter="url(#blgNeonGlow)" />
+                <path d="M 20 200 C 80 130, 140 270, 200 160 C 260 50, 320 310, 380 180 C 420 110, 460 220, 490 200" 
+                      stroke="#ffffff" stroke-width="1.5" fill="none" class="svg-flow-path-fast" />
+              </g>
+
+              <!-- Wave 2: Secondary Magenta/Purple Counter-Harmonic Wave -->
+              <g class="svg-wave-layer-2">
+                <path d="M 20 200 C 70 260, 130 140, 190 240 C 250 340, 310 90, 370 230 C 420 290, 460 170, 490 200" 
+                      stroke="url(#blgGradPink)" stroke-width="2.5" fill="none" opacity="0.85" filter="url(#blgNeonGlow)" />
+                <path d="M 20 200 C 70 260, 130 140, 190 240 C 250 340, 310 90, 370 230 C 420 290, 460 170, 490 200" 
+                      stroke="#a855f7" stroke-width="1.5" fill="none" class="svg-flow-path-rev" />
+              </g>
+
+              <!-- Horizontal Central Reference Datum Line -->
+              <line x1="30" y1="200" x2="470" y2="200" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1" stroke-dasharray="2 4" />
+
+              <!-- Frequency Peaks and Holographic Research Dispatch Markers -->
+              <g>
+                <!-- Marker 1: Top Peak (Swarm Intelligence) -->
+                <circle cx="260" cy="95" r="8" fill="#080d1a" stroke="#00f2fe" stroke-width="2" />
+                <circle cx="260" cy="95" r="3" fill="#00f2fe" filter="url(#blgNeonGlow)" />
+                <line x1="260" y1="95" x2="260" y2="60" stroke="#00f2fe" stroke-width="1.2" stroke-dasharray="2 2" />
+                <rect x="215" y="42" width="90" height="18" rx="4" fill="#080e1c" stroke="rgba(0, 242, 254, 0.4)" stroke-width="1" />
+                <text x="260" y="54" fill="#a5f3fc" font-size="8.5" font-family="monospace" text-anchor="middle" font-weight="700">#SWARM_FP8</text>
+
+                <!-- Marker 2: Bottom Peak (Latency Telemetry) -->
+                <circle cx="250" cy="305" r="8" fill="#080d1a" stroke="#a855f7" stroke-width="2" />
+                <circle cx="250" cy="305" r="3" fill="#a855f7" filter="url(#blgNeonGlow)" />
+                <line x1="250" y1="305" x2="250" y2="340" stroke="#a855f7" stroke-width="1.2" stroke-dasharray="2 2" />
+                <rect x="205" y="340" width="90" height="18" rx="4" fill="#080e1c" stroke="rgba(168, 85, 247, 0.4)" stroke-width="1" />
+                <text x="250" y="352" fill="#d8b4fe" font-size="8.5" font-family="monospace" text-anchor="middle" font-weight="700">#P99_BENCH</text>
+
+                <!-- Marker 3: Left Intersection -->
+                <circle cx="140" cy="270" r="6" fill="#00f2fe" filter="url(#blgNeonGlow)" />
+                <circle cx="200" cy="160" r="6" fill="#a855f7" filter="url(#blgNeonGlow)" />
+                <circle cx="380" cy="180" r="6" fill="#00ff87" filter="url(#blgNeonGlow)" />
+              </g>
+
+              <!-- Central Spectrum Oscillator Core (Pulsing) -->
+              <g class="svg-core-pulse">
+                <circle cx="250" cy="200" r="18" fill="#060912" stroke="url(#blgGradCyan)" stroke-width="2" filter="url(#blgNeonGlow)" />
+                <circle cx="250" cy="200" r="8" fill="#00f2fe" />
+                <circle cx="250" cy="200" r="3" fill="#ffffff" />
+              </g>
+            </svg>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 1 — FEATURED INTELLIGENCE
+       ========================================================================== -->
+  <section class="featured-intel-section">
+    <div class="featured-ambient-glow"></div>
+    <div class="container">
+      
+      <div class="blog-section-header" data-aos="fade-up">
+        <div class="blog-eyebrow">
+          <span class="blog-eyebrow-dot"></span>
+          FEATURED RESEARCH // EDITORIAL SPOTLIGHT
+        </div>
+        <h2 class="blog-h2">Ideas Shaping The Next <span class="blog-grad-text">Era Of Intelligence.</span></h2>
+      </div>
+
+      <!-- Live Research Telemetry Bar -->
+      <div class="featured-telemetry-bar" data-aos="fade-up" data-aos-delay="100">
+        <div class="feat-telem-item">
+          <div class="cyber-equalizer"><span class="eq-bar"></span><span class="eq-bar"></span><span class="eq-bar"></span><span class="eq-bar"></span><span class="eq-bar"></span></div>
+          <span>DISPATCH STATUS: <strong>ACTIVE COGNITION</strong></span>
+        </div>
+        <div class="feat-telem-divider"></div>
+        <div class="feat-telem-item">
+          <i class="fa-solid fa-microchip text-cyan"></i>
+          <span>FOUNDATION: <strong>STACKLY-4.5 TENSOR</strong></span>
+        </div>
+        <div class="feat-telem-divider"></div>
+        <div class="feat-telem-item">
+          <i class="fa-solid fa-bolt text-purple"></i>
+          <span>LATENCY: <strong>&lt;8.4ms FP8</strong></span>
+        </div>
+        <div class="feat-telem-divider"></div>
+        <div class="feat-telem-item">
+          <i class="fa-solid fa-certificate text-pink"></i>
+          <span>PEER REVIEW: <strong>14 LABS VERIFIED</strong></span>
+        </div>
+      </div>
+
+      <div class="featured-hero-card" data-aos="zoom-in-up" data-aos-duration="1000">
+        <div class="featured-card-beam"></div>
+        <div class="hud-corner top-left"></div>
+        <div class="hud-corner bottom-right"></div>
+
+        <!-- Left Large AI Image Frame -->
+        <div class="featured-img-frame scanline-sweep">
+          <img src="assets/images/feature-neural.webp" alt="Continuous Multi-Agent Decision Graph" class="featured-img">
+          <div class="featured-img-overlay"></div>
+          <div class="featured-floating-tag">
+            <i class="fa-solid fa-microchip"></i>
+            <span>STACKLY-4.5 FOUNDATION</span>
+          </div>
+          <div class="featured-floating-tag bottom-tag">
+            <i class="fa-solid fa-shield-virus"></i>
+            <span>100% AIR-GAPPED</span>
+          </div>
+        </div>
+
+        <!-- Right Article Information -->
+        <div class="featured-content">
+          <div class="featured-badge-row">
+            <span class="category-pill">AI INSIGHTS</span>
+            <span class="featured-read-time"><i class="fa-regular fa-clock"></i> 7 min read</span>
+            <span class="featured-read-time"><i class="fa-regular fa-calendar"></i> Oct 12, 2026</span>
+          </div>
+
+          <h3 class="featured-title">
+            <a href="404.html">The New Architecture Of Autonomous Intelligence: Continuous Multi-Agent Decision Graphs</a>
+          </h3>
+
+          <p class="featured-excerpt">
+            How intelligent systems are moving from simple prediction to continuous decision-making. By decoupling planner heuristics from real-time execution kernels, enterprise swarms eliminate hallucinations while achieving sub-10ms response loops across heterogeneous edge networks.
+          </p>
+
+          <div class="featured-meta-row">
+            <div class="author-profile">
+              <img src="assets/images/avatar-1.webp" alt="Dr. Elena Rostova" class="author-avatar">
+              <div>
+                <div class="author-name">Dr. Elena Rostova</div>
+                <div class="author-role">Principal AI Scientist</div>
+              </div>
+            </div>
+
+            <a href="404.html" class="btn-read-article">
+              <span>Read Article</span>
+              <i class="fa-solid fa-arrow-right arrow-icon"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 2 — LATEST AI INSIGHTS (ASYMMETRIC EDITORIAL GRID)
+       ========================================================================== -->
+  <section class="latest-insights-section">
+    <div class="container">
+      
+      <div class="blog-section-header text-center" data-aos="fade-up">
+        <div class="blog-eyebrow purple" style="justify-content: center; margin-bottom: 1rem;">
+          <span class="blog-eyebrow-dot"></span>
+          CURATED TECHNICAL ARCHIVES
+        </div>
+        <h2 class="blog-h2">Latest AI <span class="blog-grad-text">Insights.</span></h2>
+        <p class="blog-desc center">
+          Peer-reviewed architectures, algorithmic benchmarks, and operational paradigms written by our principal research scientists.
+        </p>
+      </div>
+
+      <!-- Live Archive Telemetry Status Bar -->
+      <div class="insights-telemetry-bar" data-aos="fade-up" data-aos-delay="50">
+        <div class="feat-telem-item">
+          <span class="live-dot-pulse"></span>
+          <span>ARCHIVES: <strong>REALTIME SYNC</strong></span>
+        </div>
+        <div class="feat-telem-divider"></div>
+        <div class="feat-telem-item">
+          <i class="fa-solid fa-file-lines text-cyan"></i>
+          <span>PEER-REVIEWED: <strong>18 PAPERS</strong></span>
+        </div>
+        <div class="feat-telem-divider"></div>
+        <div class="feat-telem-item">
+          <i class="fa-solid fa-users text-purple"></i>
+          <span>READERSHIP: <strong>28,000+ RESEARCHERS</strong></span>
+        </div>
+        <div class="feat-telem-divider"></div>
+        <div class="feat-telem-item">
+          <i class="fa-solid fa-chart-line text-pink"></i>
+          <span>CITATION IMPACT: <strong>4.8x INDUSTRY AVG</strong></span>
+        </div>
+      </div>
+
+      <!-- Category Filter Pills -->
+      <div class="filter-categories-bar" data-aos="fade-up" data-aos-delay="100">
+        <button class="insight-filter-btn active" data-filter="all">All Topics <span class="filter-count-badge">18</span></button>
+        <button class="insight-filter-btn" data-filter="ai">Artificial Intelligence <span class="filter-count-badge">6</span></button>
+        <button class="insight-filter-btn" data-filter="ml">Machine Learning <span class="filter-count-badge">4</span></button>
+        <button class="insight-filter-btn" data-filter="auto">Automation <span class="filter-count-badge">3</span></button>
+        <button class="insight-filter-btn" data-filter="agents">AI Agents <span class="filter-count-badge">5</span></button>
+        <button class="insight-filter-btn" data-filter="enterprise">Enterprise AI <span class="filter-count-badge">4</span></button>
+        <button class="insight-filter-btn" data-filter="future">Future Tech <span class="filter-count-badge">3</span></button>
+      </div>
+
+      <!-- 6 Asymmetric Editorial Cards -->
+      <div class="editorial-grid">
+        
+        <!-- Card 1 (Span 7) - Machine Learning -->
+        <article class="editorial-card span-7 card-cyan" onclick="window.location.href='404.html'" style="cursor: pointer;" data-category="ml ai" data-aos="fade-up" data-aos-delay="100">
+          <div class="ed-card-beam"></div>
+          <div class="hud-corner top-left"></div>
+          <div class="hud-corner bottom-right"></div>
+          <div class="ed-thumb-wrap">
+            <img src="assets/images/ai-chip.webp" alt="Quantized FP8 Transformer Inference" class="ed-thumb">
+            <div class="ed-thumb-overlay"></div>
+            <span class="category-pill ed-category-badge">MACHINE LEARNING</span>
+            <span class="ed-micro-metric"><i class="fa-solid fa-bolt text-cyan"></i> 1.2ms FP8</span>
+          </div>
+          <div class="ed-body">
+            <div>
+              <div class="ed-meta-top">
+                <img src="assets/images/avatar-1.webp" alt="Dr. Alex Vance" class="ed-avatar-tiny">
+                <span>Dr. Alex Vance &bull; Oct 08, 2026</span>
+                <span>&bull;</span>
+                <span><i class="fa-regular fa-clock"></i> 6 min read</span>
+              </div>
+              <h3 class="ed-title">
+                <a href="404.html">Quantized FP8 Transformer Inference: Zero Accuracy Degradation on Commodity Edge Nodes</a>
+              </h3>
+              <p class="ed-excerpt">
+                Benchmarking our custom weight-compression matrix that shrinks memory footprint by 78% while preserving full 32-bit reasoning accuracy.
+              </p>
+              <div class="ed-chips-row">
+                <span><i class="fa-solid fa-microchip text-cyan"></i> FP8 Quantized</span>
+                <span><i class="fa-solid fa-bolt text-purple"></i> 4.2x Faster</span>
+                <span><i class="fa-solid fa-server text-pink"></i> CUDA Core</span>
+              </div>
+            </div>
+            <div class="ed-footer">
+              <span>Systems Architecture Lab</span>
+              <a href="404.html" class="ed-link" onclick="event.stopPropagation();">Read Full Study <i class="fa-solid fa-arrow-right arrow"></i></a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 2 (Span 5) - AI Agents -->
+        <article class="editorial-card span-5 card-purple" onclick="window.location.href='404.html'" style="cursor: pointer;" data-category="agents auto" data-aos="fade-up" data-aos-delay="200">
+          <div class="ed-card-beam purple"></div>
+          <div class="hud-corner top-left"></div>
+          <div class="hud-corner bottom-right"></div>
+          <div class="ed-thumb-wrap">
+            <img src="assets/images/service-nlp.webp" alt="Hierarchical Multi-Agent Consensus" class="ed-thumb">
+            <div class="ed-thumb-overlay"></div>
+            <span class="category-pill purple ed-category-badge">AI AGENTS</span>
+            <span class="ed-micro-metric"><i class="fa-solid fa-diagram-project text-purple"></i> Swarm Consensus</span>
+          </div>
+          <div class="ed-body">
+            <div>
+              <div class="ed-meta-top">
+                <img src="assets/images/avatar-2.webp" alt="Marcus Thorne" class="ed-avatar-tiny">
+                <span>Marcus Thorne &bull; Oct 04, 2026</span>
+                <span>&bull;</span>
+                <span><i class="fa-regular fa-clock"></i> 8 min read</span>
+              </div>
+              <h3 class="ed-title">
+                <a href="404.html">Hierarchical Multi-Agent Consensus: Beyond Single-Prompt Reasoning</a>
+              </h3>
+              <p class="ed-excerpt">
+                How distributed autonomous cognitive agents collaborate asynchronously to resolve mission-critical supply chain simulation workflows.
+              </p>
+              <div class="ed-chips-row">
+                <span><i class="fa-solid fa-robot text-purple"></i> P2P Raft</span>
+                <span><i class="fa-solid fa-network-wired text-cyan"></i> 100-Node Swarm</span>
+              </div>
+            </div>
+            <div class="ed-footer">
+              <span>Swarm Intelligence Group</span>
+              <a href="404.html" class="ed-link" onclick="event.stopPropagation();">Read Architecture <i class="fa-solid fa-arrow-right arrow"></i></a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 3 (Span 4) - Automation -->
+        <article class="editorial-card span-4 card-pink" onclick="window.location.href='404.html'" style="cursor: pointer;" data-category="auto enterprise" data-aos="fade-up" data-aos-delay="100">
+          <div class="ed-card-beam pink"></div>
+          <div class="hud-corner top-left"></div>
+          <div class="hud-corner bottom-right"></div>
+          <div class="ed-thumb-wrap">
+            <img src="assets/images/service-analytics.webp" alt="Self-Healing DAG Pipelines" class="ed-thumb">
+            <div class="ed-thumb-overlay"></div>
+            <span class="category-pill pink ed-category-badge">AUTOMATION</span>
+            <span class="ed-micro-metric"><i class="fa-solid fa-gears text-pink"></i> Self-Healing</span>
+          </div>
+          <div class="ed-body">
+            <div>
+              <div class="ed-meta-top">
+                <img src="assets/images/avatar-3.webp" alt="Sarah Chen" class="ed-avatar-tiny">
+                <span>Sarah Chen &bull; Sept 28, 2026</span>
+              </div>
+              <h3 class="ed-title">
+                <a href="404.html">Self-Healing DAG Pipelines in 24/7 Operations</a>
+              </h3>
+              <p class="ed-excerpt">
+                Implementing automated root-cause detection and autonomous task mutation without human intervention.
+              </p>
+              <div class="ed-chips-row">
+                <span><i class="fa-solid fa-arrows-rotate text-pink"></i> Zero-Touch</span>
+                <span><i class="fa-solid fa-clock text-cyan"></i> 99.99% Uptime</span>
+              </div>
+            </div>
+            <div class="ed-footer">
+              <span>DevOps AI Team</span>
+              <a href="404.html" class="ed-link" onclick="event.stopPropagation();">Explore Pipeline <i class="fa-solid fa-arrow-right arrow"></i></a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 4 (Span 4) - Enterprise AI -->
+        <article class="editorial-card span-4 card-green" onclick="window.location.href='404.html'" style="cursor: pointer;" data-category="enterprise ai" data-aos="fade-up" data-aos-delay="200">
+          <div class="ed-card-beam green"></div>
+          <div class="hud-corner top-left"></div>
+          <div class="hud-corner bottom-right"></div>
+          <div class="ed-thumb-wrap">
+            <img src="assets/images/service-security.webp" alt="Sovereign AI Enclaves" class="ed-thumb">
+            <div class="ed-thumb-overlay"></div>
+            <span class="category-pill green ed-category-badge">ENTERPRISE AI</span>
+            <span class="ed-micro-metric"><i class="fa-solid fa-shield-virus text-green"></i> Air-Gapped</span>
+          </div>
+          <div class="ed-body">
+            <div>
+              <div class="ed-meta-top">
+                <img src="assets/images/avatar-4.webp" alt="David Kross" class="ed-avatar-tiny">
+                <span>David Kross &bull; Sept 22, 2026</span>
+              </div>
+              <h3 class="ed-title">
+                <a href="404.html">Sovereign Enclaves: Air-Gapped Model Weights</a>
+              </h3>
+              <p class="ed-excerpt">
+                Cryptographic hardware isolation strategies protecting high-value proprietary IP across multi-cloud deployments.
+              </p>
+              <div class="ed-chips-row">
+                <span><i class="fa-solid fa-shield-halved text-green"></i> SOC 2 Type II</span>
+                <span><i class="fa-solid fa-lock text-purple"></i> Zero Egress</span>
+              </div>
+            </div>
+            <div class="ed-footer">
+              <span>Security Research Group</span>
+              <a href="404.html" class="ed-link" onclick="event.stopPropagation();">View Blueprint <i class="fa-solid fa-arrow-right arrow"></i></a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 5 (Span 4) - Future Tech -->
+        <article class="editorial-card span-4 card-orange" onclick="window.location.href='404.html'" style="cursor: pointer;" data-category="future ai" data-aos="fade-up" data-aos-delay="300">
+          <div class="ed-card-beam orange"></div>
+          <div class="hud-corner top-left"></div>
+          <div class="hud-corner bottom-right"></div>
+          <div class="ed-thumb-wrap">
+            <img src="assets/images/service-vision.webp" alt="Sub-Millisecond Spatial Perception" class="ed-thumb">
+            <div class="ed-thumb-overlay"></div>
+            <span class="category-pill ed-category-badge" style="color: var(--orange); border-color: rgba(245, 158, 11, 0.3); background: rgba(245, 158, 11, 0.1);">FUTURE TECH</span>
+            <span class="ed-micro-metric"><i class="fa-solid fa-eye text-orange"></i> LiDAR 3D</span>
+          </div>
+          <div class="ed-body">
+            <div>
+              <div class="ed-meta-top">
+                <img src="assets/images/avatar-5.webp" alt="Maya Lin" class="ed-avatar-tiny">
+                <span>Maya Lin &bull; Sept 16, 2026</span>
+              </div>
+              <h3 class="ed-title">
+                <a href="404.html">Sub-Millisecond Spatial Perception in Robotics</a>
+              </h3>
+              <p class="ed-excerpt">
+                Deploying OmniVision 3D neural networks on edge compute nodes under zero-light robotic manufacturing facilities.
+              </p>
+              <div class="ed-chips-row">
+                <span><i class="fa-solid fa-eye text-orange"></i> 128-pt LiDAR</span>
+                <span><i class="fa-solid fa-bolt text-cyan"></i> &lt;0.8ms Frame</span>
+              </div>
+            </div>
+            <div class="ed-footer">
+              <span>Robotics Lab</span>
+              <a href="404.html" class="ed-link" onclick="event.stopPropagation();">Read Field Test <i class="fa-solid fa-arrow-right arrow"></i></a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 6 (Span 12 / Wide) - Artificial Intelligence -->
+        <article class="editorial-card span-12 card-purple" onclick="window.location.href='404.html'" style="cursor: pointer;" data-category="ai ml" data-aos="fade-up" data-aos-delay="100">
+          <div class="ed-card-beam purple"></div>
+          <div class="hud-corner top-left"></div>
+          <div class="hud-corner bottom-right"></div>
+          <div class="ed-thumb-wrap">
+            <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=1200&auto=format&fit=crop" alt="Neuro-Symbolic Reasoning Core" class="ed-thumb">
+            <div class="ed-thumb-overlay"></div>
+            <span class="category-pill purple ed-category-badge">ARTIFICIAL INTELLIGENCE</span>
+            <span class="ed-micro-metric"><i class="fa-solid fa-brain text-purple"></i> 100% Logic Verifier</span>
+          </div>
+          <div class="ed-body">
+            <div>
+              <div class="ed-meta-top">
+                <img src="assets/images/avatar-1.webp" alt="Dr. Elena Rostova" class="ed-avatar-tiny">
+                <span>Dr. Elena Rostova &bull; Sept 10, 2026 &bull; <i class="fa-regular fa-clock"></i> 10 min comprehensive study</span>
+              </div>
+              <h3 class="ed-title">
+                <a href="404.html">The Convergence of Neuro-Symbolic Reasoning and Foundation Models: Solving Deterministic Alignment</a>
+              </h3>
+              <p class="ed-excerpt">
+                Why purely statistical LLMs inevitably face truthfulness limits, and how fusing formal logic verifiers directly into attention layers guarantees 100% mathematical consistency without sacrificing creative reasoning flexibility.
+              </p>
+              <div class="ed-chips-row">
+                <span><i class="fa-solid fa-certificate text-cyan"></i> Formally Verified</span>
+                <span><i class="fa-solid fa-brain text-purple"></i> Neuro-Symbolic Core</span>
+                <span><i class="fa-solid fa-shield-check text-pink"></i> Zero Hallucination</span>
+                <span><i class="fa-solid fa-code text-green"></i> Open Evaluation Harness</span>
+              </div>
+            </div>
+            <div class="ed-footer">
+              <span>Dr. Elena Rostova &amp; Research Council</span>
+              <a href="404.html" class="ed-link" onclick="event.stopPropagation();">Read Full Whitepaper <i class="fa-solid fa-arrow-right arrow"></i></a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 3 — AI RESEARCH & DEEP DIVE
+       ========================================================================== -->
+  <section id="deep-dive" class="deep-dive-section">
+    <div class="deep-ambient-mesh"></div>
+    <div class="container">
+      
+      <!-- Section Header on Top -->
+      <div class="blog-section-header text-center" data-aos="fade-up">
+        <div class="blog-eyebrow pink" style="justify-content: center; margin-bottom: 0.75rem;">
+          <span class="blog-eyebrow-dot"></span>
+          <span class="cyber-scramble" data-original-text="FRONTIER INVESTIGATION">FRONTIER INVESTIGATION</span>
+        </div>
+        <h2 class="blog-h2">Beyond The Headlines. <span class="blog-grad-text">Into The Intelligence.</span></h2>
+        <p class="blog-desc center">
+          Rigorous technical whitepapers, empirical benchmarks, and architectural breakthroughs from the frontier of cognitive systems.
+        </p>
+
+        <!-- Live Telemetry Ticker -->
+        <div class="deep-telemetry-ticker">
+          <div class="ticker-chip"><i class="fa-solid fa-bolt text-cyan"></i> 14.2M Tokens/Sec</div>
+          <div class="ticker-divider">&bull;</div>
+          <div class="ticker-chip"><i class="fa-solid fa-lock text-purple"></i> Zero Egress</div>
+          <div class="ticker-divider">&bull;</div>
+          <div class="ticker-chip"><i class="fa-solid fa-shield-check text-green"></i> 99.98% Verified SLA</div>
+        </div>
+      </div>
+
+      <!-- 2-Column Balanced Content Grid -->
+      <div class="deep-dive-grid">
+        
+        <!-- Left: Large Research Image with Floating HUD Panels & Equalizers -->
+        <div class="deep-visual-wrap" data-aos="fade-up">
+          <div class="deep-visual-frame laser-border-glow scanline-sweep">
+            <div class="hud-corner top-left"></div>
+            <div class="hud-corner top-right"></div>
+            <div class="hud-corner bottom-left"></div>
+            <div class="hud-corner bottom-right"></div>
+            
+            <!-- Live HUD Status Top Bar -->
+            <div class="deep-frame-hud-bar">
+              <div class="deep-hud-status">
+                <span class="telemetry-beacon"></span>
+                <span class="deep-hud-code">NEURAL CORE // ACTIVE LINK</span>
+              </div>
+              <div class="cyber-equalizer">
+                <span class="eq-bar"></span>
+                <span class="eq-bar"></span>
+                <span class="eq-bar"></span>
+                <span class="eq-bar"></span>
+                <span class="eq-bar"></span>
+              </div>
+            </div>
+
+            <img src="assets/images/feature-dashboard.webp" alt="Deep Neural Core Research" class="deep-img">
+            <div class="deep-img-gradient-overlay"></div>
+            
+            <!-- Bottom Telemetry HUD Overlay -->
+            <div class="deep-frame-bottom-telemetry">
+              <div class="deep-bottom-badge">
+                <i class="fa-solid fa-microchip text-cyan"></i>
+                <span>FP8 TENSOR CORES</span>
+              </div>
+              <div class="deep-bottom-badge">
+                <i class="fa-solid fa-network-wired text-purple"></i>
+                <span>128-NODE MESH</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Floating HUD Panels -->
+          <div class="deep-float-panel top-left cyber-spotlight">
+            <div class="deep-float-icon-box cyan">
+              <i class="fa-solid fa-bolt"></i>
+            </div>
+            <div>
+              <div class="deep-float-val">&lt;4.2ms Ingest</div>
+              <div class="deep-float-lbl">Zero Pipeline Lag</div>
+            </div>
+          </div>
+
+          <div class="deep-float-panel bottom-right cyber-spotlight">
+            <div class="deep-float-icon-box purple">
+              <i class="fa-solid fa-shield-halved"></i>
+            </div>
+            <div>
+              <div class="deep-float-val">99.98% Logic Verifier</div>
+              <div class="deep-float-lbl">Deterministic Guarantees</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: 3 Featured Deep-Dive Topics -->
+        <div class="deep-topics-wrap" data-aos="fade-up" data-aos-delay="100">
+          <div class="deep-topics-list">
+            
+            <!-- Topic 1 -->
+            <div class="deep-topic-card cyber-spotlight">
+              <div class="topic-beam"></div>
+              <div class="topic-header">
+                <div class="topic-badge-wrap">
+                  <span class="topic-badge cyan">TOPIC 01 // AGENTS</span>
+                  <span class="topic-live-indicator"><span class="pulse-mini-dot"></span> BENCHMARKED</span>
+                </div>
+                <span class="topic-read"><i class="fa-regular fa-clock"></i> 12 min deep dive</span>
+              </div>
+              <h3 class="topic-title">
+                <a href="#deep-dive">The Evolution of AI Agents: Dynamic State Trees &amp; Heuristic Reasoners</a>
+              </h3>
+              <p class="topic-desc">
+                From static heuristics to dynamic tree-of-thought heuristic planning and autonomous goal synthesis. An exhaustive architectural breakdown of multi-agent state trees.
+              </p>
+              <div class="topic-stat-row">
+                <span><i class="fa-solid fa-circle-check text-cyan"></i> 99.8% Verifier Score</span>
+                <span><i class="fa-solid fa-bolt text-purple"></i> 8.4ms Dispatch</span>
+                <a href="404.html" class="topic-arrow-link">Explore Deep Dive <i class="fa-solid fa-arrow-right"></i></a>
+              </div>
+            </div>
+
+            <!-- Topic 2 -->
+            <div class="deep-topic-card cyber-spotlight">
+              <div class="topic-beam"></div>
+              <div class="topic-header">
+                <div class="topic-badge-wrap">
+                  <span class="topic-badge purple">TOPIC 02 // SYSTEMS</span>
+                  <span class="topic-live-indicator"><span class="pulse-mini-dot"></span> OPTIMIZED</span>
+                </div>
+                <span class="topic-read"><i class="fa-regular fa-clock"></i> 15 min deep dive</span>
+              </div>
+              <h3 class="topic-title">
+                <a href="#deep-dive">Building Scalable Neural Systems: Zero-Bubble Pipeline Sharding</a>
+              </h3>
+              <p class="topic-desc">
+                Distributed tensor parallelism, zero-bubble pipeline schedules, and petabyte-scale vector sharding across heterogeneous GPU superclusters.
+              </p>
+              <div class="topic-stat-row">
+                <span><i class="fa-solid fa-chart-line text-cyan"></i> 4.2x Throughput</span>
+                <span><i class="fa-solid fa-microchip text-pink"></i> CUDA &bull; PyTorch</span>
+                <a href="404.html" class="topic-arrow-link">Explore Deep Dive <i class="fa-solid fa-arrow-right"></i></a>
+              </div>
+            </div>
+
+            <!-- Topic 3 -->
+            <div class="deep-topic-card cyber-spotlight">
+              <div class="topic-beam"></div>
+              <div class="topic-header">
+                <div class="topic-badge-wrap">
+                  <span class="topic-badge green">TOPIC 03 // AUTONOMY</span>
+                  <span class="topic-live-indicator"><span class="pulse-mini-dot"></span> ENCLAVE</span>
+                </div>
+                <span class="topic-read"><i class="fa-regular fa-clock"></i> 10 min deep dive</span>
+              </div>
+              <h3 class="topic-title">
+                <a href="#deep-dive">The Future of Autonomous Intelligence: Byzantine Safety Guarantees</a>
+              </h3>
+              <p class="topic-desc">
+                Deterministic policy guardrails, air-gapped Byzantine consensus, and continuous self-reinforcement from verifiable production telemetry feedback loops.
+              </p>
+              <div class="topic-stat-row">
+                <span><i class="fa-solid fa-shield-halved text-cyan"></i> 100% Air-Gapped SLA</span>
+                <span><i class="fa-solid fa-lock text-purple"></i> Sovereign Enclave</span>
+                <a href="404.html" class="topic-arrow-link">Explore Deep Dive <i class="fa-solid fa-arrow-right"></i></a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 4 — TRENDING PERSPECTIVES (SIDE SCROLL CAROUSEL - 8 CARDS)
+       ========================================================================== -->
+  <section class="trending-perspectives-section">
+    <div class="container">
+      
+      <div class="trending-header-top" data-aos="fade-up">
+        <div class="trending-header-text">
+          <div class="blog-eyebrow">
+            <span class="blog-eyebrow-dot"></span>
+            GLOBAL DISPATCHES
+          </div>
+          <h2 class="blog-h2">What The AI World <span class="blog-grad-text">Is Talking About.</span></h2>
+          <p class="blog-desc">
+            Eight critical paradigm shifts redefining enterprise computation, foundational models, and sovereign intelligence.
+          </p>
+        </div>
+
+        <!-- Side Scroll Controls & Progress Indicator -->
+        <div class="trending-controls-wrapper">
+          <div class="trending-progress-wrapper">
+            <div class="trending-progress-info">
+              <span class="trending-progress-label"><i class="fa-solid fa-arrows-left-right text-cyan"></i> HORIZONTAL TELEMETRY</span>
+              <span class="trending-progress-counter" id="trend-counter">DISPATCH 01 / 08</span>
+            </div>
+            <div class="trending-progress-track">
+              <div class="trending-progress-fill" id="trend-progress-fill"></div>
+            </div>
+          </div>
+
+          <div class="trending-carousel-controls">
+            <button class="trend-nav-btn prev" id="trend-prev" aria-label="Previous Articles">
+              <i class="fa-solid fa-arrow-left"></i>
+            </button>
+            <button class="trend-nav-btn next" id="trend-next" aria-label="Next Articles">
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Side Scrollable Track Container (8 Cards) -->
+      <div class="trending-scroll-container" id="trending-scroll-track">
+        
+        <!-- Trending Panel 01 -->
+        <div class="trending-panel card-cyan cyber-spotlight">
+          <div>
+            <div class="trend-top">
+              <span class="category-pill">THEORETICAL AI</span>
+              <span class="trend-num">01</span>
+            </div>
+            <div class="trend-img-wrap">
+              <img src="assets/images/project-1.webp" alt="State Space Models" class="trend-img">
+            </div>
+            <h3 class="trend-title">The Post-Transformer Era: State Space Models (SSMs)</h3>
+            <p class="trend-desc">
+              Why sub-quadratic attention architectures are unlocking million-token context reasoning on lightweight edge hardware with linear memory scaling.
+            </p>
+          </div>
+          <div class="trend-footer">
+            <span style="font-family: var(--font-mono); font-size: 0.78rem; color: #94a3b8;"><i class="fa-regular fa-clock"></i> 6 min read</span>
+            <a href="404.html" class="ed-link">Read More <i class="fa-solid fa-arrow-right arrow"></i></a>
+          </div>
+        </div>
+
+        <!-- Trending Panel 02 -->
+        <div class="trending-panel card-purple cyber-spotlight">
+          <div>
+            <div class="trend-top">
+              <span class="category-pill purple">AGENTIC WORKFLOWS</span>
+              <span class="trend-num">02</span>
+            </div>
+            <div class="trend-img-wrap">
+              <img src="assets/images/service-nlp.webp" alt="Autonomous Code Synthesis" class="trend-img">
+            </div>
+            <h3 class="trend-title">Autonomous Code Synthesis: Verifying 100K LOC</h3>
+            <p class="trend-desc">
+              Autonomous cognitive meshes capable of self-writing, testing, and formally proving complex cloud-native architectures without human intervention.
+            </p>
+          </div>
+          <div class="trend-footer">
+            <span style="font-family: var(--font-mono); font-size: 0.78rem; color: #94a3b8;"><i class="fa-regular fa-clock"></i> 8 min read</span>
+            <a href="404.html" class="ed-link">Read More <i class="fa-solid fa-arrow-right arrow"></i></a>
+          </div>
+        </div>
+
+        <!-- Trending Panel 03 -->
+        <div class="trending-panel card-pink cyber-spotlight">
+          <div>
+            <div class="trend-top">
+              <span class="category-pill pink">ENTERPRISE STRATEGY</span>
+              <span class="trend-num">03</span>
+            </div>
+            <div class="trend-img-wrap">
+              <img src="assets/images/project-4.webp" alt="Sovereign AI Weights" class="trend-img">
+            </div>
+            <h3 class="trend-title">Sovereign Weights: The Fortune 500 Paradigm Shift</h3>
+            <p class="trend-desc">
+              Why leading enterprises are pulling proprietary datasets back on-premise and building private neural architectures with 100% weight ownership.
+            </p>
+          </div>
+          <div class="trend-footer">
+            <span style="font-family: var(--font-mono); font-size: 0.78rem; color: #94a3b8;"><i class="fa-regular fa-clock"></i> 7 min read</span>
+            <a href="404.html" class="ed-link">Read More <i class="fa-solid fa-arrow-right arrow"></i></a>
+          </div>
+        </div>
+
+        <!-- Trending Panel 04 -->
+        <div class="trending-panel card-green cyber-spotlight">
+          <div>
+            <div class="trend-top">
+              <span class="category-pill green">HARDWARE FRONTIER</span>
+              <span class="trend-num">04</span>
+            </div>
+            <div class="trend-img-wrap">
+              <img src="assets/images/ai-chip.webp" alt="Neuromorphic Computing" class="trend-img">
+            </div>
+            <h3 class="trend-title">Neuromorphic Computing &amp; Analog Matrix Ingest</h3>
+            <p class="trend-desc">
+              Achieving 100x compute energy efficiency using spiking neural chips for real-time edge telemetry and industrial computer vision.
+            </p>
+          </div>
+          <div class="trend-footer">
+            <span style="font-family: var(--font-mono); font-size: 0.78rem; color: #94a3b8;"><i class="fa-regular fa-clock"></i> 9 min read</span>
+            <a href="404.html" class="ed-link">Read More <i class="fa-solid fa-arrow-right arrow"></i></a>
+          </div>
+        </div>
+
+        <!-- Trending Panel 05 (NEW) -->
+        <div class="trending-panel card-cyan cyber-spotlight">
+          <div>
+            <div class="trend-top">
+              <span class="category-pill">QUANTUM INTELLIGENCE</span>
+              <span class="trend-num">05</span>
+            </div>
+            <div class="trend-img-wrap">
+              <img src="assets/images/service-analytics.webp" alt="Quantum Neural Annealing" class="trend-img">
+            </div>
+            <h3 class="trend-title">Quantum Neural Annealing: Solving NP-Hard Routing</h3>
+            <p class="trend-desc">
+              Hybrid quantum-classical algorithms reducing discrete optimization calculations from hours to milliseconds in global supply chain swarms.
+            </p>
+          </div>
+          <div class="trend-footer">
+            <span style="font-family: var(--font-mono); font-size: 0.78rem; color: #94a3b8;"><i class="fa-regular fa-clock"></i> 11 min read</span>
+            <a href="404.html" class="ed-link">Read More <i class="fa-solid fa-arrow-right arrow"></i></a>
+          </div>
+        </div>
+
+        <!-- Trending Panel 06 (NEW) -->
+        <div class="trending-panel card-purple cyber-spotlight">
+          <div>
+            <div class="trend-top">
+              <span class="category-pill purple">BIO-NEURAL MESH</span>
+              <span class="trend-num">06</span>
+            </div>
+            <div class="trend-img-wrap">
+              <img src="assets/images/project-3.webp" alt="Synthetic Wetware Hybrids" class="trend-img">
+            </div>
+            <h3 class="trend-title">Synthetic Biology Interfacing: 10M Neuron Wetware</h3>
+            <p class="trend-desc">
+              Exploring electrophysiological in-vitro neural cultures acting as low-power co-processors for continuous adaptive reinforcement learning.
+            </p>
+          </div>
+          <div class="trend-footer">
+            <span style="font-family: var(--font-mono); font-size: 0.78rem; color: #94a3b8;"><i class="fa-regular fa-clock"></i> 14 min read</span>
+            <a href="404.html" class="ed-link">Read More <i class="fa-solid fa-arrow-right arrow"></i></a>
+          </div>
+        </div>
+
+        <!-- Trending Panel 07 (NEW) -->
+        <div class="trending-panel card-pink cyber-spotlight">
+          <div>
+            <div class="trend-top">
+              <span class="category-pill pink">COGNITIVE ROBOTICS</span>
+              <span class="trend-num">07</span>
+            </div>
+            <div class="trend-img-wrap">
+              <img src="assets/images/service-vision.webp" alt="Zero-Shot Embodied Perception" class="trend-img">
+            </div>
+            <h3 class="trend-title">Zero-Shot Embodied Perception in Extreme Dynamics</h3>
+            <p class="trend-desc">
+              Multi-modal spatial reasoning transformers operating at 1,000 Hz frame-rates for high-velocity humanoid stabilization and dexterous manipulation.
+            </p>
+          </div>
+          <div class="trend-footer">
+            <span style="font-family: var(--font-mono); font-size: 0.78rem; color: #94a3b8;"><i class="fa-regular fa-clock"></i> 8 min read</span>
+            <a href="404.html" class="ed-link">Read More <i class="fa-solid fa-arrow-right arrow"></i></a>
+          </div>
+        </div>
+
+        <!-- Trending Panel 08 (NEW) -->
+        <div class="trending-panel card-green cyber-spotlight">
+          <div>
+            <div class="trend-top">
+              <span class="category-pill green">SECURITY ENCLAVES</span>
+              <span class="trend-num">08</span>
+            </div>
+            <div class="trend-img-wrap">
+              <img src="assets/images/project-6.webp" alt="Byzantine Swarm Consensus" class="trend-img">
+            </div>
+            <h3 class="trend-title">Byzantine-Resilient Swarm Consensus Under Adversarial Attacks</h3>
+            <p class="trend-desc">
+              Zero-trust mathematical proofs preventing poisoned gradient attacks across federated edge clusters in highly contested cyber domains.
+            </p>
+          </div>
+          <div class="trend-footer">
+            <span style="font-family: var(--font-mono); font-size: 0.78rem; color: #94a3b8;"><i class="fa-regular fa-clock"></i> 10 min read</span>
+            <a href="404.html" class="ed-link">Read More <i class="fa-solid fa-arrow-right arrow"></i></a>
+          </div>
+        </div>
+
+      </div>
+      
+      <!-- Interactive Pagination Dots Nav -->
+      <div class="trending-dots-nav" id="trending-dots-nav">
+        <button class="trend-dot active" data-index="0" aria-label="Perspective 1"></button>
+        <button class="trend-dot" data-index="1" aria-label="Perspective 2"></button>
+        <button class="trend-dot" data-index="2" aria-label="Perspective 3"></button>
+        <button class="trend-dot" data-index="3" aria-label="Perspective 4"></button>
+        <button class="trend-dot" data-index="4" aria-label="Perspective 5"></button>
+        <button class="trend-dot" data-index="5" aria-label="Perspective 6"></button>
+        <button class="trend-dot" data-index="6" aria-label="Perspective 7"></button>
+        <button class="trend-dot" data-index="7" aria-label="Perspective 8"></button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 5 — KNOWLEDGE HUB
+       ========================================================================== -->
+  <section class="knowledge-hub-section">
+    <div class="hub-ambient-mesh"></div>
+    <div class="container">
+      
+      <div class="blog-section-header text-center" data-aos="fade-up">
+        <div class="blog-eyebrow" style="justify-content: center; margin-bottom: 1rem;">
+          <span class="blog-eyebrow-dot"></span>
+          <span class="cyber-scramble" data-original-text="CENTRAL REPOSITORY">CENTRAL REPOSITORY</span>
+        </div>
+        <h2 class="blog-h2">Explore The Stackly <span class="blog-grad-text">Knowledge Hub.</span></h2>
+        <p class="blog-desc center">
+          Engineering blueprints, reproducible research notebooks, and transformation roadmaps curated for AI practitioners and enterprise architects.
+        </p>
+      </div>
+
+      <!-- 3 Resource Category Hub Cards -->
+      <div class="hub-grid">
+        
+        <!-- Hub Card 1: AI Playbooks -->
+        <div class="hub-card card-cyan cyber-spotlight scanline-sweep" data-aos="fade-up" data-aos-delay="100">
+          <div class="hub-card-beam cyan"></div>
+          <div class="hud-corner top-left"></div>
+          <div class="hud-corner top-right"></div>
+          <div class="hud-corner bottom-left"></div>
+          <div class="hud-corner bottom-right"></div>
+
+          <img src="assets/images/project-2.webp" alt="AI Playbooks" class="hub-bg-img">
+          <div class="hub-gradient-overlay"></div>
+          
+          <!-- Top Floating HUD Telemetry -->
+          <div class="hub-top-hud">
+            <span class="hub-floating-badge cyan">
+              <span class="pulse-mini-dot"></span> GIT REPO // v2.8
+            </span>
+            <span class="hub-spec-chip"><i class="fa-solid fa-code text-cyan"></i> 14 NOTEBOOKS</span>
+          </div>
+
+          <div class="hub-card-content">
+            <span class="hub-tag"><i class="fa-solid fa-book-bookmark"></i> 14 IMPLEMENTATION GUIDES</span>
+            <h3 class="hub-title">AI PLAYBOOKS</h3>
+            <p class="hub-desc">
+              Practical guides and code repositories for implementing enterprise AI agents, prompt caching pipelines, and model evaluation harnesses.
+            </p>
+            
+            <div class="hub-chips-row">
+              <span><i class="fa-solid fa-microchip text-cyan"></i> FP8 Kernels</span>
+              <span><i class="fa-solid fa-robot text-purple"></i> Swarm Logic</span>
+              <span><i class="fa-solid fa-terminal text-green"></i> Python SDK</span>
+            </div>
+
+            <a href="404.html" class="hub-action">
+              <span>Explore Playbooks</span>
+              <i class="fa-solid fa-arrow-right arrow"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Hub Card 2: Research Notes -->
+        <div class="hub-card card-purple cyber-spotlight scanline-sweep" data-aos="fade-up" data-aos-delay="200">
+          <div class="hub-card-beam purple"></div>
+          <div class="hud-corner top-left"></div>
+          <div class="hud-corner top-right"></div>
+          <div class="hud-corner bottom-left"></div>
+          <div class="hud-corner bottom-right"></div>
+
+          <img src="assets/images/tech-sphere.webp" alt="Research Notes" class="hub-bg-img">
+          <div class="hub-gradient-overlay"></div>
+          
+          <!-- Top Floating HUD Telemetry -->
+          <div class="hub-top-hud">
+            <span class="hub-floating-badge purple">
+              <span class="pulse-mini-dot" style="background: var(--purple); box-shadow: 0 0 8px var(--purple);"></span> PEER REVIEWED
+            </span>
+            <span class="hub-spec-chip"><i class="fa-solid fa-file-pdf text-purple"></i> PDF &bull; 18.4 MB</span>
+          </div>
+
+          <div class="hub-card-content">
+            <span class="hub-tag" style="color: var(--purple);"><i class="fa-solid fa-flask-vial"></i> 38 WHITE PAPERS</span>
+            <h3 class="hub-title">RESEARCH NOTES</h3>
+            <p class="hub-desc">
+              Technical perspectives, mathematical proofs, and emerging concepts in neuro-symbolic computation and continuous reinforcement learning.
+            </p>
+            
+            <div class="hub-chips-row">
+              <span><i class="fa-solid fa-atom text-purple"></i> Neuro-Symbolic</span>
+              <span><i class="fa-solid fa-square-root-variable text-pink"></i> Proofs</span>
+              <span><i class="fa-solid fa-cube text-cyan"></i> 3D Tensors</span>
+            </div>
+
+            <a href="404.html" class="hub-action">
+              <span>View Technical Notes</span>
+              <i class="fa-solid fa-arrow-right arrow"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Hub Card 3: Industry Reports -->
+        <div class="hub-card card-pink cyber-spotlight scanline-sweep" data-aos="fade-up" data-aos-delay="300">
+          <div class="hub-card-beam pink"></div>
+          <div class="hud-corner top-left"></div>
+          <div class="hud-corner top-right"></div>
+          <div class="hud-corner bottom-left"></div>
+          <div class="hud-corner bottom-right"></div>
+
+          <img src="assets/images/project-5.webp" alt="Industry Reports" class="hub-bg-img">
+          <div class="hub-gradient-overlay"></div>
+          
+          <!-- Top Floating HUD Telemetry -->
+          <div class="hub-top-hud">
+            <span class="hub-floating-badge pink">
+              <span class="pulse-mini-dot" style="background: var(--pink); box-shadow: 0 0 8px var(--pink);"></span> 2026 AUDITED
+            </span>
+            <span class="hub-spec-chip"><i class="fa-solid fa-shield-check text-pink"></i> SLA BENCHMARK</span>
+          </div>
+
+          <div class="hub-card-content">
+            <span class="hub-tag" style="color: var(--pink);"><i class="fa-solid fa-chart-pie"></i> 2026 BENCHMARK REPORT</span>
+            <h3 class="hub-title">INDUSTRY REPORTS</h3>
+            <p class="hub-desc">
+              In-depth empirical insights into sovereign AI transformation, cost-per-inference metrics, and ROI benchmarks across banking, healthcare, and robotics.
+            </p>
+            
+            <div class="hub-chips-row">
+              <span><i class="fa-solid fa-shield-halved text-pink"></i> Sovereign AI</span>
+              <span><i class="fa-solid fa-coins text-orange"></i> ROI Metrics</span>
+              <span><i class="fa-solid fa-chart-line text-cyan"></i> Fortune 500</span>
+            </div>
+
+            <a href="404.html" class="hub-action">
+              <span>Download Reports</span>
+              <i class="fa-solid fa-arrow-right arrow"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 6 — NEWSLETTER / FINAL CTA
+       ========================================================================== -->
+  <section class="blog-newsletter-section">
+    <div class="news-ambient-glow"></div>
+    <div class="container">
+      
+      <div class="news-card-wrapper laser-border-glow scanline-sweep" data-aos="zoom-in-up" data-aos-duration="1000">
+        <div class="news-card-beam top"></div>
+        <div class="news-card-beam bottom"></div>
+        <div class="hud-corner top-left"></div>
+        <div class="hud-corner top-right"></div>
+        <div class="hud-corner bottom-left"></div>
+        <div class="hud-corner bottom-right"></div>
+
+        <!-- Left Content Column -->
+        <div class="news-content-col" data-aos="fade-right" data-aos-delay="200">
+          <div class="blog-eyebrow">
+            <span class="blog-eyebrow-dot"></span>
+            <span class="cyber-scramble" data-original-text="FRONTIER DISPATCH">FRONTIER DISPATCH</span>
+          </div>
+          <h2 class="news-heading">
+            Stay Ahead Of The <span class="blog-grad-text">Intelligence Curve.</span>
+          </h2>
+          <p class="news-desc">
+            Get the latest AI insights, emerging technology trends, and practical intelligence delivered directly to your inbox. Curated fortnightly for engineering leaders and AI researchers.
+          </p>
+
+          <form class="news-form" onsubmit="event.preventDefault(); window.showToast('Subscribed to Frontier AI Dispatch!', 'success');">
+            <div class="news-input-wrap">
+              <i class="fa-solid fa-envelope news-input-icon"></i>
+              <input type="email" class="news-input" placeholder="Enter your corporate email address..." required>
+            </div>
+            <button type="submit" class="news-btn">
+              <i class="fa-solid fa-paper-plane" style="margin-right: 6px;"></i> Subscribe
+            </button>
+          </form>
+
+          <div class="news-privacy-note">
+            <i class="fa-solid fa-shield-check" style="color: var(--cyan);"></i>
+            <span>Zero spam &bull; Unsubscribe anytime &bull; Published fortnightly</span>
+          </div>
+
+          <!-- Quick Community Channels -->
+          <div class="news-channels-row">
+            <span class="channels-label">JOIN 28K+ PEERS:</span>
+            <a href="404.html" class="channel-chip discord">
+              <i class="fa-brands fa-discord"></i> Discord
+            </a>
+            <a href="404.html" class="channel-chip github">
+              <i class="fa-brands fa-github"></i> GitHub
+            </a>
+            <a href="404.html" class="channel-chip rss">
+              <i class="fa-solid fa-rss"></i> RSS
+            </a>
+          </div>
+        </div>
+
+        <!-- Right Holographic 3D Neural Singularity Visual -->
+        <div class="news-visual-col" data-aos="fade-left" data-aos-delay="400">
+          <div class="news-orb-container">
+            <div class="news-orb-core">
+              <img src="assets/images/tech-sphere.webp" alt="AI Neural Singularity Core" class="news-orb-img">
+              <div class="news-orb-glare"></div>
+            </div>
+            
+            <!-- Rotating Concentric Orbital Rings -->
+            <div class="news-orb-ring r1"></div>
+            <div class="news-orb-ring r2"></div>
+            <div class="news-orb-ring r3"></div>
+
+            <!-- 4 Floating Telemetry Satellites -->
+            <div class="news-satellite s1">
+              <span class="pulse-mini-dot"></span>
+              <span>28,400+ Engineers</span>
+            </div>
+            <div class="news-satellite s2">
+              <i class="fa-solid fa-bolt text-cyan"></i>
+              <span>Instant Ingest</span>
+            </div>
+            <div class="news-satellite s3">
+              <i class="fa-solid fa-shield-halved text-green"></i>
+              <span>Air-Gapped TLS</span>
+            </div>
+            <div class="news-satellite s4">
+              <i class="fa-solid fa-calendar-check text-pink"></i>
+              <span>Bi-Weekly Issue</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Site Footer (Retained Footer) -->
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="grid footer-grid">
+        <!-- Col 1: Brand & Global Infra -->
+        <div class="footer-brand">
+          <a href="index.html" class="neuro-logo"><img src="assets/images/stackly-logo.webp" alt="Stackly AI" class="site-logo-img"></a>
+          <p class="footer-brand-desc">
+            Stackly is the premier enterprise AI agency and neural technology framework empowering high-growth innovators with sovereign models and cognitive swarms.
+          </p>
+          <div class="footer-infra-tag">
+            <i class="fa-solid fa-server"></i>
+            <span>MMR COMPLEX, CHINNA THIRUPATHI, NEAR CHINNA MUNIYAPPAN KOVIL, SALEM - 636 003</span>
+          </div>
+          <div class="footer-socials">
+            <a href="404.html" class="social-icon" aria-label="Twitter / X"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="404.html" class="social-icon" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="404.html" class="social-icon" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+            <a href="404.html" class="social-icon" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          </div>
+        </div>
+
+        <!-- Col 2: Navigation (Exact User Request) -->
+        <div class="footer-col footer-nav-col">
+          <h4>Navigation</h4>
+          <div class="footer-links">
+            <a href="index.html">HOME</a>
+            <a href="about.html">ABOUT US</a>
+            <a href="services.html">SERVICE</a>
+            <a href="blog.html">BLOG</a>
+            <a href="contact.html">CONTACT</a>
+          </div>
+        </div>
+
+        <!-- Col 3: AI Platform -->
+        <div class="footer-col">
+          <h4>AI Platform</h4>
+          <div class="footer-links">
+            <a href="404.html">Sovereign LLMs</a>
+            <a href="404.html">Autonomous Swarms</a>
+            <a href="404.html">Computer Vision</a>
+            <a href="404.html">Neural Big Data</a>
+            <a href="404.html">Predictive Pipelines</a>
+            <a href="404.html">API Documentation</a>
+          </div>
+        </div>
+
+        <!-- Col 4: Research & Resources -->
+        <div class="footer-col">
+          <h4>Research &amp; Docs</h4>
+          <div class="footer-links">
+            <a href="404.html">Research Papers</a>
+            <a href="404.html">Silicon Architecture</a>
+            <a href="404.html">Security Perimeter</a>
+            <a href="404.html">Model Benchmarks</a>
+            <a href="404.html">Enterprise Case Studies</a>
+            <a href="404.html">Python SDK / REST</a>
+          </div>
+        </div>
+
+        <!-- Col 5: Stay Informed & Direct NOC -->
+        <div class="footer-col">
+          <h4>Stay Informed</h4>
+          <p style="color: var(--text-secondary); font-size: 0.88rem; margin-bottom: 1rem; line-height: 1.6;">
+            Subscribe to our weekly AI research briefing, zero-latency benchmarks, and model releases.
+          </p>
+          <form class="newsletter-form" style="display:flex; flex-direction:column; gap:0.65rem;">
+            <input type="email" class="form-control" placeholder="Enter your work email..." required>
+            <button type="submit" class="btn btn-primary"><i class="fa-solid fa-paper-plane" style="margin-right:6px;"></i> Subscribe</button>
+          </form>
+
+          <div class="footer-contact-block">
+            <a href="tel:+919090909090" class="footer-contact-item"><i class="fa-solid fa-headset"></i> <span>+91 90909 09090</span></a>
+            <a href="mailto:info@stackly.com" class="footer-contact-item"><i class="fa-solid fa-envelope"></i> <span>info@stackly.com</span></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Security & Compliance Trust Strip -->
+      <div class="footer-trust-strip">
+        <div class="trust-badges-list">
+          <span class="trust-badge"><i class="fa-solid fa-shield-halved"></i> SOC 2 TYPE II</span>
+          <span class="trust-badge"><i class="fa-solid fa-lock"></i> ISO/IEC 27001</span>
+          <span class="trust-badge"><i class="fa-solid fa-hospital"></i> HIPAA COMPLIANT</span>
+          <span class="trust-badge"><i class="fa-solid fa-scale-balanced"></i> GDPR SOVEREIGN</span>
+          <span class="trust-badge"><i class="fa-solid fa-microchip"></i> AIR-GAPPED HARDWARE</span>
+        </div>
+        <div class="footer-legal-links">
+          <a href="404.html">Privacy Policy</a>
+          <a href="404.html">Terms of Service</a>
+          <a href="404.html">Security Whitepaper</a>
+          <a href="404.html">Compliance Portal</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 Stackly AI Technologies Inc. All rights reserved.</div>
+        <div class="system-status">
+          <span class="dot"></span> All Neural Nodes Operational (99.999% SLA)
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Animation & Interaction Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script src="assets/js/particles.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/forms.js"></script>
+  <script src="assets/js/blog.js"></script>
+  <script src="assets/js/enhancements.js"></script>
+</body>
+</html>
