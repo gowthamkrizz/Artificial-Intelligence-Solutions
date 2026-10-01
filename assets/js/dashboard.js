@@ -378,6 +378,19 @@
     }
   }
 
+  /* ──────────────────────────────────────────
+     8. LOGO REFRESH HANDLER
+  ────────────────────────────────────────── */
+  function initLogoRefresh() {
+    const brandLogos = document.querySelectorAll('.sidebar-brand .brand-logo-wrap');
+    brandLogos.forEach(logo => {
+      logo.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.location.reload();
+      });
+    });
+  }
+
   // Initialization
   document.addEventListener('DOMContentLoaded', () => {
     initMobileSidebar();
@@ -386,6 +399,7 @@
     initPromptPlayground();
     initModals();
     initUserProfile();
+    initLogoRefresh();
   });
 
 })();
